@@ -176,7 +176,37 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     order: 2;
     flex: 0 1 auto;
     align-self: stretch;
+}
 
+.visualization-container {
+    padding: 15px;
+}
+
+.visualization-panel {
+    color: white;
+    padding: 10px;
+    padding-left: 18px;
+    background-color: #2C3E50;
+    height: 400px;
+}
+
+.visualization-panel h4 {
+    color: #14A085;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+.color-white {
+    color: white;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.bold-text {
+    font-weight: bolder;
 }
 
 /*menu*/
@@ -211,11 +241,10 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     color: #14A085;
 }
 
-
 .sidebar-footer {
     text-align: center;
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
     left: -30px;
 
 }

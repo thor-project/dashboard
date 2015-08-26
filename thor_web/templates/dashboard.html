@@ -1,0 +1,60 @@
+{% include 'base.html' %}
+
+{% block head_additional %}
+    <style>
+        body {
+            background-color: #14A085;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="row flex-container">
+        {# sidebar #}
+        <div id="dashboard-menu" class="col-md-1" style="min-width: 150px; background-color: #2C3E50; padding:0"
+             align="center">
+            <img src="{{ STATIC_URL }}assets/img/logo-normal.svg" width="80%" align="center"
+                 style="padding-left: 10px; padding-top: 10px">
+
+            <ul class="menu">
+
+                <li class="active"><span class="fa fa-bar-chart"></span></li>
+                <li><span class="fa fa-sliders"></span></li>
+                <li><span class="fa fa-link"></span></li>
+                <li></li>
+                <li><span class="fa fa-user"></span></li>
+                <li><span class="fa fa-life-bouy"></span></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <img src="{{ STATIC_URL }}assets/img/cern-logo.svg" width="35%">
+            </div>
+        </div>
+
+        {# main content #}
+        <div id="dashboard-content" class="col-md-11" style="padding: 2em">
+            <h2 class="color-white uppercase bold-text">Dashboard <span class="pull-right mui-btn mui-btn-default"
+                                                                        style="font-size: .6em; margin-top: -3px"><span
+                    class="fa fa-plus"></span> Add widget</span></h2>
+
+
+            <div class="row visualization-container">
+                <div class="visualization-panel col-md-12">
+                    <h4>Overview</h4>
+                </div>
+            </div>
+
+            <div class="row visualization-container">
+                <div class="visualization-panel col-md-6" style="height: 300px;">
+                    <h4>Institutions</h4>
+                </div>
+                <div class="visualization-panel col-md-5 col-md-offset-1" style="height: 300px;">
+                    <h4>Countries</h4>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}

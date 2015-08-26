@@ -37,7 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'thor_app',
+    'grappelli',
+    'thor_web',
+    'thor_data',
     'django.contrib.admin',
     'registration',
 
@@ -108,4 +110,4 @@ STATIC_URL = '/static/'
 
 
 GRAPPELLI_ADMIN_TITLE = "THOR Admin Interface"
-LOGIN_REDIRECT_URL = "/dashboard"
+LOGIN_REDIRECT_URL = "/"
