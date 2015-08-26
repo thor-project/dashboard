@@ -1,0 +1,86 @@
+{% extends "registration/base.html" %}
+
+{% block title %}thor Login{% endblock %}
+
+{% block content %}
+
+
+
+
+    {% block alert %}
+    {% endblock %}
+
+    <div class="account-container">
+
+        {% if form.errors %}
+            <div class="alert alert-danger" align="center"> Your username and password didn't match. Please try again.</div>
+        {% endif %}
+
+        <div align="center">
+            <div style="padding: 1em">
+                <img src="{{ STATIC_URL }}assets/img/logo-white.svg" height="170px"/>
+            </div>
+
+            <p style="font-size: 1.5em">Login</p>
+            <br/>
+        </div>
+
+        <div align="center">
+            <form accept-charset="UTF-8" action="{% url "django.contrib.auth.views.login" %}" class="formbody"
+                  id="user_edit" autocomplete="off"
+                  method="post">
+                {% csrf_token %}
+
+                <input name="utf8" type="hidden" class="text" value="✓"><input
+                    name="_method" type="hidden" value="put"><input name="authenticity_token" type="hidden">
+
+                {#                to resolve chrome incredibly stupid autofill policy#}
+                <input style="display:none" type="text" name="fakeusernameremembered"/>
+                <input style="display:none" type="password" name="fakepasswordremembered"/>
+
+                <div class="input-item">
+                    <span class="input-label" style="border-bottom: 1px solid white; padding-bottom: 4px"><span
+                            class="icon-mail"></span> </span>
+                    <input type="text" class="thor-login-text username-text" placeholder="username" name="username"
+                           autocomplete="off">
+                </div>
+
+
+                <div class="input-item" style="margin-top: 4px">
+                    <span class="input-label" style="border-bottom: 1px solid white; padding-bottom: 4px"><span
+                            class="icon-lock"></span></span>
+                    <input type="password" class="thor-login-text password-text" placeholder="password" name="password"
+                           autocomplete="off">
+                </div>
+
+                <div class="clearfix"></div>
+                <br/><br/>
+
+                <div><input name="commit" type="submit" class="mui-btn mui-btn-default" value="Log in"></div>
+
+                <br/>
+
+                <div align="center" class="white-text">
+                    <p>Forgot your password? Reset it <a href="/accounts/password/reset">here</a>.</p>
+                </div>
+
+                <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+
+
+            </form>
+        </div>
+
+    </div>
+
+    <br/>
+    <div align="center">
+        <a href="/accounts/register" class="mui-btn mui-btn-default">I need an account</a>
+    </div>
+
+    <br/>
+
+    <div class="clearfix"></div>
+
+
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "registration/registration_base.html" %}
+{% block title %}{% if account %}Activation complete{% else %}Activation problem{% endif %}{% endblock %}
+{% block body %}
+
+    <br/>
+    <div class="hero-unit">
+        {% if account %}
+
+            <h1>Thanks, activation complete!</h1>
+            <p>You may now login using the username and password you set at registration.</p>
+            <p>
+                <a class="btn btn-info btn-large" href='{% url "auth_login" %}'>Login
+                </a>
+            </p>
+
+        {% else %}
+            <h1>Oops</h1>
+            <p>It seems that your activation key is invalid. Please check the url again.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,130 @@
+{% extends "registration/registration_base.html" %}
+
+{% block title %}BioSharing | Register{% endblock %}
+
+{% block head_additional %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/overridden.css"/>
+    <script type="text/javascript">
+
+        function validateUsername() {
+            var username = document.forms["user_edit"]["username"].value.toLowerCase();
+
+            var regx = /^[A-Za-z0-9]+$/;
+            if (!regx.test(username)) {
+                $("#usernameCtrl").addClass('error');
+                $("#username-alert").toggleClass('hide', false)
+                return false;
+            }
+
+            $("#usernameCtrl").removeClass('error');
+            return true;
+
+        }
+
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="account-container">
+        <div align="center">
+            <div style="padding: 1em">
+                <img src="{{ STATIC_URL }}assets/img/logo-white.svg" height="170px"/>
+            </div>
+
+            <p style="font-size: 1.5em">Create an Account</p>
+            <br/>
+        </div>
+
+        <div align="center">
+
+
+            {% if form.errors %}
+
+                <div class="clearfix"></div>
+                <br/>
+                {% if form.username.errors %}
+                    <div class="alert alert-danger">{{ form.username.errors.as_text }}</div>
+                {% endif %}
+
+                {% if form.email.errors %}
+                    <div class="alert alert-danger">{{ form.email.errors.as_text }}</div>
+                {% endif %}
+
+                {% if form.password1.errors %}
+                    <div class="alert alert-danger">{{ form.password1.errors.as_text }}</div>
+                {% endif %}
+
+                {% if form.password2.errors %}
+                    <div class="alert alert-danger">{{ form.password2.errors.as_text }}</div>
+                {% endif %}
+
+            {% endif %}
+
+
+            <form accept-charset="UTF-8" action='' class="formbody span7"
+                  id="user_edit"
+                  method="post" onsubmit="return validateUsername()">
+                {% csrf_token %}
+
+                <input name="utf8" type="hidden" class="text" value="✓"><input
+                    name="_method" type="hidden" value="put"><input name="authenticity_token" type="hidden">
+
+                <div id="usernameCtrl" class="control-group">
+                    <input id="username" class="thor-login-text username-text" name="username" size="20" type="text"
+                           value="" placeholder="Username">
+                </div>
+
+                <div style="margin-top: 4px">
+                    <input id="first_name" class="thor-login-text username-text" name="first_name" size="20" type="text"
+                           value="" placeholder="First name">
+                </div>
+
+                <div style="margin-top: 4px">
+                    <input id="last_name" class="thor-login-text username-text" name="last_name" size="20" type="text"
+                           value="" placeholder="Last name">
+                </div>
+
+                <div class="clearfix"></div>
+                <br/>
+
+                <div>
+                    <input id="email" class="thor-login-text email-text" name="email" size="20" type="email"
+                           placeholder="Email address">
+                </div>
+
+                <br/>
+
+                <div class="clearfix"></div>
+                <div>
+
+                    <input id="password1" class="thor-login-text password-text" name="password1" size="20"
+                           type="password" placeholder="Password">
+                </div>
+                <div class="clearfix"></div>
+
+                <div style="margin-top: 4px">
+                    <input id="password2" class="thor-login-text password-text" name="password2" size="20"
+                           type="password" placeholder="Confirm password">
+                </div>
+                <div class="clearfix"></div>
+
+                <br/>
+                <br/>
+
+                <div>
+                    <input type="submit" class="mui-btn mui-btn-default" value="Register"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <br/>
+    <div align="center">
+        <p><a href="{% url "auth_login" %}" class="mui-btn mui-btn-danger">Have an account?</a>
+    </div>
+
+    </div>
+
+{% endblock %}

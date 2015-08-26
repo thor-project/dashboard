@@ -1,0 +1,22 @@
+{% extends "registration/registration_base.html" %}
+{% block title %}Activation complete{% endblock %}
+{% block body %}
+
+    <div class="account-container">
+        <div align="center">
+            <span class="fa fa-check" style="font-size: 3.5em"></span>
+
+            <p style="font-size: 1.5em" class="bold-text">Thanks, activation complete!</p>
+            <p>You may now login using the username and password you set at registration.</p>
+            <br/>
+
+            <a class="btn btn-primary btn-large"  href='{% url "auth_login" %}'>Login
+            </a>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
