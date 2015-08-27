@@ -1,3 +1,3 @@
-# THOR Project EU
-
 ## Metrics Dashboard
+
+![image](docs/img/login.png)
