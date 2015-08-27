@@ -7,11 +7,11 @@ environment = os.environ.get('DJANGO_ENV', "")
 #
 print "ENVIRONMENT: " + environment
 
-from main import *
+from thor.config.settings.main import *
 
 if environment == "dev":
-    from dev import *
+    from thor.config.settings.dev import *
 elif environment == "local":
-    from local import *
+    from thor.config.settings.local import *
 else:
-    from prod import *
+    from thor.config.settings.prod import *

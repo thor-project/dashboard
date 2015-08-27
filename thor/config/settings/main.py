@@ -31,16 +31,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-
+'grappelli',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'grappelli',
-    'thor_web',
-    'thor_data',
+
+    'thor.modules.dashboard',
+    'thor.modules.api',
     'django.contrib.admin',
+
     'registration',
 
 )
@@ -57,7 +58,7 @@ MIDDLEWARE_CLASSES = (
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
-ROOT_URLCONF = 'thor_dash.urls'
+ROOT_URLCONF = 'thor.config.urls'
 
 TEMPLATES = [
     {
@@ -75,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'thor_dash.apache.wsgi.application'
+WSGI_APPLICATION = 'thor.config.apache.wsgi.application'
 
 
 # Database

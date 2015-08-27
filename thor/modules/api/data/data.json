@@ -1,0 +1,66 @@
+{
+  "reports": [
+    {
+      "date": "2014-11-01",
+      "counts": [
+        {
+          "resource_type": "data",
+          "stats": {
+            "count": 45,
+            "with_orcids": 12
+          }
+        },
+        {
+          "resource_type": "publications",
+          "stats": {
+            "count": 12,
+            "with_orcids": 4
+          }
+        }
+      ],
+      "data_centre_ref": "CDL.DPLANET"
+    },
+
+    {
+      "date": "2014-11-01",
+      "counts": [
+        {
+          "resource_type": "data",
+          "stats": {
+            "count": 15,
+            "with_orcids": 3
+          }
+        },
+        {
+          "resource_type": "publications",
+          "stats": {
+            "count": 32,
+            "with_orcids": 17
+          }
+        }
+      ],
+      "data_centre_ref": "TIB.R-GATE"
+    },
+
+    {
+      "date": "2014-11-01",
+      "counts": [
+        {
+          "resource_type": "data",
+          "stats": {
+            "count": 45,
+            "with_orcids": 33
+          }
+        },
+        {
+          "resource_type": "publications",
+          "stats": {
+            "count": 62,
+            "with_orcids": 27
+          }
+        }
+      ],
+      "data_centre_ref": "CDL.DIGSCI"
+    }
+  ]
+}
