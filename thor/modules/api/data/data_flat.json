@@ -1,45 +1,44 @@
-[
-  {
-    "date": "2014-11-01",
-    "data_centre": "CDL.DPLANET",
-    "data_doi_count": 45,
-    "data_orcid_count": 12,
-    "publication_doi_count": 12,
-    "publication_orcid_count": 4,
-    "total_doi": 57,
-    "total_orcid": 4
-  },
-
-  {
-    "date": "2014-12-01",
-    "data_centre": "CDL.DPLANET",
-    "data_doi_count": 145,
-    "data_orcid_count": 62,
-    "publication_doi_count": 122,
-    "publication_orcid_count": 14,
-    "total_doi": 267,
-    "total_orcid": 76
-  },
-
-  {
-    "date": "2015-01-01",
-    "data_centre": "CDL.DPLANET",
-    "data_doi_count": 45,
-    "data_orcid_count": 12,
-    "publication_doi_count": 12,
-    "publication_orcid_count": 4,
-    "total_doi": 57,
-    "total_orcid": 4
-  },
-
-  {
-    "date": "2015-02-01",
-    "data_centre": "CDL.DPLANET",
-    "data_doi_count": 145,
-    "data_orcid_count": 62,
-    "publication_doi_count": 122,
-    "publication_orcid_count": 14,
-    "total_doi": 267,
-    "total_orcid": 76
-  }
-]
+{
+  "data": [
+    {
+      "date": "2014-11-01",
+      "data_centre": "CDL.DPLANET",
+      "data_doi_count": 45,
+      "data_orcid_count": 12,
+      "publication_doi_count": 12,
+      "publication_orcid_count": 4,
+      "total_doi": 57,
+      "total_orcid": 4
+    },
+    {
+      "date": "2014-12-01",
+      "data_centre": "CDL.DPLANET",
+      "data_doi_count": 145,
+      "data_orcid_count": 62,
+      "publication_doi_count": 122,
+      "publication_orcid_count": 14,
+      "total_doi": 267,
+      "total_orcid": 76
+    },
+    {
+      "date": "2015-01-01",
+      "data_centre": "CDL.DPLANET",
+      "data_doi_count": 45,
+      "data_orcid_count": 12,
+      "publication_doi_count": 12,
+      "publication_orcid_count": 4,
+      "total_doi": 57,
+      "total_orcid": 4
+    },
+    {
+      "date": "2015-02-01",
+      "data_centre": "CDL.DPLANET",
+      "data_doi_count": 145,
+      "data_orcid_count": 62,
+      "publication_doi_count": 122,
+      "publication_orcid_count": 14,
+      "total_doi": 267,
+      "total_orcid": 76
+    }
+  ]
+}
