@@ -248,3 +248,109 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     left: -30px;
 
 }
+
+/*crossfilter stuff*/
+
+.chart {
+    display: inline-block;
+    height: 151px;
+    margin-bottom: 20px;
+}
+
+.reset {
+    padding-left: 1em;
+    font-size: smaller;
+    color: #ccc;
+}
+
+.background.bar {
+    fill: white;
+}
+
+.foreground.bar {
+    fill: #14A085;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: white;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-size: 10px;
+    fill: white;
+}
+
+.brush rect.extent {
+    fill: white;
+    fill-opacity: .125;
+}
+
+.brush .resize path {
+    fill: #eee;
+    stroke: #666;
+}
+
+#hour-chart {
+    width: 260px;
+}
+
+#delay-chart {
+    width: 230px;
+}
+
+#distance-chart {
+    width: 420px;
+}
+
+#date-chart {
+    width: 920px;
+}
+
+#record-list {
+    height: 80%;
+    overflow-y: scroll;
+}
+
+#record-list .date,
+#record-list .day {
+    margin-bottom: .4em;
+}
+
+#record-list .flight {
+    line-height: 1.5em;
+    background: #eee;
+    width: 640px;
+    margin-bottom: 1px;
+}
+
+#record-list .time {
+    color: #999;
+}
+
+#record-list .record {
+    padding:5px;
+    padding-left: 20px;
+background-color: #35495E;
+    margin: 3px;
+}
+
+#record-list .record div {
+    border-left: 1px solid #2C3E50;
+    display: inline-block;
+    width: 100px;
+
+}
+
+#record-list div.distance,
+#record-list div.delay {
+    width: 260px;
+    padding-right: 10px;
+    text-align: right;
+}
+
+#record-list .early {
+    color: green;
+}
+
