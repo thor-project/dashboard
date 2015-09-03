@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>{% block title %}THOR Dashboard{% endblock %}</title>
     {% include 'components/general-resources.html' %}
-    {% include 'components/vis-resources.html' %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     {% block head_additional %}
@@ -13,5 +12,10 @@
 <body>
 {% block content %}
 {% endblock %}
+
+{% block end_additional %}
+{% endblock %}
 </body>
+
+
 </html>
