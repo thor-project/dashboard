@@ -1,12 +1,21 @@
 {% include 'base.html' %}
 
 {% block head_additional %}
+    {% include 'components/vis-resources.html' %}
     <style>
         body {
             background-color: #14A085;
         }
+
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            border: none;
+        }
+
+        .table > tbody + tbody {
+            border: none;
+        }
+
     </style>
-    {% include 'components/vis-resources.html' %}
 
 {% endblock %}
 
@@ -49,12 +58,16 @@
                         <div class="title">DOIs Minted</div>
                     </div>
 
-                    <div id="orcids-chart" class="chart">
+                    <div id="orcid-chart" class="chart">
                         <div class="title">ORCIDs</div>
                     </div>
 
-                     <div id="month-chart" class="chart">
+                    <div id="monthly-doi-chart" class="chart">
                         <div class="title">DOIs by Month</div>
+                    </div>
+
+                    <div id="doi-centre-chart" class="chart">
+                        <div class="title">DOIs by Centre</div>
                     </div>
                 </div>
             </div>
@@ -65,9 +78,21 @@
                 <div class="visualization-panel col-md-12" style="height: 300px;">
                     <h4>Detail List</h4>
 
+                    <table class="table dc-data-table">
 
-                        <div id="record-list" class="list"></div>
-
+                        <thead>
+                        <tr class="header">
+                            <th></th>
+                            <th>Data Centre</th>
+                            <th>ORCIDs</th>
+                            <th>Data ORCIDs</th>
+                            <th>Publication ORCIDs</th>
+                            <th>DOIs</th>
+                            <th>Data DOIs</th>
+                            <th>Publication DOIs</th>
+                        </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
 

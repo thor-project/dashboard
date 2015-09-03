@@ -255,6 +255,8 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     display: inline-block;
     height: 151px;
     margin-bottom: 20px;
+    width:330px;
+
 }
 
 .reset {
@@ -292,21 +294,7 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     stroke: #666;
 }
 
-#hour-chart {
-    width: 260px;
-}
 
-#delay-chart {
-    width: 230px;
-}
-
-#distance-chart {
-    width: 420px;
-}
-
-#date-chart {
-    width: 920px;
-}
 
 #record-list {
     height: 80%;
