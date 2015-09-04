@@ -11,6 +11,6 @@ def get_data(request):
     :return:
     """
     base_dir = os.path.dirname(os.path.realpath(__file__))
-    json_contents = json.load(open(base_dir + '/data/data_flat.json', 'r'))
-
+    json_contents = json.load(open(base_dir + '/data/data_generated.json', 'r'))
+    print json_contents
     return HttpResponse(json.dumps(json_contents), content_type="application/json")

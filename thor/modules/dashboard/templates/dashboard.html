@@ -2,6 +2,7 @@
 
 {% block head_additional %}
     {% include 'components/vis-resources.html' %}
+    {% include 'components/general-resources.html' %}
     <style>
         body {
             background-color: #14A085;
@@ -43,7 +44,7 @@
     </div>
 
     {# main content #}
-    <div id="dashboard-content" class="col-md-11" style="padding: 2em">
+    <div id="dashboard-content" class="col-md-11" style="padding: 2em; padding-left: 177px;">
         <h2 class="color-white uppercase bold-text">Dashboard <span class="pull-right mui-btn mui-btn-default"
                                                                     style="font-size: .6em; margin-top: -3px"><span
                 class="fa fa-plus"></span> Add widget</span></h2>
@@ -51,52 +52,75 @@
 
         <div class="row visualization-container">
             <div class="visualization-panel col-md-12">
-                <h4>Overview</h4>
+                <h4>DOI and ORCID minting overview</h4>
 
-                <div id="charts">
-                    <div id="doi-chart" class="chart">
-                        <div class="title">DOIs Minted</div>
-                    </div>
-
-                    <div id="orcid-chart" class="chart">
-                        <div class="title">ORCIDs</div>
-                    </div>
-
-                    <div id="monthly-doi-chart" class="chart">
-                        <div class="title">DOIs by Month</div>
-                    </div>
-
-                    <div id="doi-centre-chart" class="chart">
-                        <div class="title">DOIs by Centre</div>
-                    </div>
+                <div id="monthly-doi-chart" class="chart">
                 </div>
             </div>
 
-            <div class="clearfix"></div>
+        </div>
 
-            <div class="row visualization-container">
-                <div class="visualization-panel col-md-12" style="height: 300px;">
-                    <h4>Detail List</h4>
+        <div class="row visualization-container">
 
-                    <table class="table dc-data-table">
+            <div class="visualization-panel col-md-6">
+                <h4>DOIs Minted</h4>
 
-                        <thead>
-                        <tr class="header">
-                            <th></th>
-                            <th>Data Centre</th>
-                            <th>ORCIDs</th>
-                            <th>Data ORCIDs</th>
-                            <th>Publication ORCIDs</th>
-                            <th>DOIs</th>
-                            <th>Data DOIs</th>
-                            <th>Publication DOIs</th>
-                        </tr>
-                        </thead>
-                    </table>
+                <div id="doi-chart" class="chart">
+                </div>
+
+            </div>
+
+            <div class="visualization-panel col-md-6">
+                <h4>DOIs by Centre</h4>
+
+                <div id="doi-centre-chart" class="chart">
+                </div>
+
+            </div>
+        </div>
+        <div class="row visualization-container">
+            <div class="visualization-panel col-md-6">
+                <h4>ORCIDs Created</h4>
+
+                <div id="orcid-chart" class="chart">
                 </div>
             </div>
 
+            <div class="visualization-panel col-md-6">
+                <h4>ORCIDs by CENTRE</h4>
 
+                <div id="orcid-centre-chart" class="chart">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row visualization-container">
+
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row visualization-container">
+            <div class="visualization-panel col-md-12" style="height: 500px; overflow-y: scroll">
+                <h4>Detail List</h4>
+
+                <table class="table dc-data-table">
+
+                    <thead>
+                    <tr class="header">
+                        <th></th>
+                        <th>Data Centre</th>
+                        <th>ORCIDs</th>
+                        <th>Data ORCIDs</th>
+                        <th>Publication ORCIDs</th>
+                        <th>DOIs</th>
+                        <th>Data DOIs</th>
+                        <th>Publication DOIs</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
 
     </div>

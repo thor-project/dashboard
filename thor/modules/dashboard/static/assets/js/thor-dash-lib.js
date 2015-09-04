@@ -6,7 +6,7 @@ d3.json("/api/get_data", function (error, data) {
 
     // Various formatters.
     var formatNumber = d3.format(",d"),
-        formatDate = d3.time.format("%b %Y"),
+        formatDate = d3.time.format("%d %b %Y"),
         formatTime = d3.time.format("%I:%M %p");
 
     // A nest operator, for grouping the flight list.
@@ -16,7 +16,7 @@ d3.json("/api/get_data", function (error, data) {
         });
 
     // A little coercion, since the CSV is untyped.
-    data.data.forEach(function (d, i) {
+    data.forEach(function (d, i) {
         d.index = i;
         d.date = parseDate(d.date);
         d.total_doi = (d.data_doi_count + d.publication_doi_count);
@@ -29,10 +29,8 @@ d3.json("/api/get_data", function (error, data) {
             d.substring(8));
     }
 
-    console.log(data.data);
-
     // Create the crossfilter for the relevant dimensions and groups.
-    var records = crossfilter(data.data),
+    var records = crossfilter(data),
 
         date = records.dimension(function (d) {
             return d.date;
@@ -45,8 +43,12 @@ d3.json("/api/get_data", function (error, data) {
            return d.data_centre;
         }),
 
-        centre_hits = centre.group().reduceSum(function(d) {
+        centre_doi = centre.group().reduceSum(function(d) {
            return d.total_doi;
+        }),
+
+        centre_orcid = centre.group().reduceSum(function(d) {
+           return d.total_orcid;
         }),
 
         doi = records.dimension(function (d) {
@@ -56,7 +58,10 @@ d3.json("/api/get_data", function (error, data) {
         orcid = records.dimension(function (d) {
             return d.total_orcid;
         }),
-        orcids = orcid.group(Math.floor);
+        orcids = orcid.group(Math.floor),
+        orcids_date = date.group().reduceSum(function (d) {
+            return d.total_orcid;
+        });
 
 
     var minDoi = doi.bottom(1)[0].total_doi;
@@ -64,12 +69,11 @@ d3.json("/api/get_data", function (error, data) {
 
     var doiChart = dc.barChart('#doi-chart');
     doiChart.width(300)
-        .height(150)
-        .margins({top: 10, right: 20, bottom: 30, left: 30})
+        .height(200)
+        .margins({top: 10, right: 20, bottom: 30, left: 50})
         .dimension(doi)
         .group(dois)
-        .elasticY(true)
-        .x(d3.scale.linear().domain([Math.min(minDoi,0), maxDOI+10]));
+        .x(d3.scale.linear().domain([Math.min(minDoi,0), (maxDOI+10)]));
 
     doiChart.yAxis().ticks(5);
 
@@ -79,13 +83,13 @@ d3.json("/api/get_data", function (error, data) {
 
     var orcidChart = dc.barChart('#orcid-chart');
     orcidChart.width(300)
-        .height(150)
-        .margins({top: 10, right: 20, bottom: 30, left: 30})
+        .height(200)
+        .margins({top: 10, right: 20, bottom: 30, left: 50})
         .dimension(orcid)
         .group(orcids)
-        .elasticY(true)
-        .x(d3.scale.linear().domain([Math.min(minORCID,0), maxORCID+10]));
+        .x(d3.scale.linear().domain([Math.min(minORCID,0), (maxORCID+10)]));
 
+    orcidChart.yAxis().ticks(5);
 
     var minDate = new Date(date.bottom(1)[0].date);
     var maxDate = new Date(date.top(1)[0].date);
@@ -93,26 +97,41 @@ d3.json("/api/get_data", function (error, data) {
     maxDate.setDate(maxDate.getDate()+15);
 
     var doiDateChart = dc.barChart('#monthly-doi-chart');
-    doiDateChart.width(400)
-        .height(150)
-        .margins({top: 10, right: 20, bottom: 30, left: 30})
+    doiDateChart.width(890)
+        .height(200)
+        .margins({top: 10, right: 20, bottom: 30, left: 50})
         .dimension(date)
         .group(dois_date)
-        .elasticY(true)
-        .x(d3.scale.linear().domain([minDate, maxDate]));
+        .stack(orcids_date)
+        .x(d3.time.scale().domain([minDate, maxDate]));
 
     doiDateChart.xAxis().tickFormat(
         function (v) {
             return formatDate(new Date(v));
         });
-    doiDateChart.xAxis().ticks(6);
 
 
-    var doiCentreChart = dc.pieChart('#doi-centre-chart');
-    doiCentreChart.width(150)
-        .height(150)
+
+
+
+    var colorScale = d3.scale.ordinal().range(['#14A085', "#26B99A", "#3B97D3", "#955BA5", "#F29C1F", "#D25627", "#C03A2B"]);
+
+    var doiCentreChart = dc.rowChart('#doi-centre-chart');
+    doiCentreChart.width(400)
+        .height(200)
         .dimension(centre)
-        .group(centre_hits);
+        .group(centre_doi)
+    doiCentreChart.colors(colorScale);
+    doiCentreChart.xAxis().ticks(5);
+
+    var orcidCentreChart = dc.rowChart('#orcid-centre-chart');
+    orcidCentreChart.width(400)
+        .height(200)
+        .dimension(centre)
+        .group(centre_orcid)
+        .transitionDuration(500);
+    orcidCentreChart.colors(colorScale);
+    orcidCentreChart.xAxis().ticks(5);
 
 
     var detailTable = dc.dataTable('.dc-data-table');

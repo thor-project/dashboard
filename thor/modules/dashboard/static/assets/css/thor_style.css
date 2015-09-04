@@ -168,6 +168,8 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     order: 1;
     flex: 0 1 auto;
     align-self: stretch;
+    position: fixed;
+    height: 100%;
 
     background-color: #2C3E50;
 }
@@ -187,7 +189,8 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     padding: 10px;
     padding-left: 18px;
     background-color: #2C3E50;
-    height: 400px;
+    height: 280px;
+
 }
 
 .visualization-panel h4 {
@@ -275,7 +278,7 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
 
 .axis path, .axis line {
     fill: none;
-    stroke: white;
+    stroke: white !important;
     shape-rendering: crispEdges;
 }
 
@@ -340,5 +343,9 @@ background-color: #35495E;
 
 #record-list .early {
     color: green;
+}
+
+.pie-slice text {
+    fill: white;
 }
 
