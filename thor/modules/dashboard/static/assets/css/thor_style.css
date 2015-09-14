@@ -170,7 +170,8 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     align-self: stretch;
     position: fixed;
     height: 100%;
-
+    z-index: 99;
+    pointer-events: all;
     background-color: #2C3E50;
 }
 
@@ -230,6 +231,10 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
 
     -webkit-transition: background-color 0.5s; /* Safari */
     transition: background-color 0.5s;
+}
+
+.menu li a {
+    color: white;
 }
 
 .menu li.active {
@@ -346,6 +351,10 @@ background-color: #35495E;
 }
 
 .pie-slice text {
+    fill: white;
+}
+
+.dc-legend-item text {
     fill: white;
 }
 

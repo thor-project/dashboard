@@ -10,6 +10,6 @@ urlpatterns = patterns('',
         'django.contrib.auth.views.password_reset_confirm', name='password_reset_confirm'),
 
     url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^$', include('thor.modules.dashboard.urls')),
+    url(r'^dashboard/', include('thor.modules.dashboard.urls')),
     url(r'api/', include('thor.modules.api.urls')),
 )

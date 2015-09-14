@@ -10,7 +10,8 @@ def get_data(request):
     :param request:
     :return:
     """
+    type = request.GET.get('type', 'orcid')
     base_dir = os.path.dirname(os.path.realpath(__file__))
-    json_contents = json.load(open(base_dir + '/data/data_generated.json', 'r'))
+    json_contents = json.load(open(base_dir + '/data/data_generated_' + type + '.json', 'r'))
     print json_contents
     return HttpResponse(json.dumps(json_contents), content_type="application/json")

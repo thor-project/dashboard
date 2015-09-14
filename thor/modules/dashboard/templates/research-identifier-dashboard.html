@@ -30,9 +30,9 @@
 
         <ul class="menu">
 
-            <li class="active"><a href="/dashboard/"><span class="fa fa-bar-chart"></span></a></li>
+            <li><a href="/dashboard/"><span class="fa fa-bar-chart"></span></a></li>
             <li><a href="/dashboard/data/"><span class="fa fa-database"></span></a></li>
-            <li><a href="/dashboard/researcher/"><span class="fa fa-user"></span></a></li>
+            <li class="active"><a href="/dashboard/researcher/"><span class="fa fa-user"></span></a></li>
 
             <hr/>
 
@@ -48,27 +48,19 @@
 
     {# main content #}
     <div id="dashboard-content" class="col-md-11" style="padding: 2em; padding-left: 177px;">
-        <h2 class="color-white uppercase bold-text">Dashboard <span class="pull-right mui-btn mui-btn-default"
-                                                                    style="font-size: .6em; margin-top: -3px"><span
-                class="fa fa-plus"></span> Add widget</span></h2>
+        <h2 class="color-white uppercase bold-text">Researcher Metrics (ORCID)
+ <span class="pull-right mui-btn mui-btn-default"
+       style="font-size: .6em; margin-top: -3px"><span
+         class="fa fa-plus"></span> Add widget</span></h2>
 
 
         <div class="row visualization-container">
 
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="visualization-panel col-md-12">
-                    <h4>Cumulative DOIs Minted</h4>
+                    <h4>New ORCID registrations</h4>
 
-                    <div id="cumulative-doi-chart" class="chart">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="visualization-panel col-md-12">
-                    <h4>Cumulative ORCIDs Minted</h4>
-
-                    <div id="cumulative-orcid-chart" class="chart">
+                    <div id="monthly-chart" class="chart">
                     </div>
                 </div>
             </div>
@@ -79,38 +71,35 @@
 
             <div class="col-md-4">
                 <div class="visualization-panel col-md-12">
-                    <h4>Monthly DOIs Minted</h4>
+                    <h4>Papers Assigned to ORCIDs</h4>
 
-                    <div id="monthly-doi" class="chart">
+                    <div id="monthly-chart" class="chart">
                     </div>
+                </div>
+            </div>
 
+
+            <div class="col-md-4">
+                <div class="visualization-panel col-md-12">
+                    <h4>ORCID Affiliation</h4>
+
+                    <div id="institution-chart" class="chart">
+                    </div>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="visualization-panel col-md-12">
-                    <h4>DOIs by Centre</h4>
+                    <h4>ORCIDs Created</h4>
 
-                    <div id="doi-centre-chart" class="chart">
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="visualization-panel col-md-12">
-                    <h4>Number of DOIs minted</h4>
-
-                    <div id="doi-chart" class="chart">
+                    <div id="breakdown-chart" class="chart">
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row visualization-container">
-
 
         </div>
+
+
         <div class="clearfix"></div>
 
         <div class="row visualization-container">
@@ -140,4 +129,7 @@
 
 {% block end_additional %}
     <script src="{{ STATIC_URL }}assets/js/thor-dash-lib.js" type="text/javascript"></script>
+    <script>
+        load_data("/api/get_data?type=orcid")
+    </script>
 {% endblock %}
