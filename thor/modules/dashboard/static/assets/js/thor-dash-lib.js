@@ -60,6 +60,14 @@ function load_data(url) {
                 return d.country;
             }),
 
+            country_2 = records.dimension(function (d) {
+                return d.country;
+            }),
+
+             country_orcids_2 = country_2.group().reduceSum(function (d) {
+                return d.new_orcids;
+            }),
+
             country_orcids = country.group().reduceSum(function (d) {
                 return d.new_orcids;
             }),
@@ -130,8 +138,8 @@ function load_data(url) {
 
             country_details_chart.width(300)
                 .height(300)
-                .dimension(country)
-                .group(country_orcids);
+                .dimension(country_2)
+                .group(country_orcids_2);
             country_details_chart.colors(d3.scale.ordinal().range(map_intensity_colours));
             country_details_chart.xAxis().ticks(5);
 
