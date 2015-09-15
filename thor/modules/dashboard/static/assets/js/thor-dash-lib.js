@@ -71,7 +71,7 @@ function load_data(url) {
                 var g = [];
                 value_date_group.all().forEach(function (d, i) {
                     cumulate += d.value;
-                    g.push({key: d.key, value: cumulate})
+                    g.push({key: d.key, value: cumulate, single_value: d.value})
                 });
                 return g;
             }
@@ -98,38 +98,58 @@ function load_data(url) {
         maxDate.setDate(maxDate.getDate() + 15);
 
         //console.log(cumulative_doi_group);
+        var rptLine = dc.compositeChart(document.getElementById("monthly-chart"));
 
-        //var cumulativeDOIChart = dc.lineChart('#cumulative-doi-chart');
-        //cumulativeDOIChart.width(400)
-        //    .height(200)
-        //    .margins({top: 10, right: 20, bottom: 30, left: 50})
-        //    .dimension(date)
-        //    .legend(dc.legend().x(70).y(10).itemHeight(13).gap(5))
-        //    .group(cumulative_doi_group, "DOIs minted")
-        //    .stack(cumulative_orcid_group, "Works assigned to ORCIDs")
-        //    .x(d3.time.scale().domain([minDate, maxDate]));
-
-
-        var orcidTimeChart = dc.barChart('#monthly-chart');
-        orcidTimeChart.width(900)
-            .height(200)
-            .margins({top: 10, right: 20, bottom: 30, left: 50})
+        var cumulative_lc = dc.lineChart(rptLine)
             .dimension(date)
-            .group(value_date_group)
-            .x(d3.time.scale().domain([minDate, maxDate]));
+            .group(cumulative_total_group)
+            .valueAccessor(function (d) {
+                return d.value
+            })
+            .x(d3.time.scale().domain([minDate, maxDate]))
+            .xUnits(d3.time.months)
+            .dotRadius(5)
+            .title(function (d) {
+                return formatDate(d.data.key) + "\nValue: " + d.data.single_value + "\nCumulative = " + d.data.value;
+            });
 
-        orcidTimeChart.yAxis().ticks(5);
+        var bar_chart = dc.barChart(rptLine)
+            .dimension(date)
+            .group(cumulative_total_group)
+            .valueAccessor(function (d) {
+                return d.single_value
+            })
+            .x(d3.time.scale().domain([minDate, maxDate]))
+            .xUnits(d3.time.months)
+            .title(function (d) {
+                return d.single_value;
+            });
+
+        rptLine
+            .width(980)
+            .height(200)
+            .margins({top: 10, right: 50, bottom: 30, left: 40})
+            .dimension(date)
+            .x(d3.time.scale().domain([minDate, maxDate]))
+
+            .xUnits(d3.time.months)
+            .renderHorizontalGridLines(true)
+            .renderVerticalGridLines(true)
+
+            .compose([
+                cumulative_lc, bar_chart
+            ]);
 
 
-        //var doiTimeChart = dc.barChart('#monthly-doi');
-        //doiTimeChart.width(300)
+        //var orcidTimeChart = dc.barChart('#monthly-chart');
+        //orcidTimeChart.width(900)
         //    .height(200)
         //    .margins({top: 10, right: 20, bottom: 30, left: 50})
         //    .dimension(date)
-        //    .group(dois_date)
+        //    .group(value_date_group)
         //    .x(d3.time.scale().domain([minDate, maxDate]));
-
-        //doiTimeChart.yAxis().ticks(5);
+        //
+        //orcidTimeChart.yAxis().ticks(5);
 
 
         var colorScale = d3.scale.ordinal().range(['#14A085', "#26B99A", "#3B97D3", "#955BA5", "#F29C1F", "#D25627", "#C03A2B"]);
@@ -143,13 +163,12 @@ function load_data(url) {
         doiCentreChart.xAxis().ticks(5);
 
 
-         var objectTypeChart = dc.pieChart('#object-type');
+        var objectTypeChart = dc.pieChart('#object-type');
         objectTypeChart.width(300)
             .height(190)
             .dimension(object)
             .group(object_group)
         objectTypeChart.colors(colorScale);
-
 
 
         var detailTable = dc.dataTable('.dc-data-table');
@@ -165,9 +184,7 @@ function load_data(url) {
                 function (d) {
                     return d.institution
                 },
-                function (d) {
-                    return d.data_type
-                },
+
                 function (d) {
                     return d.data_key
                 },

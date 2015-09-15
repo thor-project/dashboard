@@ -197,8 +197,9 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
 .visualization-panel h4 {
     color: #14A085;
     text-transform: uppercase;
-    font-size: 1.2em;
-    font-weight: bolder;
+    font-size: 1.4em;
+    font-weight: normal;
+            text-transform: lowercase;
 }
 
 .color-white {
