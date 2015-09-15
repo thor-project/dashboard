@@ -1,6 +1,6 @@
 ## Metrics Dashboard
 
-![thor-db](https://cloud.githubusercontent.com/assets/282396/9688519/facb6f88-532f-11e5-9fea-a9ea9a5d6b73.gif)
+![thor-db](https://cloud.githubusercontent.com/assets/282396/9885825/7d3d017e-5be7-11e5-9436-82103bb7b935.gif)
 
 ### Data Sources
 

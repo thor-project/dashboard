@@ -3,8 +3,10 @@
  */
 // (It's CSV, but GitHub Pages only gzip's JSON at the moment.)
 function load_data(url) {
-    d3.json(url, function (error, data) {
+    d3.json(url, function (error, result) {
 
+        var data = result.data;
+        var type = result.type;
         // Various formatters.
         var formatNumber = d3.format(",d"),
             formatDate = d3.time.format("%d %b %Y"),
@@ -29,10 +31,16 @@ function load_data(url) {
                 d.substring(8));
         }
 
-        // Create the crossfilter for the relevant dimensions and groups.
+        var top_value = 0;
+
+
         var records = crossfilter(data),
 
             date = records.dimension(function (d) {
+                return d.date;
+            }),
+
+            date_2 = records.dimension(function (d) {
                 return d.date;
             }),
 
@@ -44,6 +52,21 @@ function load_data(url) {
                 return d.data_value;
             }),
 
+            assignment = records.dimension(function (d) {
+                return d.assign_status;
+            }),
+
+            country = records.dimension(function (d) {
+                return d.country;
+            }),
+
+            country_orcids = country.group().reduceSum(function (d) {
+                return d.new_orcids;
+            }),
+
+            assignment_group = assignment.group().reduceSum(function (d) {
+                return d.data_value;
+            }),
 
             object = records.dimension(function (d) {
                 return d.data_key;
@@ -53,7 +76,6 @@ function load_data(url) {
                 return d.data_value;
             }),
 
-
             value = records.dimension(function (d) {
                 return d.data_value;
             }),
@@ -62,6 +84,10 @@ function load_data(url) {
 
             value_date_group = date.group().reduceSum(function (d) {
                 return d.data_value;
+            }),
+
+            new_id_group = date_2.group().reduceSum(function (d) {
+                return d.new_orcids;
             });
 
 
@@ -71,31 +97,81 @@ function load_data(url) {
                 var g = [];
                 value_date_group.all().forEach(function (d, i) {
                     cumulate += d.value;
+                    top_value = cumulate;
                     g.push({key: d.key, value: cumulate, single_value: d.value})
                 });
                 return g;
             }
         };
 
+        cumulative_total_group.all();
 
-        var minDoi = value.bottom(1)[0].data_value;
-        var maxDOI = value.top(1)[0].data_value;
-
-        var doiChart = dc.barChart('#breakdown-chart');
-        doiChart.width(300)
-            .height(200)
-            .margins({top: 10, right: 20, bottom: 30, left: 50})
-            .dimension(value)
-            .group(value_group)
-            .x(d3.scale.linear().domain([Math.min(minDoi, 0), (maxDOI + 10)]));
-
-        doiChart.yAxis().ticks(5);
-
+        var minValue = value.bottom(1)[0].data_value;
+        var maxValue = value.top(1)[0].data_value;
 
         var minDate = new Date(date.bottom(1)[0].date);
         var maxDate = new Date(date.top(1)[0].date);
         minDate.setDate(minDate.getDate() - 15);
         maxDate.setDate(maxDate.getDate() + 15);
+
+        var colorScale = d3.scale.ordinal().range(['#14A085', "#26B99A", "#3B97D3", "#955BA5", "#F29C1F", "#D25627", "#C03A2B"]);
+        var map_intensity_colours = ["#feedde", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#8c2d04"];
+        if (type == 'orcid') {
+
+            var breakdown_chart = dc.barChart('#breakdown-chart').width(300)
+                .height(200)
+                .margins({top: 10, right: 20, bottom: 30, left: 40})
+                .dimension(date)
+                .group(new_id_group)
+                .xUnits(d3.time.months)
+                .x(d3.time.scale().domain([minDate, maxDate]));
+
+            var country_details_chart = dc.rowChart("#country-details");
+
+            country_details_chart.width(300)
+                .height(300)
+                .dimension(country)
+                .group(country_orcids);
+            country_details_chart.colors(d3.scale.ordinal().range(map_intensity_colours));
+            country_details_chart.xAxis().ticks(5);
+
+
+            d3.json("/static/assets/geo/world-countries.json", function (worldcountries) {
+                var chart = dc.geoChoroplethChart("#orcid-map");
+                chart.dimension(country)
+                    .group(country_orcids)
+                    .projection(d3.geo.mercator()
+                        .scale(130)
+                        .translate([400, 220]))
+                    .width(990)
+                    .height(390)
+
+                    .colors(d3.scale.quantize().range(map_intensity_colours).domain([0, 5000]))
+
+                    .colorCalculator(function (d) {
+                        return d ? chart.colors()(d) : '#26B99A';
+                    })
+
+                    .overlayGeoJson(worldcountries.features, "country", function (d) {
+                        return d.properties.name;
+                    })
+                    .title(function (d) {
+                        return d.key + " : " + d.value;
+                    });
+
+
+                dc.renderAll();
+            });
+        } else {
+            var breakdown_chart = dc.barChart('#breakdown-chart').width(300)
+                .height(200)
+                .margins({top: 10, right: 20, bottom: 30, left: 60})
+                .dimension(value)
+                .group(value_group)
+                .x(d3.scale.linear().domain([Math.min(minValue, 0), (maxValue + 10)]))
+                .yAxis().ticks(5);
+        }
+
 
         //console.log(cumulative_doi_group);
         var rptLine = dc.compositeChart(document.getElementById("monthly-chart"));
@@ -128,51 +204,42 @@ function load_data(url) {
         rptLine
             .width(980)
             .height(200)
-            .margins({top: 10, right: 50, bottom: 30, left: 40})
+            .margins({top: 10, right: 50, bottom: 30, left: 60})
             .dimension(date)
             .x(d3.time.scale().domain([minDate, maxDate]))
-
             .xUnits(d3.time.months)
+
+            .y(d3.scale.sqrt().domain([minValue, top_value]))
             .renderHorizontalGridLines(true)
             .renderVerticalGridLines(true)
-
             .compose([
                 cumulative_lc, bar_chart
             ]);
 
 
-        //var orcidTimeChart = dc.barChart('#monthly-chart');
-        //orcidTimeChart.width(900)
-        //    .height(200)
-        //    .margins({top: 10, right: 20, bottom: 30, left: 50})
-        //    .dimension(date)
-        //    .group(value_date_group)
-        //    .x(d3.time.scale().domain([minDate, maxDate]));
-        //
-        //orcidTimeChart.yAxis().ticks(5);
-
-
-        var colorScale = d3.scale.ordinal().range(['#14A085', "#26B99A", "#3B97D3", "#955BA5", "#F29C1F", "#D25627", "#C03A2B"]);
-
         var doiCentreChart = dc.rowChart('#institution-chart');
         doiCentreChart.width(300)
             .height(200)
             .dimension(institution)
-            .group(institution_group)
+            .group(institution_group);
         doiCentreChart.colors(colorScale);
         doiCentreChart.xAxis().ticks(5);
-
 
         var objectTypeChart = dc.pieChart('#object-type');
         objectTypeChart.width(300)
             .height(190)
             .dimension(object)
-            .group(object_group)
+            .group(object_group);
         objectTypeChart.colors(colorScale);
 
+        var assignmentChart = dc.pieChart('#assignment');
+        assignmentChart.width(300)
+            .height(190)
+            .dimension(assignment)
+            .group(assignment_group);
+        assignmentChart.colors(colorScale);
 
         var detailTable = dc.dataTable('.dc-data-table');
-
         detailTable.dimension(date)
             .group(function (d) {
                 return formatDate(d.date);
@@ -190,14 +257,15 @@ function load_data(url) {
                 },
                 function (d) {
                     return d.data_value
+                },
+
+                function (d) {
+                    if (type == 'orcid') {
+                        return d.new_orcids;
+                    }
                 }
             ])
         ;
-
-
-        // Render the total.
-        //d3.selectAll("#total")
-        //    .text(formatNumber(records.size()));
 
         dc.renderAll();
 

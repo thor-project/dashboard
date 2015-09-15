@@ -359,3 +359,12 @@ background-color: #35495E;
     fill: white;
 }
 
+.dc-chart .axis text {
+    font: 8px sans-serif;
+}
+
+.dc-chart .selected path {
+    stroke-width: 1;
+    stroke: white;
+    fill-opacity: 1;
+}
