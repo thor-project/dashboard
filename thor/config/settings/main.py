@@ -111,4 +111,4 @@ STATIC_URL = '/static/'
 
 
 GRAPPELLI_ADMIN_TITLE = "THOR Admin Interface"
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/dashboard"
