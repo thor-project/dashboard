@@ -262,9 +262,8 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
 
 .chart {
     display: inline-block;
-    height: 151px;
     margin-bottom: 20px;
-    width:330px;
+    width:100%;
 
 }
 

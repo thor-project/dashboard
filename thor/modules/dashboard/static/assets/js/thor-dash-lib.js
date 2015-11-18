@@ -192,7 +192,6 @@ var dashboard = (function () {
                     .dimension(date)
                     .x(d3.time.scale().domain([minDate, maxDate]))
                     .xUnits(d3.time.months)
-
                     .y(d3.scale.sqrt().domain([minValue, top_value]))
                     .renderHorizontalGridLines(true)
                     .renderVerticalGridLines(true)
@@ -200,13 +199,13 @@ var dashboard = (function () {
                         cumulative_lc, bar_chart
                     ]);
 
-
                 var doiCentreChart = dc.rowChart('#institution-chart');
                 doiCentreChart.width(300)
-                    .height(200)
+                    .height(400)
                     .dimension(institution)
                     .group(institution_group);
                 doiCentreChart.colors(colorScale);
+
                 doiCentreChart.xAxis().ticks(5);
                 doiCentreChart.elasticX(true);
 
@@ -229,15 +228,13 @@ var dashboard = (function () {
                         function (d) {
                             return d.institution
                         },
-
                         function (d) {
                             return d.data_key
                         },
                         function (d) {
                             return d.data_value
                         }
-                    ])
-                ;
+                    ]);
 
                 dc.renderAll();
 
@@ -275,20 +272,41 @@ var dashboard = (function () {
                         return d.works;
                     }),
 
+                    works_month = date_works.group().reduceSum(function (d) {
+                        return d.works_month;
+                    }),
+
                     liveIds = date_ids_live.group().reduceSum(function (d) {
                         return d.liveIds;
+                    }),
+
+
+                    liveIds_month = date_ids_live.group().reduceSum(function (d) {
+                        return d.liveIds_month;
                     }),
 
                     works_with_dois = date_worksdois.group().reduceSum(function (d) {
                         return d.worksWithDois;
                     }),
 
-                    unique_dois = date_unique_dois.group().reduceSum(function (d) {
+                    works_with_dois_month = date_worksdois.group().reduceSum(function (d) {
+                        return d.worksWithDois_month;
+                    }),
+
+                    unique_dois= date_unique_dois.group().reduceSum(function (d) {
                         return d.uniqueDois;
+                    }),
+
+                    unique_dois_month = date_unique_dois.group().reduceSum(function (d) {
+                        return d.uniqueDois_month;
                     }),
 
                     ids_verified = date_ids_verified.group().reduceSum(function (d) {
                         return d.idsWithVerifiedEmail;
+                    }),
+
+                    ids_verified_month = date_ids_verified.group().reduceSum(function (d) {
+                        return d.idsWithVerifiedEmail_month;
                     })
                     ;
 
@@ -354,37 +372,42 @@ var dashboard = (function () {
                 dc.barChart("#works-chart").width(300)
                     .height(200)
                     .dimension(date_works)
-                    .group(works)
+                    .group(works_month)
                     .x(d3.time.scale().domain([minDate, maxDate]))
+                    .renderHorizontalGridLines(true)
                     .xUnits(d3.time.months);
 
                 dc.barChart("#liveids-chart").width(300)
                     .height(200)
                     .dimension(date_ids_live)
-                    .group(liveIds)
+                    .group(liveIds_month)
                     .x(d3.time.scale().domain([minDate, maxDate]))
+                    .renderHorizontalGridLines(true)
                     .xUnits(d3.time.months);
 
                 dc.barChart("#verified-ids-chart").width(300)
                     .height(200)
                     .dimension(date_ids_verified)
-                    .group(ids_verified)
+                    .group(ids_verified_month)
                     .x(d3.time.scale().domain([minDate, maxDate]))
+                    .renderHorizontalGridLines(true)
                     .xUnits(d3.time.months);
 
 
                 dc.barChart("#works-dois-chart").width(300)
                     .height(200)
                     .dimension(date_worksdois)
-                    .group(works_with_dois)
+                    .group(works_with_dois_month)
                     .x(d3.time.scale().domain([minDate, maxDate]))
+                    .renderHorizontalGridLines(true)
                     .xUnits(d3.time.months);
 
                 dc.barChart("#unique-dois-chart").width(300)
                     .height(200)
                     .dimension(date_unique_dois)
-                    .group(unique_dois)
+                    .group(unique_dois_month)
                     .x(d3.time.scale().domain([minDate, maxDate]))
+                    .renderHorizontalGridLines(true)
                     .xUnits(d3.time.months);
 
                 var detailTable = dc.dataTable('.dc-data-table');
@@ -399,20 +422,20 @@ var dashboard = (function () {
                             return ""
                         },
                         function (d) {
-                            return d.liveIds
+                            return d.liveIds_month
                         },
 
                         function (d) {
-                            return d.idsWithVerifiedEmail
+                            return d.idsWithVerifiedEmail_month
                         },
                         function (d) {
-                            return d.uniqueDois
+                            return d.uniqueDois_month
                         },
                         function (d) {
-                            return d.works
+                            return d.works_month
                         },
                         function (d) {
-                            return d.worksWithDois
+                            return d.worksWithDois_month
                         }
                     ])
                 ;
