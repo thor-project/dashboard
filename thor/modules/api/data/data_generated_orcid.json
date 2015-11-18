@@ -1,1 +1,1226 @@
-[{"assign_status": "assigned", "data_value": 134.0, "new_orcids": 93.0, "country": "United Kingdom", "date": "2013-01-01", "data_key": "publication", "institution": "Imperial College London"}, {"assign_status": "assigned", "data_value": 44.0, "new_orcids": 15.0, "country": "United Kingdom", "date": "2013-01-01", "data_key": "data", "institution": "Imperial College London"}, {"assign_status": "assigned", "data_value": 216.0, "new_orcids": 74.0, "country": "Switzerland", "date": "2013-02-01", "data_key": "publication", "institution": "CERN"}, {"assign_status": "assigned", "data_value": 106.0, "new_orcids": 60.0, "country": "Switzerland", "date": "2013-02-01", "data_key": "data", "institution": "CERN"}, {"assign_status": "assigned", "data_value": 169.0, "new_orcids": 26.0, "country": "United States", "date": "2013-03-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 108.0, "new_orcids": 25.0, "country": "United States", "date": "2013-03-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 183.0, "new_orcids": 13.0, "country": "United States", "date": "2013-04-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 107.0, "new_orcids": 19.0, "country": "United States", "date": "2013-04-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 101.0, "new_orcids": 58.0, "country": "United Kingdom", "date": "2013-05-01", "data_key": "publication", "institution": "Imperial College London"}, {"assign_status": "assigned", "data_value": 112.0, "new_orcids": 88.0, "country": "United Kingdom", "date": "2013-05-01", "data_key": "data", "institution": "Imperial College London"}, {"assign_status": "assigned", "data_value": 176.0, "new_orcids": 78.0, "country": "United Kingdom", "date": "2013-06-01", "data_key": "publication", "institution": "Oxford University"}, {"assign_status": "assigned", "data_value": 297.0, "new_orcids": 41.0, "country": "United States", "date": "2013-07-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 226.0, "new_orcids": 14.0, "country": "United States", "date": "2013-07-01", "data_key": "data", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 174.0, "new_orcids": 33.0, "country": "United States", "date": "2013-08-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 13.0, "new_orcids": 8.0, "country": "United States", "date": "2013-08-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 22.0, "new_orcids": 68.0, "country": "United Kingdom", "date": "2013-09-01", "data_key": "publication", "institution": "Imperial College London"}, {"assign_status": "assigned", "data_value": 147.0, "new_orcids": 1.0, "country": "United Kingdom", "date": "2013-09-01", "data_key": "data", "institution": "Imperial College London"}, {"assign_status": "assigned", "data_value": 199.0, "new_orcids": 18.0, "country": "Switzerland", "date": "2013-10-01", "data_key": "publication", "institution": "CERN"}, {"assign_status": "assigned", "data_value": 166.0, "new_orcids": 70.0, "country": "Switzerland", "date": "2013-10-01", "data_key": "data", "institution": "CERN"}, {"assign_status": "assigned", "data_value": 156.0, "new_orcids": 98.0, "country": "United Kingdom", "date": "2013-11-01", "data_key": "publication", "institution": "Newcastle University"}, {"assign_status": "assigned", "data_value": 156.0, "new_orcids": 58.0, "country": "United Kingdom", "date": "2013-11-01", "data_key": "data", "institution": "Newcastle University"}, {"assign_status": "assigned", "data_value": 44.0, "new_orcids": 91.0, "country": "Sweden", "date": "2013-12-01", "data_key": "publication", "institution": "Lund University"}, {"assign_status": "assigned", "data_value": 63.0, "new_orcids": 16.0, "country": "Sweden", "date": "2013-12-01", "data_key": "data", "institution": "Lund University"}, {"assign_status": "assigned", "data_value": 154.0, "new_orcids": 51.0, "country": "United States", "date": "2014-01-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 162.0, "new_orcids": 20.0, "country": "United States", "date": "2014-01-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 246.0, "new_orcids": 13.0, "country": "United States", "date": "2014-02-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 181.0, "new_orcids": 45.0, "country": "United States", "date": "2014-02-01", "data_key": "data", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 71.0, "new_orcids": 76.0, "country": "United Kingdom", "date": "2014-03-01", "data_key": "publication", "institution": "Oxford University"}, {"assign_status": "assigned", "data_value": 215.0, "new_orcids": 36.0, "country": "United States", "date": "2014-04-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 178.0, "new_orcids": 66.0, "country": "United States", "date": "2014-04-01", "data_key": "data", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 32.0, "new_orcids": 64.0, "country": "United Kingdom", "date": "2014-05-01", "data_key": "publication", "institution": "Newcastle University"}, {"assign_status": "assigned", "data_value": 79.0, "new_orcids": 88.0, "country": "United Kingdom", "date": "2014-05-01", "data_key": "data", "institution": "Newcastle University"}, {"assign_status": "assigned", "data_value": 109.0, "new_orcids": 36.0, "country": "Belgium", "date": "2014-06-01", "data_key": "publication", "institution": "KU Leuven"}, {"assign_status": "assigned", "data_value": 44.0, "new_orcids": 28.0, "country": "Belgium", "date": "2014-06-01", "data_key": "data", "institution": "KU Leuven"}, {"assign_status": "assigned", "data_value": 166.0, "new_orcids": 96.0, "country": "Switzerland", "date": "2014-07-01", "data_key": "publication", "institution": "CERN"}, {"assign_status": "assigned", "data_value": 164.0, "new_orcids": 50.0, "country": "Switzerland", "date": "2014-07-01", "data_key": "data", "institution": "CERN"}, {"assign_status": "assigned", "data_value": 259.0, "new_orcids": 55.0, "country": "United Kingdom", "date": "2014-08-01", "data_key": "publication", "institution": "Oxford University"}, {"assign_status": "assigned", "data_value": 226.0, "new_orcids": 97.0, "country": "United States", "date": "2014-09-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 173.0, "new_orcids": 8.0, "country": "United States", "date": "2014-09-01", "data_key": "data", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 151.0, "new_orcids": 10.0, "country": "United States", "date": "2014-10-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 42.0, "new_orcids": 49.0, "country": "United States", "date": "2014-10-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 14.0, "new_orcids": 66.0, "country": "Belgium", "date": "2014-11-01", "data_key": "publication", "institution": "KU Leuven"}, {"assign_status": "assigned", "data_value": 92.0, "new_orcids": 14.0, "country": "Belgium", "date": "2014-11-01", "data_key": "data", "institution": "KU Leuven"}, {"assign_status": "assigned", "data_value": 101.0, "new_orcids": 46.0, "country": "United States", "date": "2014-12-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 64.0, "new_orcids": 32.0, "country": "United States", "date": "2014-12-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 29.0, "new_orcids": 70.0, "country": "Switzerland", "date": "2015-01-01", "data_key": "publication", "institution": "CERN"}, {"assign_status": "assigned", "data_value": 208.0, "new_orcids": 44.0, "country": "Switzerland", "date": "2015-01-01", "data_key": "data", "institution": "CERN"}, {"assign_status": "assigned", "data_value": 56.0, "new_orcids": 37.0, "country": "United States", "date": "2015-02-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 53.0, "new_orcids": 93.0, "country": "United States", "date": "2015-02-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 259.0, "new_orcids": 20.0, "country": "United States", "date": "2015-03-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 273.0, "new_orcids": 63.0, "country": "United States", "date": "2015-03-01", "data_key": "data", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 121.0, "new_orcids": 16.0, "country": "United States", "date": "2015-04-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 20.0, "new_orcids": 25.0, "country": "United States", "date": "2015-04-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 40.0, "new_orcids": 15.0, "country": "United States", "date": "2015-05-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 280.0, "new_orcids": 98.0, "country": "United States", "date": "2015-05-01", "data_key": "data", "institution": "Harvard University"}, {"assign_status": "assigned", "data_value": 10.0, "new_orcids": 70.0, "country": "United States", "date": "2015-06-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 24.0, "new_orcids": 60.0, "country": "United States", "date": "2015-06-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 98.0, "new_orcids": 35.0, "country": "Belgium", "date": "2015-07-01", "data_key": "publication", "institution": "KU Leuven"}, {"assign_status": "assigned", "data_value": 52.0, "new_orcids": 61.0, "country": "Belgium", "date": "2015-07-01", "data_key": "data", "institution": "KU Leuven"}, {"assign_status": "assigned", "data_value": 2.0, "new_orcids": 79.0, "country": "Switzerland", "date": "2015-08-01", "data_key": "publication", "institution": "CERN"}, {"assign_status": "assigned", "data_value": 42.0, "new_orcids": 67.0, "country": "Switzerland", "date": "2015-08-01", "data_key": "data", "institution": "CERN"}, {"assign_status": "assigned", "data_value": 135.0, "new_orcids": 14.0, "country": "United States", "date": "2015-09-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 164.0, "new_orcids": 49.0, "country": "United States", "date": "2015-09-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "assigned", "data_value": 2.0, "new_orcids": 100.0, "country": "United Kingdom", "date": "2015-10-01", "data_key": "publication", "institution": "Newcastle University"}, {"assign_status": "assigned", "data_value": 103.0, "new_orcids": 61.0, "country": "United Kingdom", "date": "2015-10-01", "data_key": "data", "institution": "Newcastle University"}, {"assign_status": "assigned", "data_value": 84.0, "new_orcids": 28.0, "country": "United Kingdom", "date": "2015-11-01", "data_key": "publication", "institution": "Oxford University"}, {"assign_status": "assigned", "data_value": 80.0, "new_orcids": 77.0, "country": "United Kingdom", "date": "2015-12-01", "data_key": "publication", "institution": "Imperial College London"}, {"assign_status": "assigned", "data_value": 94.0, "new_orcids": 63.0, "country": "United Kingdom", "date": "2015-12-01", "data_key": "data", "institution": "Imperial College London"}, {"assign_status": "unassigned", "data_value": 108.0, "new_orcids": 20.0, "country": "Belgium", "date": "2013-01-01", "data_key": "publication", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 59.0, "new_orcids": 14.0, "country": "Belgium", "date": "2013-01-01", "data_key": "data", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 20.0, "new_orcids": 57.0, "country": "Sweden", "date": "2013-02-01", "data_key": "publication", "institution": "Lund University"}, {"assign_status": "unassigned", "data_value": 77.0, "new_orcids": 47.0, "country": "Sweden", "date": "2013-02-01", "data_key": "data", "institution": "Lund University"}, {"assign_status": "unassigned", "data_value": 116.0, "new_orcids": 27.0, "country": "Belgium", "date": "2013-03-01", "data_key": "publication", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 54.0, "new_orcids": 77.0, "country": "Belgium", "date": "2013-03-01", "data_key": "data", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 186.0, "new_orcids": 31.0, "country": "United Kingdom", "date": "2013-04-01", "data_key": "publication", "institution": "Newcastle University"}, {"assign_status": "unassigned", "data_value": 46.0, "new_orcids": 31.0, "country": "United Kingdom", "date": "2013-04-01", "data_key": "data", "institution": "Newcastle University"}, {"assign_status": "unassigned", "data_value": 25.0, "new_orcids": 15.0, "country": "Belgium", "date": "2013-05-01", "data_key": "publication", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 80.0, "new_orcids": 36.0, "country": "Belgium", "date": "2013-05-01", "data_key": "data", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 14.0, "new_orcids": 36.0, "country": "United Kingdom", "date": "2013-06-01", "data_key": "publication", "institution": "Imperial College London"}, {"assign_status": "unassigned", "data_value": 142.0, "new_orcids": 72.0, "country": "United Kingdom", "date": "2013-06-01", "data_key": "data", "institution": "Imperial College London"}, {"assign_status": "unassigned", "data_value": 77.0, "new_orcids": 37.0, "country": "United States", "date": "2013-07-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "unassigned", "data_value": 95.0, "new_orcids": 90.0, "country": "United States", "date": "2013-07-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "unassigned", "data_value": 112.0, "new_orcids": 72.0, "country": "United States", "date": "2013-08-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "unassigned", "data_value": 130.0, "new_orcids": 67.0, "country": "United States", "date": "2013-08-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "unassigned", "data_value": 58.0, "new_orcids": 8.0, "country": "United States", "date": "2013-09-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "unassigned", "data_value": 144.0, "new_orcids": 48.0, "country": "United States", "date": "2013-09-01", "data_key": "data", "institution": "Harvard University"}, {"assign_status": "unassigned", "data_value": 124.0, "new_orcids": 1.0, "country": "United Kingdom", "date": "2013-10-01", "data_key": "publication", "institution": "Newcastle University"}, {"assign_status": "unassigned", "data_value": 121.0, "new_orcids": 62.0, "country": "United Kingdom", "date": "2013-10-01", "data_key": "data", "institution": "Newcastle University"}, {"assign_status": "unassigned", "data_value": 12.0, "new_orcids": 3.0, "country": "Belgium", "date": "2013-11-01", "data_key": "publication", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 12.0, "new_orcids": 64.0, "country": "Belgium", "date": "2013-11-01", "data_key": "data", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 92.0, "new_orcids": 52.0, "country": "Belgium", "date": "2013-12-01", "data_key": "publication", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 120.0, "new_orcids": 51.0, "country": "Belgium", "date": "2013-12-01", "data_key": "data", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 101.0, "new_orcids": 86.0, "country": "United Kingdom", "date": "2014-01-01", "data_key": "publication", "institution": "Oxford University"}, {"assign_status": "unassigned", "data_value": 29.0, "new_orcids": 46.0, "country": "United Kingdom", "date": "2014-02-01", "data_key": "publication", "institution": "Imperial College London"}, {"assign_status": "unassigned", "data_value": 1.0, "new_orcids": 41.0, "country": "United Kingdom", "date": "2014-02-01", "data_key": "data", "institution": "Imperial College London"}, {"assign_status": "unassigned", "data_value": 230.0, "new_orcids": 45.0, "country": "United States", "date": "2014-03-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "unassigned", "data_value": 54.0, "new_orcids": 34.0, "country": "United States", "date": "2014-03-01", "data_key": "data", "institution": "Harvard University"}, {"assign_status": "unassigned", "data_value": 204.0, "new_orcids": 3.0, "country": "United Kingdom", "date": "2014-04-01", "data_key": "publication", "institution": "Oxford University"}, {"assign_status": "unassigned", "data_value": 23.0, "new_orcids": 44.0, "country": "United States", "date": "2014-05-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "unassigned", "data_value": 22.0, "new_orcids": 52.0, "country": "United States", "date": "2014-05-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "unassigned", "data_value": 177.0, "new_orcids": 20.0, "country": "United States", "date": "2014-06-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "unassigned", "data_value": 148.0, "new_orcids": 45.0, "country": "United States", "date": "2014-06-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "unassigned", "data_value": 115.0, "new_orcids": 99.0, "country": "United States", "date": "2014-07-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "unassigned", "data_value": 287.0, "new_orcids": 54.0, "country": "United States", "date": "2014-07-01", "data_key": "data", "institution": "Harvard University"}, {"assign_status": "unassigned", "data_value": 86.0, "new_orcids": 30.0, "country": "United Kingdom", "date": "2014-08-01", "data_key": "publication", "institution": "Newcastle University"}, {"assign_status": "unassigned", "data_value": 62.0, "new_orcids": 43.0, "country": "United Kingdom", "date": "2014-08-01", "data_key": "data", "institution": "Newcastle University"}, {"assign_status": "unassigned", "data_value": 104.0, "new_orcids": 71.0, "country": "United States", "date": "2014-09-01", "data_key": "publication", "institution": "MIT"}, {"assign_status": "unassigned", "data_value": 3.0, "new_orcids": 43.0, "country": "United States", "date": "2014-09-01", "data_key": "data", "institution": "MIT"}, {"assign_status": "unassigned", "data_value": 163.0, "new_orcids": 59.0, "country": "United States", "date": "2014-10-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "unassigned", "data_value": 201.0, "new_orcids": 13.0, "country": "United States", "date": "2014-10-01", "data_key": "data", "institution": "Harvard University"}, {"assign_status": "unassigned", "data_value": 99.0, "new_orcids": 56.0, "country": "Belgium", "date": "2014-11-01", "data_key": "publication", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 96.0, "new_orcids": 68.0, "country": "Belgium", "date": "2014-11-01", "data_key": "data", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 110.0, "new_orcids": 21.0, "country": "Belgium", "date": "2014-12-01", "data_key": "publication", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 35.0, "new_orcids": 77.0, "country": "Belgium", "date": "2014-12-01", "data_key": "data", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 208.0, "new_orcids": 51.0, "country": "Switzerland", "date": "2015-01-01", "data_key": "publication", "institution": "CERN"}, {"assign_status": "unassigned", "data_value": 25.0, "new_orcids": 71.0, "country": "Switzerland", "date": "2015-01-01", "data_key": "data", "institution": "CERN"}, {"assign_status": "unassigned", "data_value": 88.0, "new_orcids": 15.0, "country": "Sweden", "date": "2015-02-01", "data_key": "publication", "institution": "Lund University"}, {"assign_status": "unassigned", "data_value": 15.0, "new_orcids": 87.0, "country": "Sweden", "date": "2015-02-01", "data_key": "data", "institution": "Lund University"}, {"assign_status": "unassigned", "data_value": 47.0, "new_orcids": 24.0, "country": "Sweden", "date": "2015-03-01", "data_key": "publication", "institution": "Lund University"}, {"assign_status": "unassigned", "data_value": 28.0, "new_orcids": 55.0, "country": "Sweden", "date": "2015-03-01", "data_key": "data", "institution": "Lund University"}, {"assign_status": "unassigned", "data_value": 97.0, "new_orcids": 32.0, "country": "Sweden", "date": "2015-04-01", "data_key": "publication", "institution": "Lund University"}, {"assign_status": "unassigned", "data_value": 3.0, "new_orcids": 68.0, "country": "Sweden", "date": "2015-04-01", "data_key": "data", "institution": "Lund University"}, {"assign_status": "unassigned", "data_value": 9.0, "new_orcids": 47.0, "country": "United Kingdom", "date": "2015-05-01", "data_key": "publication", "institution": "Oxford University"}, {"assign_status": "unassigned", "data_value": 123.0, "new_orcids": 14.0, "country": "United Kingdom", "date": "2015-06-01", "data_key": "publication", "institution": "Oxford University"}, {"assign_status": "unassigned", "data_value": 275.0, "new_orcids": 33.0, "country": "United States", "date": "2015-07-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "unassigned", "data_value": 33.0, "new_orcids": 48.0, "country": "United States", "date": "2015-07-01", "data_key": "data", "institution": "Harvard University"}, {"assign_status": "unassigned", "data_value": 5.0, "new_orcids": 5.0, "country": "Switzerland", "date": "2015-08-01", "data_key": "publication", "institution": "CERN"}, {"assign_status": "unassigned", "data_value": 56.0, "new_orcids": 2.0, "country": "Switzerland", "date": "2015-08-01", "data_key": "data", "institution": "CERN"}, {"assign_status": "unassigned", "data_value": 172.0, "new_orcids": 85.0, "country": "United Kingdom", "date": "2015-09-01", "data_key": "publication", "institution": "Newcastle University"}, {"assign_status": "unassigned", "data_value": 177.0, "new_orcids": 79.0, "country": "United Kingdom", "date": "2015-09-01", "data_key": "data", "institution": "Newcastle University"}, {"assign_status": "unassigned", "data_value": 20.0, "new_orcids": 70.0, "country": "Belgium", "date": "2015-10-01", "data_key": "publication", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 31.0, "new_orcids": 98.0, "country": "Belgium", "date": "2015-10-01", "data_key": "data", "institution": "KU Leuven"}, {"assign_status": "unassigned", "data_value": 91.0, "new_orcids": 2.0, "country": "United Kingdom", "date": "2015-11-01", "data_key": "publication", "institution": "Newcastle University"}, {"assign_status": "unassigned", "data_value": 46.0, "new_orcids": 56.0, "country": "United Kingdom", "date": "2015-11-01", "data_key": "data", "institution": "Newcastle University"}, {"assign_status": "unassigned", "data_value": 56.0, "new_orcids": 51.0, "country": "United States", "date": "2015-12-01", "data_key": "publication", "institution": "Harvard University"}, {"assign_status": "unassigned", "data_value": 8.0, "new_orcids": 82.0, "country": "United States", "date": "2015-12-01", "data_key": "data", "institution": "Harvard University"}]
+[
+  {
+    "assign_status": "assigned",
+    "data_value": 134.0,
+    "new_orcids": 93.0,
+    "country": "United Kingdom",
+    "date": "2013-01-01",
+    "data_key": "publication",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 44.0,
+    "new_orcids": 15.0,
+    "country": "United Kingdom",
+    "date": "2013-02-01",
+    "data_key": "data",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 216.0,
+    "new_orcids": 74.0,
+    "country": "Switzerland",
+    "date": "2013-02-01",
+    "data_key": "publication",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 106.0,
+    "new_orcids": 60.0,
+    "country": "Switzerland",
+    "date": "2013-02-01",
+    "data_key": "data",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 169.0,
+    "new_orcids": 26.0,
+    "country": "United States",
+    "date": "2013-03-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 108.0,
+    "new_orcids": 25.0,
+    "country": "United States",
+    "date": "2013-03-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 183.0,
+    "new_orcids": 13.0,
+    "country": "United States",
+    "date": "2013-04-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 107.0,
+    "new_orcids": 19.0,
+    "country": "United States",
+    "date": "2013-04-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 101.0,
+    "new_orcids": 58.0,
+    "country": "United Kingdom",
+    "date": "2013-05-01",
+    "data_key": "publication",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 112.0,
+    "new_orcids": 88.0,
+    "country": "United Kingdom",
+    "date": "2013-05-01",
+    "data_key": "data",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 176.0,
+    "new_orcids": 78.0,
+    "country": "United Kingdom",
+    "date": "2013-06-01",
+    "data_key": "publication",
+    "institution": "Oxford University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 297.0,
+    "new_orcids": 41.0,
+    "country": "United States",
+    "date": "2013-07-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 226.0,
+    "new_orcids": 14.0,
+    "country": "United States",
+    "date": "2013-07-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 174.0,
+    "new_orcids": 33.0,
+    "country": "United States",
+    "date": "2013-08-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 13.0,
+    "new_orcids": 8.0,
+    "country": "United States",
+    "date": "2013-08-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 22.0,
+    "new_orcids": 68.0,
+    "country": "United Kingdom",
+    "date": "2013-09-01",
+    "data_key": "publication",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 147.0,
+    "new_orcids": 1.0,
+    "country": "United Kingdom",
+    "date": "2013-09-01",
+    "data_key": "data",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 199.0,
+    "new_orcids": 18.0,
+    "country": "Switzerland",
+    "date": "2013-10-01",
+    "data_key": "publication",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 166.0,
+    "new_orcids": 70.0,
+    "country": "Switzerland",
+    "date": "2013-10-01",
+    "data_key": "data",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 156.0,
+    "new_orcids": 98.0,
+    "country": "United Kingdom",
+    "date": "2013-11-01",
+    "data_key": "publication",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 156.0,
+    "new_orcids": 58.0,
+    "country": "United Kingdom",
+    "date": "2013-11-01",
+    "data_key": "data",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 44.0,
+    "new_orcids": 91.0,
+    "country": "Sweden",
+    "date": "2013-12-01",
+    "data_key": "publication",
+    "institution": "Lund University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 63.0,
+    "new_orcids": 16.0,
+    "country": "Sweden",
+    "date": "2013-12-01",
+    "data_key": "data",
+    "institution": "Lund University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 154.0,
+    "new_orcids": 51.0,
+    "country": "United States",
+    "date": "2014-01-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 162.0,
+    "new_orcids": 20.0,
+    "country": "United States",
+    "date": "2014-01-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 246.0,
+    "new_orcids": 13.0,
+    "country": "United States",
+    "date": "2014-02-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 181.0,
+    "new_orcids": 45.0,
+    "country": "United States",
+    "date": "2014-02-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 71.0,
+    "new_orcids": 76.0,
+    "country": "United Kingdom",
+    "date": "2014-03-01",
+    "data_key": "publication",
+    "institution": "Oxford University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 215.0,
+    "new_orcids": 36.0,
+    "country": "United States",
+    "date": "2014-04-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 178.0,
+    "new_orcids": 66.0,
+    "country": "United States",
+    "date": "2014-04-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 32.0,
+    "new_orcids": 64.0,
+    "country": "United Kingdom",
+    "date": "2014-05-01",
+    "data_key": "publication",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 79.0,
+    "new_orcids": 88.0,
+    "country": "United Kingdom",
+    "date": "2014-05-01",
+    "data_key": "data",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 109.0,
+    "new_orcids": 36.0,
+    "country": "Belgium",
+    "date": "2014-06-01",
+    "data_key": "publication",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 44.0,
+    "new_orcids": 28.0,
+    "country": "Belgium",
+    "date": "2014-06-01",
+    "data_key": "data",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 166.0,
+    "new_orcids": 96.0,
+    "country": "Switzerland",
+    "date": "2014-07-01",
+    "data_key": "publication",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 164.0,
+    "new_orcids": 50.0,
+    "country": "Switzerland",
+    "date": "2014-07-01",
+    "data_key": "data",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 259.0,
+    "new_orcids": 55.0,
+    "country": "United Kingdom",
+    "date": "2014-08-01",
+    "data_key": "publication",
+    "institution": "Oxford University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 226.0,
+    "new_orcids": 97.0,
+    "country": "United States",
+    "date": "2014-09-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 173.0,
+    "new_orcids": 8.0,
+    "country": "United States",
+    "date": "2014-09-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 151.0,
+    "new_orcids": 10.0,
+    "country": "United States",
+    "date": "2014-10-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 42.0,
+    "new_orcids": 49.0,
+    "country": "United States",
+    "date": "2014-10-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 14.0,
+    "new_orcids": 66.0,
+    "country": "Belgium",
+    "date": "2014-11-01",
+    "data_key": "publication",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 92.0,
+    "new_orcids": 14.0,
+    "country": "Belgium",
+    "date": "2014-11-01",
+    "data_key": "data",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 101.0,
+    "new_orcids": 46.0,
+    "country": "United States",
+    "date": "2014-12-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 64.0,
+    "new_orcids": 32.0,
+    "country": "United States",
+    "date": "2014-12-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 29.0,
+    "new_orcids": 70.0,
+    "country": "Switzerland",
+    "date": "2015-01-01",
+    "data_key": "publication",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 208.0,
+    "new_orcids": 44.0,
+    "country": "Switzerland",
+    "date": "2015-01-01",
+    "data_key": "data",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 56.0,
+    "new_orcids": 37.0,
+    "country": "United States",
+    "date": "2015-02-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 53.0,
+    "new_orcids": 93.0,
+    "country": "United States",
+    "date": "2015-02-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 259.0,
+    "new_orcids": 20.0,
+    "country": "United States",
+    "date": "2015-03-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 273.0,
+    "new_orcids": 63.0,
+    "country": "United States",
+    "date": "2015-03-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 121.0,
+    "new_orcids": 16.0,
+    "country": "United States",
+    "date": "2015-04-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 20.0,
+    "new_orcids": 25.0,
+    "country": "United States",
+    "date": "2015-04-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 40.0,
+    "new_orcids": 15.0,
+    "country": "United States",
+    "date": "2015-05-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 280.0,
+    "new_orcids": 98.0,
+    "country": "United States",
+    "date": "2015-05-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 10.0,
+    "new_orcids": 70.0,
+    "country": "United States",
+    "date": "2015-06-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 24.0,
+    "new_orcids": 60.0,
+    "country": "United States",
+    "date": "2015-06-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 98.0,
+    "new_orcids": 35.0,
+    "country": "Belgium",
+    "date": "2015-07-01",
+    "data_key": "publication",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 52.0,
+    "new_orcids": 61.0,
+    "country": "Belgium",
+    "date": "2015-07-01",
+    "data_key": "data",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 2.0,
+    "new_orcids": 79.0,
+    "country": "Switzerland",
+    "date": "2015-08-01",
+    "data_key": "publication",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 42.0,
+    "new_orcids": 67.0,
+    "country": "Switzerland",
+    "date": "2015-08-01",
+    "data_key": "data",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 135.0,
+    "new_orcids": 14.0,
+    "country": "United States",
+    "date": "2015-09-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 164.0,
+    "new_orcids": 49.0,
+    "country": "United States",
+    "date": "2015-09-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 2.0,
+    "new_orcids": 100.0,
+    "country": "United Kingdom",
+    "date": "2015-10-01",
+    "data_key": "publication",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 103.0,
+    "new_orcids": 61.0,
+    "country": "United Kingdom",
+    "date": "2015-10-01",
+    "data_key": "data",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 84.0,
+    "new_orcids": 28.0,
+    "country": "United Kingdom",
+    "date": "2015-11-01",
+    "data_key": "publication",
+    "institution": "Oxford University"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 80.0,
+    "new_orcids": 77.0,
+    "country": "United Kingdom",
+    "date": "2015-12-01",
+    "data_key": "publication",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "assigned",
+    "data_value": 94.0,
+    "new_orcids": 63.0,
+    "country": "United Kingdom",
+    "date": "2015-12-01",
+    "data_key": "data",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 108.0,
+    "new_orcids": 20.0,
+    "country": "Belgium",
+    "date": "2013-01-01",
+    "data_key": "publication",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 59.0,
+    "new_orcids": 14.0,
+    "country": "Belgium",
+    "date": "2013-01-01",
+    "data_key": "data",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 20.0,
+    "new_orcids": 57.0,
+    "country": "Sweden",
+    "date": "2013-02-01",
+    "data_key": "publication",
+    "institution": "Lund University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 77.0,
+    "new_orcids": 47.0,
+    "country": "Sweden",
+    "date": "2013-02-01",
+    "data_key": "data",
+    "institution": "Lund University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 116.0,
+    "new_orcids": 27.0,
+    "country": "Belgium",
+    "date": "2013-03-01",
+    "data_key": "publication",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 54.0,
+    "new_orcids": 77.0,
+    "country": "Belgium",
+    "date": "2013-03-01",
+    "data_key": "data",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 186.0,
+    "new_orcids": 31.0,
+    "country": "United Kingdom",
+    "date": "2013-04-01",
+    "data_key": "publication",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 46.0,
+    "new_orcids": 31.0,
+    "country": "United Kingdom",
+    "date": "2013-04-01",
+    "data_key": "data",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 25.0,
+    "new_orcids": 15.0,
+    "country": "Belgium",
+    "date": "2013-05-01",
+    "data_key": "publication",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 80.0,
+    "new_orcids": 36.0,
+    "country": "Belgium",
+    "date": "2013-05-01",
+    "data_key": "data",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 14.0,
+    "new_orcids": 36.0,
+    "country": "United Kingdom",
+    "date": "2013-06-01",
+    "data_key": "publication",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 142.0,
+    "new_orcids": 72.0,
+    "country": "United Kingdom",
+    "date": "2013-06-01",
+    "data_key": "data",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 77.0,
+    "new_orcids": 37.0,
+    "country": "United States",
+    "date": "2013-07-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 95.0,
+    "new_orcids": 90.0,
+    "country": "United States",
+    "date": "2013-07-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 112.0,
+    "new_orcids": 72.0,
+    "country": "United States",
+    "date": "2013-08-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 130.0,
+    "new_orcids": 67.0,
+    "country": "United States",
+    "date": "2013-08-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 58.0,
+    "new_orcids": 8.0,
+    "country": "United States",
+    "date": "2013-09-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 144.0,
+    "new_orcids": 48.0,
+    "country": "United States",
+    "date": "2013-09-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 124.0,
+    "new_orcids": 1.0,
+    "country": "United Kingdom",
+    "date": "2013-10-01",
+    "data_key": "publication",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 121.0,
+    "new_orcids": 62.0,
+    "country": "United Kingdom",
+    "date": "2013-10-01",
+    "data_key": "data",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 12.0,
+    "new_orcids": 3.0,
+    "country": "Belgium",
+    "date": "2013-11-01",
+    "data_key": "publication",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 12.0,
+    "new_orcids": 64.0,
+    "country": "Belgium",
+    "date": "2013-11-01",
+    "data_key": "data",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 92.0,
+    "new_orcids": 52.0,
+    "country": "Belgium",
+    "date": "2013-12-01",
+    "data_key": "publication",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 120.0,
+    "new_orcids": 51.0,
+    "country": "Belgium",
+    "date": "2013-12-01",
+    "data_key": "data",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 101.0,
+    "new_orcids": 86.0,
+    "country": "United Kingdom",
+    "date": "2014-01-01",
+    "data_key": "publication",
+    "institution": "Oxford University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 29.0,
+    "new_orcids": 46.0,
+    "country": "United Kingdom",
+    "date": "2014-02-01",
+    "data_key": "publication",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 1.0,
+    "new_orcids": 41.0,
+    "country": "United Kingdom",
+    "date": "2014-02-01",
+    "data_key": "data",
+    "institution": "Imperial College London"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 230.0,
+    "new_orcids": 45.0,
+    "country": "United States",
+    "date": "2014-03-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 54.0,
+    "new_orcids": 34.0,
+    "country": "United States",
+    "date": "2014-03-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 204.0,
+    "new_orcids": 3.0,
+    "country": "United Kingdom",
+    "date": "2014-04-01",
+    "data_key": "publication",
+    "institution": "Oxford University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 23.0,
+    "new_orcids": 44.0,
+    "country": "United States",
+    "date": "2014-05-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 22.0,
+    "new_orcids": 52.0,
+    "country": "United States",
+    "date": "2014-05-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 177.0,
+    "new_orcids": 20.0,
+    "country": "United States",
+    "date": "2014-06-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 148.0,
+    "new_orcids": 45.0,
+    "country": "United States",
+    "date": "2014-06-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 115.0,
+    "new_orcids": 99.0,
+    "country": "United States",
+    "date": "2014-07-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 287.0,
+    "new_orcids": 54.0,
+    "country": "United States",
+    "date": "2014-07-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 86.0,
+    "new_orcids": 30.0,
+    "country": "United Kingdom",
+    "date": "2014-08-01",
+    "data_key": "publication",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 62.0,
+    "new_orcids": 43.0,
+    "country": "United Kingdom",
+    "date": "2014-08-01",
+    "data_key": "data",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 104.0,
+    "new_orcids": 71.0,
+    "country": "United States",
+    "date": "2014-09-01",
+    "data_key": "publication",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 3.0,
+    "new_orcids": 43.0,
+    "country": "United States",
+    "date": "2014-09-01",
+    "data_key": "data",
+    "institution": "MIT"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 163.0,
+    "new_orcids": 59.0,
+    "country": "United States",
+    "date": "2014-10-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 201.0,
+    "new_orcids": 13.0,
+    "country": "United States",
+    "date": "2014-10-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 99.0,
+    "new_orcids": 56.0,
+    "country": "Belgium",
+    "date": "2014-11-01",
+    "data_key": "publication",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 96.0,
+    "new_orcids": 68.0,
+    "country": "Belgium",
+    "date": "2014-11-01",
+    "data_key": "data",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 110.0,
+    "new_orcids": 21.0,
+    "country": "Belgium",
+    "date": "2014-12-01",
+    "data_key": "publication",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 35.0,
+    "new_orcids": 77.0,
+    "country": "Belgium",
+    "date": "2014-12-01",
+    "data_key": "data",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 208.0,
+    "new_orcids": 51.0,
+    "country": "Switzerland",
+    "date": "2015-01-01",
+    "data_key": "publication",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 25.0,
+    "new_orcids": 71.0,
+    "country": "Switzerland",
+    "date": "2015-01-01",
+    "data_key": "data",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 88.0,
+    "new_orcids": 15.0,
+    "country": "Sweden",
+    "date": "2015-02-01",
+    "data_key": "publication",
+    "institution": "Lund University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 15.0,
+    "new_orcids": 87.0,
+    "country": "Sweden",
+    "date": "2015-02-01",
+    "data_key": "data",
+    "institution": "Lund University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 47.0,
+    "new_orcids": 24.0,
+    "country": "Sweden",
+    "date": "2015-03-01",
+    "data_key": "publication",
+    "institution": "Lund University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 28.0,
+    "new_orcids": 55.0,
+    "country": "Sweden",
+    "date": "2015-03-01",
+    "data_key": "data",
+    "institution": "Lund University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 97.0,
+    "new_orcids": 32.0,
+    "country": "Sweden",
+    "date": "2015-04-01",
+    "data_key": "publication",
+    "institution": "Lund University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 3.0,
+    "new_orcids": 68.0,
+    "country": "Sweden",
+    "date": "2015-04-01",
+    "data_key": "data",
+    "institution": "Lund University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 9.0,
+    "new_orcids": 47.0,
+    "country": "United Kingdom",
+    "date": "2015-05-01",
+    "data_key": "publication",
+    "institution": "Oxford University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 123.0,
+    "new_orcids": 14.0,
+    "country": "United Kingdom",
+    "date": "2015-06-01",
+    "data_key": "publication",
+    "institution": "Oxford University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 275.0,
+    "new_orcids": 33.0,
+    "country": "United States",
+    "date": "2015-07-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 33.0,
+    "new_orcids": 48.0,
+    "country": "United States",
+    "date": "2015-07-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 5.0,
+    "new_orcids": 5.0,
+    "country": "Switzerland",
+    "date": "2015-08-01",
+    "data_key": "publication",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 56.0,
+    "new_orcids": 2.0,
+    "country": "Switzerland",
+    "date": "2015-08-01",
+    "data_key": "data",
+    "institution": "CERN"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 172.0,
+    "new_orcids": 85.0,
+    "country": "United Kingdom",
+    "date": "2015-09-01",
+    "data_key": "publication",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 177.0,
+    "new_orcids": 79.0,
+    "country": "United Kingdom",
+    "date": "2015-09-01",
+    "data_key": "data",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 20.0,
+    "new_orcids": 70.0,
+    "country": "Belgium",
+    "date": "2015-10-01",
+    "data_key": "publication",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 31.0,
+    "new_orcids": 98.0,
+    "country": "Belgium",
+    "date": "2015-10-01",
+    "data_key": "data",
+    "institution": "KU Leuven"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 91.0,
+    "new_orcids": 2.0,
+    "country": "United Kingdom",
+    "date": "2015-11-01",
+    "data_key": "publication",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 46.0,
+    "new_orcids": 56.0,
+    "country": "United Kingdom",
+    "date": "2015-11-01",
+    "data_key": "data",
+    "institution": "Newcastle University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 56.0,
+    "new_orcids": 51.0,
+    "country": "United States",
+    "date": "2015-12-01",
+    "data_key": "publication",
+    "institution": "Harvard University"
+  },
+  {
+    "assign_status": "unassigned",
+    "data_value": 8.0,
+    "new_orcids": 82.0,
+    "country": "United States",
+    "date": "2015-12-01",
+    "data_key": "data",
+    "institution": "Harvard University"
+  }
+]

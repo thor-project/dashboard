@@ -30,9 +30,10 @@
 
         <ul class="menu">
 
-{#            <li><a href="/dashboard/"><span class="fa fa-bar-chart"></span></a></li>#}
+            <li><a href="/dashboard/"><span class="fa fa-bar-chart"></span></a></li>
             <li><a href="/dashboard/data/"><span class="fa fa-database"></span></a></li>
             <li class="active"><a href="/dashboard/researcher/"><span class="fa fa-user"></span></a></li>
+            <li><a href="/dashboard/event/"><span class="fa fa-calendar"></span></a></li>
 
             <hr/>
 
@@ -51,11 +52,7 @@
         <div class="row col-md-12" style="padding-top: 1em; padding-bottom: 1em">
 
             <div class="col-md-12">
-                <h2 class="color-white uppercase bold-text">Researcher Metrics (ORCID)
- <span class="pull-right mui-btn mui-btn-default"
-       style="font-size: .6em; margin-top: -3px"><span
-         class="fa fa-plus"></span> Add widget</span></h2>
-
+                <h2 class="color-white uppercase bold-text">Researcher Metrics (ORCID)</h2>
             </div>
         </div>
 
@@ -63,7 +60,7 @@
 
             <div class="col-md-12">
                 <div class="visualization-panel col-md-12">
-                    <h4>Papers added through ORCID</h4>
+                    <h4>ORCIDs with Works</h4>
 
                     <div id="monthly-chart" class="chart">
                     </div>
@@ -76,7 +73,7 @@
 
             <div class="col-md-4">
                 <div class="visualization-panel col-md-12">
-                    <h4>Papers with DOIs</h4>
+                    <h4>DOIs with ORCIDs Assigned/Unassigned</h4>
 
                     <div id="assignment" class="chart">
                     </div>
@@ -95,20 +92,19 @@
 
             <div class="col-md-4">
                 <div class="visualization-panel col-md-12">
-                    <h4>New ORCIDs Created Over Time</h4>
+                    <h4>ORCIDs Creation Over Time</h4>
 
                     <div id="breakdown-chart" class="chart">
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="row visualization-container">
 
             <div class="col-md-12">
                 <div class="visualization-panel col-md-12" style="height: 420px; overflow: hidden">
-                    <h4>World ORCID Distribution</h4>
+                    <h4>ORCID User Distribution</h4>
 
                     <div id="orcid-map" class="col-md-9">
                     </div>
@@ -153,6 +149,6 @@
 {% block end_additional %}
     <script src="{{ STATIC_URL }}assets/js/thor-dash-lib.js" type="text/javascript"></script>
     <script>
-        load_data("/api/get_data?type=orcid")
+        load_data("/data/api/get_data?type=orcid")
     </script>
 {% endblock %}

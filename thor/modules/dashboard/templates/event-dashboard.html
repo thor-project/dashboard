@@ -5,15 +5,24 @@
     {% include 'components/general-resources.html' %}
     <style>
         body {
-            background-color: #2980BA;
+            background-color: white;
         }
 
         .menu li.active {
-            background-color: #2980BA;
+            background-color: white;
+        }
+
+        .menu li.active a {
+            color: #7f8c8d;
         }
 
         .visualization-panel h4 {
-            color: #2980BA;
+            color: #7f8c8d;
+        }
+
+        .visualization-panel {
+            background-color: #ecf0f1;
+            color: #7f8c8d;
         }
 
         .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
@@ -22,6 +31,14 @@
 
         .table > tbody + tbody {
             border: none;
+        }
+
+        .axis path, .axis line {
+            stroke: #7f8c8d !important;
+        }
+
+        .dc-chart g.axis text {
+            fill: #7f8c8d;
         }
 
     </style>
@@ -33,14 +50,15 @@
     {# sidebar #}
     <div id="dashboard-menu" class="col-md-1" style="min-width: 150px; background-color: #2C3E50; padding:0"
          align="center">
-        <img src="{{ STATIC_URL }}assets/img/logo-normal.svg" width="80%" align="center" style="padding-left: 10px; padding-top: 10px">
+        <img src="{{ STATIC_URL }}assets/img/logo-normal.svg" width="80%" align="center"
+             style="padding-left: 10px; padding-top: 10px">
 
         <ul class="menu">
 
             <li><a href="/dashboard/"><span class="fa fa-bar-chart"></span></a></li>
-            <li class="active"><a href="/dashboard/data/"><span class="fa fa-database"></span></a></li>
+            <li><a href="/dashboard/data/"><span class="fa fa-database"></span></a></li>
             <li><a href="/dashboard/researcher/"><span class="fa fa-user"></span></a></li>
-            <li><a href="/dashboard/event/"><span class="fa fa-calendar"></span></a></li>
+            <li class="active"><a href="/dashboard/event/"><span class="fa fa-calendar"></span></a></li>
 
             <hr/>
 
@@ -54,21 +72,21 @@
         </div>
     </div>
 
-    {# main content #}
+     {# main content #}
     <div id="dashboard-content" style="padding-left: 177px;">
         <div class="row col-md-12" style="padding-top: 1em; padding-bottom: 1em">
 
             <div class="col-md-12">
-                <h2 class="color-white uppercase bold-text">Research Object Identifier Metrics (DataCite)</h2>
+                <h2 class="uppercase bold-text">Event Metrics</h2>
+
             </div>
         </div>
-
 
         <div class="row visualization-container">
 
             <div class="col-md-12">
                 <div class="visualization-panel col-md-12">
-                    <h4>DOIs Minted by Month</h4>
+                    <h4>Events per Month</h4>
 
                     <div id="monthly-chart" class="chart">
                     </div>
@@ -81,46 +99,40 @@
 
             <div class="col-md-4">
                 <div class="visualization-panel col-md-12">
-                    <h4>DOIs by Centre</h4>
+                    <h4>Event Type</h4>
+
+                    <div id="assignment" class="chart">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="visualization-panel col-md-12">
+                    <h4>Ambassador Affiliation</h4>
 
                     <div id="institution-chart" class="chart">
                     </div>
-
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="visualization-panel col-md-12">
-                    <h4>DOI Object Type</h4>
-
-                    <div id="object-type" class="chart">
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="col-md-4">
-                <div class="visualization-panel col-md-12">
-                    <h4>DOIs with ORCID</h4>
+                    <h4>Ambassadors over time</h4>
 
                     <div id="breakdown-chart" class="chart">
                     </div>
                 </div>
-
             </div>
-
         </div>
 
-        <div class="clearfix"></div>
-
-         <div class="row visualization-container">
+        <div class="row visualization-container">
 
             <div class="col-md-12">
                 <div class="visualization-panel col-md-12" style="height: 420px; overflow: hidden">
-                    <h4>DOIs minted by Country</h4>
+                    <h4>Event Distribution</h4>
 
-                    <div id="map" class="col-md-9">
+                    <div id="orcid-map" class="col-md-9">
                     </div>
 
                     <div class="col-md-3">
@@ -133,22 +145,21 @@
 
         </div>
 
+
         <div class="clearfix"></div>
 
         <div class="row visualization-container">
             <div class="col-md-12">
                 <div class="visualization-panel col-md-12" style="height: 500px; overflow-y: scroll">
-                    <h4>Detailed Research Object Metrics</h4>
+                    <h4>Detailed Event Metrics</h4>
 
                     <table class="table dc-data-table">
 
                         <thead>
                         <tr class="header">
                             <th></th>
-                            <th>Data Centre</th>
-                            <th>Key</th>
-                            <th>Value</th>
-
+                            <th>Location</th>
+                            <th>Participants</th>
                         </tr>
                         </thead>
                     </table>
@@ -162,6 +173,6 @@
 {% block end_additional %}
     <script src="{{ STATIC_URL }}assets/js/thor-dash-lib.js" type="text/javascript"></script>
     <script>
-        load_data("/data/api/get_data?type=doi")
+        load_data("/data/api/get_data?type=orcid")
     </script>
 {% endblock %}

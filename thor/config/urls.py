@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     url(r'accounts/', include('django.contrib.auth.urls')),
     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>.+)/$',
         'django.contrib.auth.views.password_reset_confirm', name='password_reset_confirm'),
-    url(r'^$', RedirectView.as_view(url='/dashboard/data/')),
+    url(r'^$', RedirectView.as_view(url='/dashboard/')),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^dashboard/', include('thor.modules.dashboard.urls')),
 

@@ -1,7 +1,7 @@
 /**
  * Created by eamonnmaguire on 26/08/15.
  */
-// (It's CSV, but GitHub Pages only gzip's JSON at the moment.)
+
 function load_data(url) {
     d3.json(url, function (error, result) {
 
@@ -52,9 +52,9 @@ function load_data(url) {
                 return d.data_value;
             }),
 
-            assignment = records.dimension(function (d) {
-                return d.assign_status;
-            }),
+            //assignment = records.dimension(function (d) {
+            //    return d.assign_status;
+            //}),
 
             country = records.dimension(function (d) {
                 return d.country;
@@ -65,16 +65,16 @@ function load_data(url) {
             }),
 
              country_orcids_2 = country_2.group().reduceSum(function (d) {
-                return d.new_orcids;
+                return d.data_value;
             }),
 
             country_orcids = country.group().reduceSum(function (d) {
-                return d.new_orcids;
-            }),
-
-            assignment_group = assignment.group().reduceSum(function (d) {
                 return d.data_value;
             }),
+
+            //assignment_group = assignment.group().reduceSum(function (d) {
+            //    return d.data_value;
+            //}),
 
             object = records.dimension(function (d) {
                 return d.data_key;
@@ -124,7 +124,7 @@ function load_data(url) {
 
         var colorScale = d3.scale.ordinal().range(['#14A085', "#26B99A", "#3B97D3", "#955BA5", "#F29C1F", "#D25627", "#C03A2B"]);
         var map_intensity_colours = ["#feedde", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#8c2d04"];
-        if (type == 'orcid') {
+
 
             var breakdown_chart = dc.barChart('#breakdown-chart').width(300)
                 .height(200)
@@ -143,9 +143,8 @@ function load_data(url) {
             country_details_chart.colors(d3.scale.ordinal().range(map_intensity_colours));
             country_details_chart.xAxis().ticks(5);
 
-
             d3.json("/static/assets/geo/world-countries.json", function (worldcountries) {
-                var chart = dc.geoChoroplethChart("#orcid-map");
+                var chart = dc.geoChoroplethChart("#map");
                 chart.dimension(country)
                     .group(country_orcids)
                     .projection(d3.geo.mercator()
@@ -154,7 +153,7 @@ function load_data(url) {
                     .width(990)
                     .height(390)
 
-                    .colors(d3.scale.quantize().range(map_intensity_colours).domain([0, 5000]))
+                    .colors(d3.scale.quantize().range(map_intensity_colours).domain([0, country_orcids.top(1)[0].value]))
 
                     .colorCalculator(function (d) {
                         return d ? chart.colors()(d) : '#26B99A';
@@ -170,15 +169,15 @@ function load_data(url) {
 
                 dc.renderAll();
             });
-        } else {
-            var breakdown_chart = dc.barChart('#breakdown-chart').width(300)
-                .height(200)
-                .margins({top: 10, right: 20, bottom: 30, left: 60})
-                .dimension(value)
-                .group(value_group)
-                .x(d3.scale.linear().domain([Math.min(minValue, 0), (maxValue + 10)]))
-                .yAxis().ticks(5);
-        }
+        //} else {
+        //    var breakdown_chart = dc.barChart('#breakdown-chart').width(300)
+        //        .height(200)
+        //        .margins({top: 10, right: 20, bottom: 30, left: 60})
+        //        .dimension(value)
+        //        .group(value_group)
+        //        .x(d3.scale.linear().domain([Math.min(minValue, 0), (maxValue + 10)]))
+        //        .yAxis().ticks(5);
+        //}
 
 
         //console.log(cumulative_doi_group);
@@ -239,13 +238,6 @@ function load_data(url) {
             .dimension(object)
             .group(object_group);
         objectTypeChart.colors(colorScale);
-
-        var assignmentChart = dc.pieChart('#assignment');
-        assignmentChart.width(300)
-            .height(190)
-            .dimension(assignment)
-            .group(assignment_group);
-        assignmentChart.colors(colorScale);
 
         var detailTable = dc.dataTable('.dc-data-table');
         detailTable.dimension(date)
