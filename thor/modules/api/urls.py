@@ -3,6 +3,8 @@ from django.contrib import admin
 
 urlpatterns = patterns('thor.modules.api',
     # Examples:
-    url(r'^get_data', 'views.get_data', name='home')
+    url(r'^data', 'views.get_data', name='home'),
+    url(r'^events', 'views.get_events', name='events')
+
 
 )

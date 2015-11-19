@@ -61,7 +61,7 @@ var dashboard = (function () {
         rptLine
             .width(options.width)
             .height(options.height)
-            .margins({top: 10, right: 20, bottom: 30, left: 20})
+            .margins({top: 10, right: 30, bottom: 30, left: 30})
             .dimension(dimension)
             .x(d3.time.scale().domain(domain))
             .xUnits(d3.time.months)
@@ -74,6 +74,14 @@ var dashboard = (function () {
                 .brushOn(false);
         }
     };
+
+    var load_event_details = function(id) {
+        d3.json('/api/events?type=event&id=' + id, function(error, event_data) {
+
+            var data = event_data.data;
+            alert(data.id + ' ' + data.name + ' ' +  data.description);
+        })
+    }
 
     var colorScale = d3.scale.ordinal().range(['#14A085', "#26B99A", "#3B97D3", "#955BA5", "#F29C1F", "#D25627", "#C03A2B"]);
     var map_intensity_colours = ["#feedde", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#8c2d04"];
@@ -375,7 +383,7 @@ var dashboard = (function () {
                         {'group': liveIds, 'label': 'Live ORCIDs IDs', 'type': 'line', 'colors': ['#16a085']},
                         {'group': ids_verified, 'label': 'Verified ORCIDs', 'type': 'line', 'colors': ['#2ecc71']}
                     ],
-                    {'width': 980, 'height': 200, 'legend': true});
+                    {'width': 940, 'height': 200, 'legend': true});
 
                 var options = {'width': 280, 'height': 200};
                 create_composite_chart('works-chart', date_works, domain,
@@ -392,7 +400,7 @@ var dashboard = (function () {
                         'type': 'line',
                         'colors': ['#16a085']
                     }],
-                    options);
+                    {'width': 380, 'height': 200});
 
 
                 create_composite_chart('verified-ids-chart', date_ids_verified, domain,
@@ -401,7 +409,7 @@ var dashboard = (function () {
                         'type': 'line',
                         'colors': ['#2ecc71']
                     }],
-                    options);
+                    {'width': 380, 'height': 200});
 
                 create_composite_chart('works-dois-chart', date_worksdois, domain,
                     [{'group': works_with_dois_month, 'type': 'bar', 'colors': ['#2980b9']}, {
@@ -456,9 +464,93 @@ var dashboard = (function () {
                         d3.select(divs[div] + " svg g").attr("transform", 'translate(20, 0)');
                     }
 
-                })
+                });
                 dc.renderAll();
             });
+        },
+
+        render_event_calendar: function (placement, data_url, options) {
+
+
+            var cellSize = options.cellSize;
+
+
+            var percent = d3.format(".1%"),
+                format = d3.time.format("%Y-%m-%d");
+
+            var svg = d3.select(placement).selectAll("svg")
+                .data([2015])
+                .enter().append("svg")
+                .attr("width", options.width)
+                .attr("height", options.height)
+                .attr("class", "RdYlGn")
+                .append("g")
+                .attr("transform", "translate(20,5)");
+
+            var rect = svg.selectAll(".day")
+                .data(function (d) {
+                    return d3.time.days(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+                })
+                .enter().append("rect")
+                .attr("id", function (d) {
+                    return "d" + format(d)
+                })
+                .attr("class", "day")
+                .attr("width", cellSize)
+                .attr("height", cellSize)
+                .attr("x", function (d) {
+                    return d3.time.weekOfYear(d) * cellSize;
+                })
+                .attr("y", function (d) {
+                    return d.getDay() * cellSize;
+                })
+                .datum(format);
+
+            svg.selectAll(".month")
+                .data(function (d) {
+                    return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+                })
+                .enter().append("path")
+                .attr("class", "month")
+                .attr("d", monthPath);
+
+
+            var type_color_scale = d3.scale.ordinal().range(['#d25627', '#3b97d3', '#26b99a', '#7f8c8d']);
+            var opacity_color_scale = d3.scale.quantile().range([0.3, 0.5, 0.7, 1]);
+            d3.json(data_url, function (error, data) {
+                var event_data = data.data;
+
+                opacity_color_scale.domain(d3.extent(event_data, function (d) {
+                    return d.participants;
+                }));
+
+                for (var idx in event_data) {
+                    var event = event_data[idx];
+                    d3.select("#d" + format(new Date(event.date))).datum(event)
+                        .style("fill", function (d) {
+                            return type_color_scale(d.type)
+                        })
+                        .style("opacity", function (d) {
+                            return opacity_color_scale(+d.participants)
+                        })
+                        .style("cursor", 'pointer')
+                        .on("click", function (d) {
+                            load_event_details(d.id);
+                        })
+                }
+            });
+
+            function monthPath(t0) {
+                var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
+                    d0 = t0.getDay(), w0 = d3.time.weekOfYear(t0),
+                    d1 = t1.getDay(), w1 = d3.time.weekOfYear(t1);
+                return "M" + (w0 + 1) * cellSize + "," + d0 * cellSize
+                    + "H" + w0 * cellSize + "V" + 7 * cellSize
+                    + "H" + w1 * cellSize + "V" + (d1 + 1) * cellSize
+                    + "H" + (w1 + 1) * cellSize + "V" + 0
+                    + "H" + (w0 + 1) * cellSize + "Z";
+            }
+
         }
     }
 })();

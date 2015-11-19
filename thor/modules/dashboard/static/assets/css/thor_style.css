@@ -379,5 +379,21 @@ background-color: #35495E;
 
 .dc-chart g.row text {
     font-size: 11px;
+}
 
+.dc-table-row {
+    background-color: #35495E;
+    border: 8px solid #2C3E50;
+    border-radius: 4px;
+}
+
+.day {
+  fill: white;
+  stroke: #bdc3c7;
+}
+
+.month {
+  fill: none;
+  stroke: #2c3e50;
+  stroke-width: 2px;
 }

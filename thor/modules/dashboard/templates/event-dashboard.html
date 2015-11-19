@@ -50,7 +50,7 @@
     {# sidebar #}
     <div id="dashboard-menu" class="col-md-1" style="min-width: 150px; background-color: #2C3E50; padding:0"
          align="center">
-        <img src="{{ STATIC_URL }}assets/img/logo-normal.svg" width="80%" align="center"
+        <img src="{{ STATIC_URL }}assets/img/logo-original.svg" width="80%" align="center"
              style="padding-left: 10px; padding-top: 10px">
 
         <ul class="menu">
@@ -77,95 +77,23 @@
         <div class="row col-md-12" style="padding-top: 1em; padding-bottom: 1em">
 
             <div class="col-md-12">
-                <h2 class="uppercase bold-text">Event Metrics</h2>
+                <h2 class="uppercase bold-text">Event Metrics <a href="/admin/dashboard/event/add/" class="mui-btn mui-btn-default pull-right"><span class="fa fa-plus-o"></span> Add New Event</a></h2>
 
             </div>
         </div>
 
-        <div class="row visualization-container">
+         <div class="row visualization-container">
 
             <div class="col-md-12">
-                <div class="visualization-panel col-md-12">
-                    <h4>Events per Month</h4>
-
-                    <div id="monthly-chart" class="chart">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row visualization-container">
-
-            <div class="col-md-4">
-                <div class="visualization-panel col-md-12">
-                    <h4>Event Type</h4>
-
-                    <div id="assignment" class="chart">
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-4">
-                <div class="visualization-panel col-md-12">
-                    <h4>Ambassador Affiliation</h4>
-
-                    <div id="institution-chart" class="chart">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="visualization-panel col-md-12">
-                    <h4>Ambassadors over time</h4>
-
-                    <div id="breakdown-chart" class="chart">
+                <div class="visualization-panel col-md-12" style="background-color: white">
+                    <h4>Events in 2015</h4>
+                    <div id="events-overview-chart" class="chart">
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row visualization-container">
 
-            <div class="col-md-12">
-                <div class="visualization-panel col-md-12" style="height: 420px; overflow: hidden">
-                    <h4>Event Distribution</h4>
-
-                    <div id="orcid-map" class="col-md-9">
-                    </div>
-
-                    <div class="col-md-3">
-                        <p>Breakdown</p>
-                        <div id="country-details">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="clearfix"></div>
-
-        <div class="row visualization-container">
-            <div class="col-md-12">
-                <div class="visualization-panel col-md-12" style="height: 500px; overflow-y: scroll">
-                    <h4>Detailed Event Metrics</h4>
-
-                    <table class="table dc-data-table">
-
-                        <thead>
-                        <tr class="header">
-                            <th></th>
-                            <th>Location</th>
-                            <th>Participants</th>
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div>
 
     </div>
 {% endblock %}
@@ -173,6 +101,6 @@
 {% block end_additional %}
     <script src="{{ STATIC_URL }}assets/js/thor-dash-lib.js" type="text/javascript"></script>
     <script>
-        load_data("/data/api/get_data?type=orcid")
+        dashboard.render_event_calendar("#events-overview-chart","/api/events?type=event_calendar", {'width': 950, 'height': 130, 'cellSize': 17})
     </script>
 {% endblock %}
