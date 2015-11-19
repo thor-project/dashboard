@@ -26,6 +26,55 @@ var dashboard = (function () {
         });
     };
 
+    /**
+     * Creates a composition chart given
+     * @param placement - id of the div to insert the plot
+     * @param dimension - e.g. the date dimension.
+     * @param domain - array defining the range [min_date, max_date]
+     * @param groups - array of dictionaries defining [{'group': group_object, 'type': 'bar' or 'line', 'colors': ['red']}]
+     * @param options - dictionary defining {'width': X, 'height': Y}
+     */
+    var create_composite_chart = function (placement, dimension, domain, groups, options) {
+        var rptLine = dc.compositeChart(document.getElementById(placement));
+        var composition = [];
+
+        for (var group in groups) {
+            if (groups[group]['type'] === 'line') {
+                composition.push(dc.lineChart(rptLine)
+                        .dimension(dimension)
+                        .group(groups[group]['group'], groups[group]['label'])
+                        .colors(groups[group]['colors'])
+                        .x(d3.time.scale().domain(domain))
+                        .xUnits(d3.time.months)
+                );
+            } else if (groups[group]['type'] === 'bar') {
+                composition.push(dc.barChart(rptLine)
+                        .dimension(dimension)
+                        .group(groups[group]['group'], groups[group]['label'])
+                        .colors(groups[group]['colors'])
+                        .x(d3.time.scale().domain(domain))
+                        .xUnits(d3.time.months)
+                );
+            }
+        }
+
+        rptLine
+            .width(options.width)
+            .height(options.height)
+            .margins({top: 10, right: 20, bottom: 30, left: 20})
+            .dimension(dimension)
+            .x(d3.time.scale().domain(domain))
+            .xUnits(d3.time.months)
+            .renderHorizontalGridLines(true)
+            .renderVerticalGridLines(true)
+            .compose(composition)
+
+        if (options.legend) {
+            rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5))
+                .brushOn(false);
+        }
+    };
+
     var colorScale = d3.scale.ordinal().range(['#14A085', "#26B99A", "#3B97D3", "#955BA5", "#F29C1F", "#D25627", "#C03A2B"]);
     var map_intensity_colours = ["#feedde", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#8c2d04"];
 
@@ -135,9 +184,9 @@ var dashboard = (function () {
                     chart.dimension(country)
                         .group(country_dois)
                         .projection(d3.geo.mercator()
-                            .scale(130)
-                            .translate([400, 220]))
-                        .width(990)
+                            .scale(120)
+                            .translate([350, 220]))
+                        .width(700)
                         .height(390)
 
                         .colors(d3.scale.quantize().range(map_intensity_colours).domain([0, country_dois.top(1)[0].value]))
@@ -157,9 +206,9 @@ var dashboard = (function () {
                     dc.renderAll();
                 });
 
-
+                // we don't use the create_composite_chart method since we need to access custom values for the
+                // cumulative total group.
                 var rptLine = dc.compositeChart(document.getElementById("monthly-chart"));
-
                 var cumulative_lc = dc.lineChart(rptLine)
                     .dimension(date)
                     .group(cumulative_total_group)
@@ -199,12 +248,13 @@ var dashboard = (function () {
                         cumulative_lc, bar_chart
                     ]);
 
+
                 var doiCentreChart = dc.rowChart('#institution-chart');
-                doiCentreChart.width(300)
-                    .height(400)
+                doiCentreChart.width(700)
+                    .height(300)
                     .dimension(institution)
                     .group(institution_group);
-                doiCentreChart.colors(colorScale);
+                doiCentreChart.colors(['#2980BA']);
 
                 doiCentreChart.xAxis().ticks(5);
                 doiCentreChart.elasticX(true);
@@ -293,7 +343,7 @@ var dashboard = (function () {
                         return d.worksWithDois_month;
                     }),
 
-                    unique_dois= date_unique_dois.group().reduceSum(function (d) {
+                    unique_dois = date_unique_dois.group().reduceSum(function (d) {
                         return d.uniqueDois;
                     }),
 
@@ -316,99 +366,59 @@ var dashboard = (function () {
                 maxDate.setDate(maxDate.getDate() + 15);
 
 
-                //composite chart
-                var rptLine = dc.compositeChart(document.getElementById("monthly-chart"));
+                var domain = [minDate, maxDate];
 
-                rptLine
-                    .width(980)
-                    .height(200)
+                create_composite_chart('monthly-chart', date_ids_live, domain,
+                    [{'group': works, 'label': 'Works', 'type': 'line', 'colors': ['#9b59b6']},
+                        {'group': unique_dois, 'label': 'Unique DOIs', 'type': 'line', 'colors': ['#4aa3df']},
+                        {'group': works_with_dois, 'label': 'Works with DOIs', 'type': 'line', 'colors': ['#2980b9']},
+                        {'group': liveIds, 'label': 'Live ORCIDs IDs', 'type': 'line', 'colors': ['#16a085']},
+                        {'group': ids_verified, 'label': 'Verified ORCIDs', 'type': 'line', 'colors': ['#2ecc71']}
+                    ],
+                    {'width': 980, 'height': 200, 'legend': true});
 
-                    .margins({top: 10, right: 50, bottom: 30, left: 60})
-                    .dimension(date_ids_live)
-                    .x(d3.time.scale().domain([minDate, maxDate]))
-                    .xUnits(d3.time.months)
-                    .renderHorizontalGridLines(true)
-                    .renderVerticalGridLines(true)
-                    .legend(dc.legend().x(60).y(10).itemHeight(13).gap(5))
-                    .brushOn(false)
-                    .compose([
-                        dc.lineChart(rptLine)
-                            .dimension(date_works)
-                            .colors(['#9b59b6'])
-                            .group(works, "Works")
-                            .x(d3.time.scale().domain([minDate, maxDate]))
-                            .xUnits(d3.time.months),
-                        dc.lineChart(rptLine)
-                            .dimension(date_ids_live)
-                            .group(unique_dois, "Unique DOIs")
-                            .colors(['#4aa3df'])
-                            .x(d3.time.scale().domain([minDate, maxDate]))
-                            .xUnits(d3.time.months),
+                var options = {'width': 280, 'height': 200};
+                create_composite_chart('works-chart', date_works, domain,
+                    [{'group': works_month, 'type': 'bar', 'colors': ['#9b59b6']}, {
+                        'group': works,
+                        'type': 'line',
+                        'colors': ['#9b59b6']
+                    }],
+                    options);
 
-                        dc.lineChart(rptLine)
-                            .dimension(date_ids_live)
-                            .group(works_with_dois, "Works with DOIs")
-                            .colors(['#2980b9'])
-                            .x(d3.time.scale().domain([minDate, maxDate]))
-                            .xUnits(d3.time.months),
-                        dc.lineChart(rptLine)
-                            .dimension(date_ids_live)
-                            .group(liveIds, "Live ORCIDs IDs")
-                            .colors(['#16a085'])
-                            .x(d3.time.scale().domain([minDate, maxDate]))
-                            .xUnits(d3.time.months),
-
-                        dc.lineChart(rptLine)
-                            .dimension(date_ids_live)
-                            .colors(["#2ecc71"])
-                            .group(ids_verified, "Verified ORCIDs")
-                            .x(d3.time.scale().domain([minDate, maxDate]))
-                            .xUnits(d3.time.months)
-                            .dotRadius(5)
-
-                    ]);
+                create_composite_chart('liveids-chart', date_ids_live, domain,
+                    [{'group': liveIds_month, 'type': 'bar', 'colors': ['#16a085']}, {
+                        'group': liveIds,
+                        'type': 'line',
+                        'colors': ['#16a085']
+                    }],
+                    options);
 
 
-                dc.barChart("#works-chart").width(300)
-                    .height(200)
-                    .dimension(date_works)
-                    .group(works_month)
-                    .x(d3.time.scale().domain([minDate, maxDate]))
-                    .renderHorizontalGridLines(true)
-                    .xUnits(d3.time.months);
+                create_composite_chart('verified-ids-chart', date_ids_verified, domain,
+                    [{'group': ids_verified_month, 'type': 'bar', 'colors': ['#2ecc71']}, {
+                        'group': ids_verified,
+                        'type': 'line',
+                        'colors': ['#2ecc71']
+                    }],
+                    options);
 
-                dc.barChart("#liveids-chart").width(300)
-                    .height(200)
-                    .dimension(date_ids_live)
-                    .group(liveIds_month)
-                    .x(d3.time.scale().domain([minDate, maxDate]))
-                    .renderHorizontalGridLines(true)
-                    .xUnits(d3.time.months);
+                create_composite_chart('works-dois-chart', date_worksdois, domain,
+                    [{'group': works_with_dois_month, 'type': 'bar', 'colors': ['#2980b9']}, {
+                        'group': works_with_dois,
+                        'type': 'line',
+                        'colors': ['#2980b9']
+                    }],
+                    options);
 
-                dc.barChart("#verified-ids-chart").width(300)
-                    .height(200)
-                    .dimension(date_ids_verified)
-                    .group(ids_verified_month)
-                    .x(d3.time.scale().domain([minDate, maxDate]))
-                    .renderHorizontalGridLines(true)
-                    .xUnits(d3.time.months);
+                create_composite_chart('unique-dois-chart', date_unique_dois, domain,
+                    [{'group': unique_dois_month, 'type': 'bar', 'colors': ['#4aa3df']}, {
+                        'group': unique_dois,
+                        'type': 'line',
+                        'colors': ['#4aa3df']
+                    }],
+                    options);
 
-
-                dc.barChart("#works-dois-chart").width(300)
-                    .height(200)
-                    .dimension(date_worksdois)
-                    .group(works_with_dois_month)
-                    .x(d3.time.scale().domain([minDate, maxDate]))
-                    .renderHorizontalGridLines(true)
-                    .xUnits(d3.time.months);
-
-                dc.barChart("#unique-dois-chart").width(300)
-                    .height(200)
-                    .dimension(date_unique_dois)
-                    .group(unique_dois_month)
-                    .x(d3.time.scale().domain([minDate, maxDate]))
-                    .renderHorizontalGridLines(true)
-                    .xUnits(d3.time.months);
 
                 var detailTable = dc.dataTable('.dc-data-table');
                 detailTable.dimension(date_works)

@@ -6,7 +6,7 @@ body {
     margin: 0;
     color: #2C3E50;
     height: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 a {
@@ -283,7 +283,8 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
 
 .axis path, .axis line {
     fill: none;
-    stroke: white !important;
+    stroke: #35495E !important;
+    stroke-width: 2;
     shape-rendering: crispEdges;
 }
 
@@ -366,4 +367,17 @@ background-color: #35495E;
     stroke-width: 1;
     stroke: white;
     fill-opacity: 1;
+}
+
+.grid-line line{
+    fill: none;
+    stroke: #35495E !important;
+    stroke-width: 2;
+    opacity: 1 !important;
+    shape-rendering: crispEdges;
+}
+
+.dc-chart g.row text {
+    font-size: 11px;
+
 }
