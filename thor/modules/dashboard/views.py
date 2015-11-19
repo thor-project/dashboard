@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 
 # Create your views here.
 from django.template import RequestContext
+from thor.modules.dashboard.models import Event
 
 
 def home(request):
@@ -21,4 +22,5 @@ def researcher_dashboard(request):
 
 
 def event_dashboard(request):
-    return render_to_response("event-dashboard.html", context_instance=RequestContext(request))
+    events = Event.objects.all()
+    return render_to_response("event-dashboard.html", {'events': events}, context_instance=RequestContext(request))

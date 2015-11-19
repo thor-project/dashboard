@@ -75,11 +75,11 @@ var dashboard = (function () {
         }
     };
 
-    var load_event_details = function(id) {
-        d3.json('/api/events?type=event&id=' + id, function(error, event_data) {
+    var load_event_details = function (id) {
+        d3.json('/api/events?type=event&id=' + id, function (error, event_data) {
 
             var data = event_data.data;
-            alert(data.id + ' ' + data.name + ' ' +  data.description);
+            alert(data.id + ' ' + data.name + ' ' + data.description);
         })
     }
 
@@ -378,12 +378,12 @@ var dashboard = (function () {
 
                 create_composite_chart('monthly-chart', date_ids_live, domain,
                     [{'group': works, 'label': 'Works', 'type': 'line', 'colors': ['#9b59b6']},
-                        {'group': unique_dois, 'label': 'Unique DOIs', 'type': 'line', 'colors': ['#4aa3df']},
-                        {'group': works_with_dois, 'label': 'Works with DOIs', 'type': 'line', 'colors': ['#2980b9']},
-                        {'group': liveIds, 'label': 'Live ORCIDs IDs', 'type': 'line', 'colors': ['#16a085']},
-                        {'group': ids_verified, 'label': 'Verified ORCIDs', 'type': 'line', 'colors': ['#2ecc71']}
-                    ],
-                    {'width': 940, 'height': 200, 'legend': true});
+                     {'group': unique_dois, 'label': 'Unique DOIs', 'type': 'line', 'colors': ['#4aa3df']},
+                     {'group': works_with_dois, 'label': 'Works with DOIs', 'type': 'line', 'colors': ['#2980b9']},
+                     {'group': liveIds, 'label': 'Live ORCIDs IDs', 'type': 'line', 'colors': ['#16a085']},
+                     {'group': ids_verified, 'label': 'Verified ORCIDs', 'type': 'line', 'colors': ['#2ecc71']}
+                    ], {'width': 940, 'height': 200, 'legend': true}
+                );
 
                 var options = {'width': 280, 'height': 200};
                 create_composite_chart('works-chart', date_works, domain,
@@ -474,7 +474,6 @@ var dashboard = (function () {
 
             var cellSize = options.cellSize;
 
-
             var percent = d3.format(".1%"),
                 format = d3.time.format("%Y-%m-%d");
 
@@ -516,13 +515,15 @@ var dashboard = (function () {
 
 
             var type_color_scale = d3.scale.ordinal().range(['#d25627', '#3b97d3', '#26b99a', '#7f8c8d']);
-            var opacity_color_scale = d3.scale.quantile().range([0.3, 0.5, 0.7, 1]);
+            var opacity_color_scale = d3.scale.quantile().range([0.2, 0.4, 0.8, 1]);
             d3.json(data_url, function (error, data) {
                 var event_data = data.data;
 
                 opacity_color_scale.domain(d3.extent(event_data, function (d) {
                     return d.participants;
                 }));
+
+                var event_types = {};
 
                 for (var idx in event_data) {
                     var event = event_data[idx];
@@ -536,8 +537,47 @@ var dashboard = (function () {
                         .style("cursor", 'pointer')
                         .on("click", function (d) {
                             load_event_details(d.id);
-                        })
+                        }).on("mouseover", function (d) {
+                            d3.select("#l" + format(new Date(d.date))).classed("hover", true)
+                        }).on("mouseout", function (d) {
+                            d3.select("#l" + format(new Date(d.date))).classed("hover", false)
+                        });
+
+                    var tr = d3.select("#event_list").append("tr").attr('id', "l" + format(new Date(event.date)));
+                    tr.append("td").text(event.date);
+                    tr.append("td").text(event.name);
+                    tr.append("td").text(event.type).style('color', type_color_scale(event.type));
+                    tr.append("td").text(event.country);
+                    tr.append("td").text(event.participant_count);
+
+                    tr.append("td").selectAll("span").data(event.participant_type).enter().append("span").attr("class", "chip").text(function (d) {
+                        return d;
+                    });
+
+                    if (!(event.type in event_types)) {
+                        event_types[event.type] = {"name": event.type, "value": 0}
+                    }
+                    event_types[event.type]["value"] += 1;
                 }
+
+                var values = $.map(event_types, function (value, key) {
+                    return value
+                });
+
+
+                var table = d3.select("#events-legend").append("table").attr("class", "mui-table").style("margin-top", "60px");
+
+                var tr = table.selectAll("tr").data(values).enter().append("tr");
+                tr.append("td").text(function (d) {
+                    return d.name;
+                }).style("color", function (d) {
+                    return type_color_scale(d.name);
+                });
+
+                tr.append("td").text(function (d) {
+                    return d.value;
+                })
+
             });
 
             function monthPath(t0) {

@@ -72,27 +72,59 @@
         </div>
     </div>
 
-     {# main content #}
+    {# main content #}
     <div id="dashboard-content" style="padding-left: 177px;">
         <div class="row col-md-12" style="padding-top: 1em; padding-bottom: 1em">
 
             <div class="col-md-12">
-                <h2 class="uppercase bold-text">Event Metrics <a href="/admin/dashboard/event/add/" class="mui-btn mui-btn-default pull-right"><span class="fa fa-plus-o"></span> Add New Event</a></h2>
+                <h2 class="uppercase bold-text">Event Metrics <a href="/admin/dashboard/event/add/"
+                                                                 class="mui-btn mui-btn-default pull-right"><span
+                        class="fa fa-plus-o"></span> Add New Event</a></h2>
 
             </div>
         </div>
 
-         <div class="row visualization-container">
+        <div class="row visualization-container">
 
             <div class="col-md-12">
-                <div class="visualization-panel col-md-12" style="background-color: white">
+                <div class="visualization-panel col-md-10" style="background-color: white">
                     <h4>Events in 2015</h4>
+
                     <div id="events-overview-chart" class="chart">
+                    </div>
+                </div>
+
+                 <div class="col-md-2">
+                    <div id="events-legend">
                     </div>
                 </div>
             </div>
         </div>
 
+
+        <div class="row visualization-container">
+
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <table class="mui-table">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Country</th>
+                            <th>Participant Count</th>
+                            <th>Participant Type</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="event_list">
+{#                        will be populated from the javascript call#}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
 
     </div>
@@ -101,6 +133,10 @@
 {% block end_additional %}
     <script src="{{ STATIC_URL }}assets/js/thor-dash-lib.js" type="text/javascript"></script>
     <script>
-        dashboard.render_event_calendar("#events-overview-chart","/api/events?type=event_calendar", {'width': 950, 'height': 130, 'cellSize': 17})
+        dashboard.render_event_calendar("#events-overview-chart", "/api/events?type=event_calendar", {
+            'width': 950,
+            'height': 130,
+            'cellSize': 15
+        })
     </script>
 {% endblock %}

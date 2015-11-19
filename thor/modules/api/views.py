@@ -1,6 +1,7 @@
 import json
 import os
 from django.http import HttpResponse
+from thor.modules.dashboard.models import Event
 
 __author__ = 'eamonnmaguire'
 
@@ -27,17 +28,23 @@ def get_events(request):
     :param request:
     :return:
     """
+
     type = request.GET.get('type', 'event_calendar')
 
     if type == 'event_calendar':
-        json_contents = [{'id': 0, 'date': '2015-05-08', 'type': 'workshop', 'participants': 30},
-                         {'id': 1, 'date': '2015-05-10', 'type': 'webinar', 'participants': 30},
-                         {'id': 2, 'date': '2015-05-11', 'type': 'conference', 'participants': 2},
-                         {'id': 2, 'date': '2015-05-17', 'type': 'webinar', 'participants': 2}]
+
+        events = Event.objects.all().order_by("-start_date")
+        json_contents = []
+        for event in events:
+            json_contents.append(event.to_dict())
 
     elif type == 'event':
         id= request.GET.get('id', 0)
-        json_contents = {'id': id, 'participants': 30, 'country': 'United Kingdom', 'name': 'EMBL Teaching', 'description': 'something interesting here.'}
+        event = Event.objects.get(id=id)
+        if event:
+            json_contents = event.to_dict()
+        else:
+            json_contents = {}
 
     contents = {"type": type, "data": json_contents}
 

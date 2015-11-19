@@ -397,3 +397,20 @@ background-color: #35495E;
   stroke: #2c3e50;
   stroke-width: 2px;
 }
+
+
+.chip {
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: #e4e4e4;
+}
+
+tr.hover {
+    background-color: #ecf0f1;
+}
