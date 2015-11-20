@@ -77,10 +77,13 @@
         <div class="row col-md-12" style="padding-top: 1em; padding-bottom: 1em">
 
             <div class="col-md-12">
-                <h2 class="uppercase bold-text">Event Metrics <a href="/admin/dashboard/event/add/"
-                                                                 class="mui-btn mui-btn-default pull-right"><span
-                        class="fa fa-plus-o"></span> Add New Event</a></h2>
-
+                <h2 class="uppercase bold-text">THOR Events
+                    {% if user.is_superuser %}
+                    <a href="/admin/dashboard/event/add/" class="mui-btn mui-btn-default pull-right">
+                        <span class="fa fa-plus-o"></span> Add New Event
+                    </a>
+                    {% endif %}
+                </h2>
             </div>
         </div>
 
@@ -88,7 +91,7 @@
 
             <div class="col-md-12">
                 <div class="visualization-panel col-md-10" style="background-color: white">
-                    <h4>Events in 2015</h4>
+                    <h4>2015 Events</h4>
 
                     <div id="events-overview-chart" class="chart">
                     </div>

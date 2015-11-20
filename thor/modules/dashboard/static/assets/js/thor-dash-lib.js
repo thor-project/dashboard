@@ -79,9 +79,14 @@ var dashboard = (function () {
         d3.json('/api/events?type=event&id=' + id, function (error, event_data) {
 
             var data = event_data.data;
-            alert(data.id + ' ' + data.name + ' ' + data.description);
+
+            var div = d3.select('body').append("div").attr('id', 'event-detail-modal').attr("class", "modal").style({'width': '500px', 'height': '500px', 'margin': '100px auto', 'background-color': 'white'});
+            div.append("h4").text(data.name);
+            div.append("p").text(data.description);
+            // show modal
+            mui.overlay('on', document.getElementById('event-detail-modal'));
         })
-    }
+    };
 
     var colorScale = d3.scale.ordinal().range(['#14A085', "#26B99A", "#3B97D3", "#955BA5", "#F29C1F", "#D25627", "#C03A2B"]);
     var map_intensity_colours = ["#feedde", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#8c2d04"];
@@ -378,10 +383,10 @@ var dashboard = (function () {
 
                 create_composite_chart('monthly-chart', date_ids_live, domain,
                     [{'group': works, 'label': 'Works', 'type': 'line', 'colors': ['#9b59b6']},
-                     {'group': unique_dois, 'label': 'Unique DOIs', 'type': 'line', 'colors': ['#4aa3df']},
-                     {'group': works_with_dois, 'label': 'Works with DOIs', 'type': 'line', 'colors': ['#2980b9']},
-                     {'group': liveIds, 'label': 'Live ORCIDs IDs', 'type': 'line', 'colors': ['#16a085']},
-                     {'group': ids_verified, 'label': 'Verified ORCIDs', 'type': 'line', 'colors': ['#2ecc71']}
+                        {'group': unique_dois, 'label': 'Unique DOIs', 'type': 'line', 'colors': ['#4aa3df']},
+                        {'group': works_with_dois, 'label': 'Works with DOIs', 'type': 'line', 'colors': ['#2980b9']},
+                        {'group': liveIds, 'label': 'Live ORCIDs IDs', 'type': 'line', 'colors': ['#16a085']},
+                        {'group': ids_verified, 'label': 'Verified ORCIDs', 'type': 'line', 'colors': ['#2ecc71']}
                     ], {'width': 940, 'height': 200, 'legend': true}
                 );
 
@@ -475,7 +480,8 @@ var dashboard = (function () {
             var cellSize = options.cellSize;
 
             var percent = d3.format(".1%"),
-                format = d3.time.format("%Y-%m-%d");
+                format = d3.time.format("%Y-%m-%d"),
+                format_month = d3.time.format("%b");
 
             var svg = d3.select(placement).selectAll("svg")
                 .data([2015])
@@ -484,7 +490,7 @@ var dashboard = (function () {
                 .attr("height", options.height)
                 .attr("class", "RdYlGn")
                 .append("g")
-                .attr("transform", "translate(20,5)");
+                .attr("transform", "translate(20,20)");
 
             var rect = svg.selectAll(".day")
                 .data(function (d) {
@@ -513,9 +519,21 @@ var dashboard = (function () {
                 .attr("class", "month")
                 .attr("d", monthPath);
 
+            svg.selectAll("text.month-text").data(function(d) {
+                return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+            }).enter().append("text").attr("class", "month-text").text(function(d) {
+                return format_month(d)
+            })
+                .attr('x', function(d) {
+                    var w0 = d3.time.weekOfYear(d);
+                    return w0  * (cellSize);
+                })
+                .attr('y', -5);
+
 
             var type_color_scale = d3.scale.ordinal().range(['#d25627', '#3b97d3', '#26b99a', '#7f8c8d']);
             var opacity_color_scale = d3.scale.quantile().range([0.2, 0.4, 0.8, 1]);
+
             d3.json(data_url, function (error, data) {
                 var event_data = data.data;
 
@@ -530,6 +548,8 @@ var dashboard = (function () {
                     d3.select("#d" + format(new Date(event.date))).datum(event)
                         .style("fill", function (d) {
                             return type_color_scale(d.type)
+                        }).attr('class', function (d) {
+                            return d.type + ' cal-event';
                         })
                         .style("opacity", function (d) {
                             return opacity_color_scale(+d.participants)
@@ -543,10 +563,15 @@ var dashboard = (function () {
                             d3.select("#l" + format(new Date(d.date))).classed("hover", false)
                         });
 
-                    var tr = d3.select("#event_list").append("tr").attr('id', "l" + format(new Date(event.date)));
+                    var tr = d3.select("#event_list").append("tr").attr('id', "l" + format(new Date(event.date))).attr("class", function (d) {
+                        return event.type + " cal-event";
+                    });
                     tr.append("td").text(event.date);
                     tr.append("td").text(event.name);
-                    tr.append("td").text(event.type).style('color', type_color_scale(event.type));
+                    tr.append("td").append("span").text(event.type).attr("class", "chip").style({
+                        'background-color': type_color_scale(event.type),
+                        'color': 'white'
+                    });
                     tr.append("td").text(event.country);
                     tr.append("td").text(event.participant_count);
 
@@ -565,18 +590,24 @@ var dashboard = (function () {
                 });
 
 
-                var table = d3.select("#events-legend").append("table").attr("class", "mui-table").style("margin-top", "60px");
+                var div = d3.select("#events-legend").append("div").style("margin-top", "60px");
 
-                var tr = table.selectAll("tr").data(values).enter().append("tr");
-                tr.append("td").text(function (d) {
-                    return d.name;
-                }).style("color", function (d) {
+                var type_div = div.selectAll("div").data(values).enter().append("div").style("margin-bottom", "2px");
+
+                type_div.append("span").text(function (d) {
+                    return d.value + " " + d.name;
+                }).attr("class", "chip").style("background-color", function (d) {
                     return type_color_scale(d.name);
-                });
+                }).style({'cursor': 'pointer', "color": "white"})
 
-                tr.append("td").text(function (d) {
-                    return d.value;
-                })
+                    .on("mouseover", function (d) {
+                        d3.selectAll(".cal-event").classed("hidden", true);
+                        d3.selectAll("." + d.name).classed("hidden", false);
+                    })
+                    .on("mouseout", function (d) {
+                        d3.selectAll(".cal-event").classed("hidden", false);
+                    });
+
 
             });
 
