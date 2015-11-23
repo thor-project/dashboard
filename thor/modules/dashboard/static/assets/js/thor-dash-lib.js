@@ -80,7 +80,12 @@ var dashboard = (function () {
 
             var data = event_data.data;
 
-            var div = d3.select('body').append("div").attr('id', 'event-detail-modal').attr("class", "modal").style({'width': '500px', 'height': '500px', 'margin': '100px auto', 'background-color': 'white'});
+            var div = d3.select('body').append("div").attr('id', 'event-detail-modal').attr("class", "modal").style({
+                'width': '500px',
+                'height': '500px',
+                'margin': '100px auto',
+                'background-color': 'white'
+            });
             div.append("h4").text(data.name);
             div.append("p").text(data.description);
             // show modal
@@ -92,6 +97,125 @@ var dashboard = (function () {
     var map_intensity_colours = ["#feedde", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#8c2d04"];
 
     return {
+
+        render_general_metrics: function (data_url) {
+            d3.json(data_url, function (error, result) {
+
+
+                var doi_data = result.data;
+
+                process_data(doi_data);
+
+                var records = crossfilter(doi_data),
+                    date = records.dimension(function (d) {
+                        return d.date;
+                    }),
+
+                    value = records.dimension(function (d) {
+                        return d.dois;
+                    }),
+
+                    orcids = records.dimension(function (d) {
+                        return d.orcids;
+                    }),
+
+                    value_group = date.group().reduceSum(function (d) {
+                        return d.dois;
+                    }),
+
+                    orcid_month = date.group().reduceSum(function (d) {
+                        return d.month_orcids;
+                    }),
+                    orcid = date.group().reduceSum(function (d) {
+                        return d.orcids;
+                    });
+
+                // we don't use the create_composite_chart method since we need to access custom values for the
+                // cumulative total group.
+                var rptLine = dc.compositeChart(document.getElementById("overview-chart"));
+                var minValue = value.bottom(1)[0].dois;
+
+                var minDate = new Date(date.bottom(1)[0].date);
+                var maxDate = new Date(date.top(1)[0].date);
+                minDate.setDate(minDate.getDate() - 15);
+                maxDate.setDate(maxDate.getDate() + 15);
+
+
+                var top_value = 0;
+                var cumulative_total_group = {
+                    all: function () {
+                        var cumulate = 0;
+                        var g = [];
+                        value_group.all().forEach(function (d, i) {
+                            cumulate += d.value;
+                            top_value = cumulate;
+                            g.push({key: d.key, value: cumulate, single_value: d.value})
+                        });
+                        return g;
+                    }
+                };
+
+                var max_value = Math.max(orcids.top(1)[0].orcids, top_value);
+                var gap = 15, translate = 11;
+                cumulative_total_group.all();
+
+                rptLine
+                    .width(980)
+                    .height(400)
+                    .margins({top: 10, right: 40, bottom: 30, left: 60})
+                    .dimension(date)
+                    .x(d3.time.scale().domain([minDate, maxDate]))
+                    .y(d3.scale.sqrt().domain([minValue, max_value]))
+
+                    .xUnits(function(){return 35;})
+                    .renderHorizontalGridLines(true)
+                    .renderVerticalGridLines(true)
+                    .compose([
+                        dc.lineChart(rptLine)
+                            .dimension(date)
+                            .group(cumulative_total_group, 'Cumulative DOIs')
+                            .colors(['#2980b9'])
+                            .xUnits(d3.time.months)
+                            .valueAccessor(function (d) {
+                                return d.value
+                            }).dotRadius(5),
+
+                        dc.barChart(rptLine).gap(gap).group(cumulative_total_group, 'DOIs per month').colors(['#2980b9'])
+                            .valueAccessor(function (d) {
+                                return d.single_value;
+                            }),
+                        dc.barChart(rptLine).gap(gap).colors(['#16a085'])
+                            .group(orcid_month, 'ORCIDs per month'),
+
+                        //dc.barChart(rptLine)
+                        //    .dimension(date)
+                        //    .colors(['#2980b9'])
+                        //    .group(cumulative_total_group, 'DOIs per month')
+                        //    .valueAccessor(function (d) {
+                        //        return d.single_value
+                        //    }),
+                        dc.lineChart(rptLine)
+                            .dimension(date)
+                            .group(orcid, 'Cumulative ORCIDs')
+                            .colors(['#16a085'])
+                            .xUnits(d3.time.months)
+                        //dc.barChart(rptLine)
+                        //    .dimension(date)
+                        //    .colors(['#16a085'])
+                        //    .group(orcid_month, 'ORCIDs per month')
+                    ]);
+
+                rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5))
+                    .brushOn(false);
+
+                rptLine.renderlet(function (chart) {
+                    chart.selectAll("g._1").attr("transform", "translate(" + translate + ", 0)");
+                })
+
+                dc.renderAll();
+            });
+        },
+
         render_doi_metrics: function (data_url) {
             d3.json(data_url, function (error, result) {
 
@@ -115,7 +239,6 @@ var dashboard = (function () {
                     institution_group = institution.group().reduceSum(function (d) {
                         return d.data_value;
                     }),
-
 
                     country = records.dimension(function (d) {
                         return d.country;
@@ -174,7 +297,6 @@ var dashboard = (function () {
                 cumulative_total_group.all();
 
                 var minValue = value.bottom(1)[0].data_value;
-                var maxValue = value.top(1)[0].data_value;
 
                 var minDate = new Date(date.bottom(1)[0].date);
                 var maxDate = new Date(date.top(1)[0].date);
@@ -222,30 +344,6 @@ var dashboard = (function () {
                 // we don't use the create_composite_chart method since we need to access custom values for the
                 // cumulative total group.
                 var rptLine = dc.compositeChart(document.getElementById("monthly-chart"));
-                var cumulative_lc = dc.lineChart(rptLine)
-                    .dimension(date)
-                    .group(cumulative_total_group)
-                    .valueAccessor(function (d) {
-                        return d.value
-                    })
-                    .x(d3.time.scale().domain([minDate, maxDate]))
-                    .xUnits(d3.time.months)
-                    .dotRadius(5)
-                    .title(function (d) {
-                        return formatDate(d.data.key) + "\nValue: " + d.data.single_value + "\nCumulative = " + d.data.value;
-                    });
-
-                var bar_chart = dc.barChart(rptLine)
-                    .dimension(date)
-                    .group(cumulative_total_group)
-                    .valueAccessor(function (d) {
-                        return d.single_value
-                    })
-                    .x(d3.time.scale().domain([minDate, maxDate]))
-                    .xUnits(d3.time.months)
-                    .title(function (d) {
-                        return d.single_value;
-                    });
 
                 rptLine
                     .width(980)
@@ -258,7 +356,22 @@ var dashboard = (function () {
                     .renderHorizontalGridLines(true)
                     .renderVerticalGridLines(true)
                     .compose([
-                        cumulative_lc, bar_chart
+                        dc.lineChart(rptLine)
+                            .dimension(date)
+                            .group(cumulative_total_group)
+                            .valueAccessor(function (d) {
+                                return d.value
+                            })
+                            .x(d3.time.scale().domain([minDate, maxDate]))
+                            .xUnits(d3.time.months)
+                            .dotRadius(5), dc.barChart(rptLine)
+                            .dimension(date)
+                            .group(cumulative_total_group)
+                            .valueAccessor(function (d) {
+                                return d.single_value
+                            })
+                            .x(d3.time.scale().domain([minDate, maxDate]))
+                            .xUnits(d3.time.months)
                     ]);
 
 
@@ -519,14 +632,14 @@ var dashboard = (function () {
                 .attr("class", "month")
                 .attr("d", monthPath);
 
-            svg.selectAll("text.month-text").data(function(d) {
+            svg.selectAll("text.month-text").data(function (d) {
                 return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1));
-            }).enter().append("text").attr("class", "month-text").text(function(d) {
+            }).enter().append("text").attr("class", "month-text").text(function (d) {
                 return format_month(d)
             })
-                .attr('x', function(d) {
+                .attr('x', function (d) {
                     var w0 = d3.time.weekOfYear(d);
-                    return w0  * (cellSize);
+                    return w0 * (cellSize);
                 })
                 .attr('y', -5);
 
