@@ -187,22 +187,11 @@ var dashboard = (function () {
                         dc.barChart(rptLine).gap(gap).colors(['#16a085'])
                             .group(orcid_month, 'ORCIDs per month'),
 
-                        //dc.barChart(rptLine)
-                        //    .dimension(date)
-                        //    .colors(['#2980b9'])
-                        //    .group(cumulative_total_group, 'DOIs per month')
-                        //    .valueAccessor(function (d) {
-                        //        return d.single_value
-                        //    }),
                         dc.lineChart(rptLine)
                             .dimension(date)
                             .group(orcid, 'Cumulative ORCIDs')
                             .colors(['#16a085'])
                             .xUnits(d3.time.months)
-                        //dc.barChart(rptLine)
-                        //    .dimension(date)
-                        //    .colors(['#16a085'])
-                        //    .group(orcid_month, 'ORCIDs per month')
                     ]);
 
                 rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5))
@@ -210,7 +199,7 @@ var dashboard = (function () {
 
                 rptLine.renderlet(function (chart) {
                     chart.selectAll("g._1").attr("transform", "translate(" + translate + ", 0)");
-                })
+                });
 
                 dc.renderAll();
             });
@@ -497,13 +486,12 @@ var dashboard = (function () {
                 create_composite_chart('monthly-chart', date_ids_live, domain,
                     [{'group': works, 'label': 'Works', 'type': 'line', 'colors': ['#9b59b6']},
                         {'group': unique_dois, 'label': 'Unique DOIs', 'type': 'line', 'colors': ['#4aa3df']},
-                        {'group': works_with_dois, 'label': 'Works with DOIs', 'type': 'line', 'colors': ['#2980b9']},
                         {'group': liveIds, 'label': 'Live ORCIDs IDs', 'type': 'line', 'colors': ['#16a085']},
                         {'group': ids_verified, 'label': 'Verified ORCIDs', 'type': 'line', 'colors': ['#2ecc71']}
                     ], {'width': 940, 'height': 200, 'legend': true}
                 );
 
-                var options = {'width': 280, 'height': 200};
+                var options = {'width': 380, 'height': 200};
                 create_composite_chart('works-chart', date_works, domain,
                     [{'group': works_month, 'type': 'bar', 'colors': ['#9b59b6']}, {
                         'group': works,
@@ -518,7 +506,7 @@ var dashboard = (function () {
                         'type': 'line',
                         'colors': ['#16a085']
                     }],
-                    {'width': 380, 'height': 200});
+                    options);
 
 
                 create_composite_chart('verified-ids-chart', date_ids_verified, domain,
@@ -527,15 +515,9 @@ var dashboard = (function () {
                         'type': 'line',
                         'colors': ['#2ecc71']
                     }],
-                    {'width': 380, 'height': 200});
-
-                create_composite_chart('works-dois-chart', date_worksdois, domain,
-                    [{'group': works_with_dois_month, 'type': 'bar', 'colors': ['#2980b9']}, {
-                        'group': works_with_dois,
-                        'type': 'line',
-                        'colors': ['#2980b9']
-                    }],
                     options);
+
+
 
                 create_composite_chart('unique-dois-chart', date_unique_dois, domain,
                     [{'group': unique_dois_month, 'type': 'bar', 'colors': ['#4aa3df']}, {
