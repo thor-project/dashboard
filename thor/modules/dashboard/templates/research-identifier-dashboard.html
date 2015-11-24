@@ -136,12 +136,12 @@
                 </div>
             </div>
         </div>
-
     </div>
 {% endblock %}
 
 {% block end_additional %}
     <script src="{{ STATIC_URL }}assets/js/thor-dash-lib.js" type="text/javascript"></script>
+
     <script>
         dashboard.render_orcid_metrics("/api/data?type=orcid")
     </script>
