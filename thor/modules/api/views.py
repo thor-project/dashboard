@@ -39,10 +39,17 @@ def get_data(request):
 
             aggregated[doi_item['date']]['dois'] += doi_item['data_value']
 
+
+        events = Event.objects.all().order_by("-start_date")
+        event_json = []
+        for event in events:
+            event_json.append(event.to_dict())
+
+        contents = {"type": type, "data": json_contents, "events": event_json}
     else:
         json_contents = json.load(open(base_dir + '/data/data_' + type + '.json', 'r'))
 
-    contents = {"type": type, "data": json_contents}
+        contents = {"type": type, "data": json_contents}
 
     return HttpResponse(json.dumps(contents), content_type="application/json")
 

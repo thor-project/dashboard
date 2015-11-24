@@ -414,3 +414,24 @@ background-color: #35495E;
 tr.hover {
     background-color: #ecf0f1;
 }
+
+
+.d3-tip {
+    line-height: 1;
+    font-weight: normal;
+    font-size: 1em;
+    padding: 12px;
+    background-color: #35495e;
+    color: #fff;
+    border-radius: 2px;
+}
+
+
+
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+}

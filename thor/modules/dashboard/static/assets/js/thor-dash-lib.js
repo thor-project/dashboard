@@ -7,6 +7,8 @@ var dashboard = (function () {
         formatDate = d3.time.format("%d %b %Y"),
         formatTime = d3.time.format("%I:%M %p");
 
+    var event_type_color_scale = d3.scale.ordinal().range(['#d25627', '#3b97d3', '#26b99a', '#7f8c8d']);
+
     // A nest operator, for grouping the flight list.
     var nestByDate = d3.nest()
         .key(function (d) {
@@ -73,6 +75,52 @@ var dashboard = (function () {
             rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5))
                 .brushOn(false);
         }
+    };
+
+    var draw_events = function (placement, events, options) {
+        var svg = d3.selectAll(placement + " svg");
+
+        var d3tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .html(function (d) {
+                return '<p style="font-weight:bolder">' + d.name + ' </p>' +
+                    '<p>' + d.date + '</p>' +
+                    '<p style="color:' + event_type_color_scale(d.type) +'">'
+                    + d.type + '</p><p>' + d.participant_count + ' participants.</p>';
+            });
+
+        svg.append('text').text('Events').attr({'x': 20, 'y': options.height - 1}).style({
+            'font-size': '10px',
+            'fill': 'white'
+        });
+
+        svg.append('rect').attr({
+            x: 60,
+            y: options.height - 7,
+            width: options.width - 30,
+            height: 1
+        }).style('fill', 'white');
+
+        var participant_scale = d3.scale.linear().domain(d3.extent(events, function (d) {
+                    return d.participant_count;
+                })).range([4, 7]);
+
+        var event = svg.selectAll("g.event").data(events)
+            .enter().append("g").attr('class', 'event');
+
+        event.append('circle').attr('cx', function (d) {
+            return 60+options.xScale(new Date(d.date));
+        }).attr('cy', options.height - 7).attr('r', function (d) {
+            return participant_scale(d.participant_count);
+        }).style('fill', function (d) {
+            return event_type_color_scale(d.type);
+        }).style('cursor', 'pointer');
+
+        event.on('mouseover', d3tip.show)
+            .on('mouseout', d3tip.hide);
+
+        svg.call(d3tip);
+
     };
 
     var load_event_details = function (id) {
@@ -156,18 +204,21 @@ var dashboard = (function () {
                 };
 
                 var max_value = Math.max(orcids.top(1)[0].orcids, top_value);
-                var gap = 15, translate = 11;
+                var gap = 15, translate = 10;
                 cumulative_total_group.all();
 
+                var xScale = d3.time.scale().domain([minDate, maxDate]);
                 rptLine
                     .width(980)
                     .height(400)
                     .margins({top: 10, right: 40, bottom: 30, left: 60})
                     .dimension(date)
-                    .x(d3.time.scale().domain([minDate, maxDate]))
+                    .x(xScale)
                     .y(d3.scale.sqrt().domain([minValue, max_value]))
 
-                    .xUnits(function(){return 35;})
+                    .xUnits(function () {
+                        return 35;
+                    })
                     .renderHorizontalGridLines(true)
                     .renderVerticalGridLines(true)
                     .compose([
@@ -199,11 +250,13 @@ var dashboard = (function () {
 
                 rptLine.renderlet(function (chart) {
                     chart.selectAll("g._1").attr("transform", "translate(" + translate + ", 0)");
+                    draw_events("#overview-chart", result.events, {'xScale': xScale, 'height': 400, 'width': 920})
                 });
 
                 dc.renderAll();
             });
         },
+
 
         render_doi_metrics: function (data_url) {
             d3.json(data_url, function (error, result) {
@@ -518,7 +571,6 @@ var dashboard = (function () {
                     options);
 
 
-
                 create_composite_chart('unique-dois-chart', date_unique_dois, domain,
                     [{'group': unique_dois_month, 'type': 'bar', 'colors': ['#4aa3df']}, {
                         'group': unique_dois,
@@ -574,8 +626,7 @@ var dashboard = (function () {
 
             var cellSize = options.cellSize;
 
-            var percent = d3.format(".1%"),
-                format = d3.time.format("%Y-%m-%d"),
+            var format = d3.time.format("%Y-%m-%d"),
                 format_month = d3.time.format("%b");
 
             var svg = d3.select(placement).selectAll("svg")
@@ -618,15 +669,11 @@ var dashboard = (function () {
                 return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1));
             }).enter().append("text").attr("class", "month-text").text(function (d) {
                 return format_month(d)
-            })
-                .attr('x', function (d) {
-                    var w0 = d3.time.weekOfYear(d);
-                    return w0 * (cellSize);
-                })
-                .attr('y', -5);
+            }).attr('x', function (d) {
+                var w0 = d3.time.weekOfYear(d);
+                return w0 * (cellSize);
+            }).attr('y', -5);
 
-
-            var type_color_scale = d3.scale.ordinal().range(['#d25627', '#3b97d3', '#26b99a', '#7f8c8d']);
             var opacity_color_scale = d3.scale.quantile().range([0.2, 0.4, 0.8, 1]);
 
             d3.json(data_url, function (error, data) {
@@ -670,7 +717,9 @@ var dashboard = (function () {
                     tr.append("td").text(event.country);
                     tr.append("td").text(event.participant_count);
 
-                    tr.append("td").selectAll("span").data(event.participant_type).enter().append("span").attr("class", "chip").text(function (d) {
+                    tr.append("td").selectAll("span")
+                        .data(event.participant_type).enter().append("span")
+                        .attr("class", "chip").text(function (d) {
                         return d;
                     });
 
