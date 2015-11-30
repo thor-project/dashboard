@@ -69,7 +69,7 @@ var dashboard = (function () {
             .xUnits(d3.time.months)
             .renderHorizontalGridLines(true)
             .renderVerticalGridLines(true)
-            .compose(composition)
+            .compose(composition);
 
         if (options.legend) {
             rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5))
@@ -257,7 +257,6 @@ var dashboard = (function () {
             });
         },
 
-
         render_doi_metrics: function (data_url) {
             d3.json(data_url, function (error, result) {
 
@@ -290,12 +289,28 @@ var dashboard = (function () {
                         return d.country;
                     }),
 
+                    restrictions = records.dimension(function (d) {
+                        return d.restriction;
+                    }),
+
                     country_dois2 = country_2.group().reduceSum(function (d) {
                         return d.data_value;
                     }),
 
                     country_dois = country.group().reduceSum(function (d) {
                         return d.data_value;
+                    }),
+
+                    restrictions_orcids = restrictions.group().reduceSum(function (d) {
+                        return d.data_value;
+                    }),
+
+                    restrictions_date_orcids = date.group().reduceSum(function (d) {
+                        if (d.restriction === 'with_orcids') {
+                            return d.data_value;
+                        } else {
+                            return 0;
+                        }
                     }),
 
 
@@ -312,6 +327,9 @@ var dashboard = (function () {
                     }),
                     value_group = value.group(Math.floor),
 
+                    value_date_group = date.group().reduceSum(function (d) {
+                        return d.data_value;
+                    }),
 
                     value_date_group = date.group().reduceSum(function (d) {
                         return d.data_value;
@@ -338,6 +356,20 @@ var dashboard = (function () {
 
                 cumulative_total_group.all();
 
+                var cumulative_orcid_group = {
+                    all: function () {
+                        var cumulate = 0;
+                        var g = [];
+                        restrictions_date_orcids.all().forEach(function (d, i) {
+                            cumulate += d.value;
+                            g.push({key: d.key, value: cumulate, single_value: d.value})
+                        });
+                        return g;
+                    }
+                };
+
+                cumulative_orcid_group.all();
+
                 var minValue = value.bottom(1)[0].data_value;
 
                 var minDate = new Date(date.bottom(1)[0].date);
@@ -349,7 +381,7 @@ var dashboard = (function () {
                 var country_details_chart = dc.rowChart("#country-details");
 
                 country_details_chart.width(300)
-                    .height(200)
+                    .height(290)
                     .dimension(country_2)
                     .group(country_dois2)
                     .elasticX(true);
@@ -388,7 +420,7 @@ var dashboard = (function () {
                 var rptLine = dc.compositeChart(document.getElementById("monthly-chart"));
 
                 rptLine
-                    .width(980)
+                    .width(700)
                     .height(200)
                     .margins({top: 10, right: 50, bottom: 30, left: 60})
                     .dimension(date)
@@ -400,22 +432,36 @@ var dashboard = (function () {
                     .compose([
                         dc.lineChart(rptLine)
                             .dimension(date)
-                            .group(cumulative_total_group)
+                            .group(cumulative_total_group, 'Cumulative DOIs Minted')
                             .valueAccessor(function (d) {
                                 return d.value
                             })
                             .x(d3.time.scale().domain([minDate, maxDate]))
                             .xUnits(d3.time.months)
-                            .dotRadius(5), dc.barChart(rptLine)
+                            .dotRadius(5),
+
+                        dc.lineChart(rptLine)
                             .dimension(date)
-                            .group(cumulative_total_group)
+                            .group(cumulative_orcid_group, 'DOIs with ORCIDs')
+                            .colors(['#9b59b6'])
+                            .valueAccessor(function (d) {
+
+                                return d.value
+                            })
+                            .x(d3.time.scale().domain([minDate, maxDate]))
+                            .xUnits(d3.time.months),
+
+                        dc.barChart(rptLine)
+                            .dimension(date)
+                            .group(cumulative_total_group, 'Monthly DOIs Minted')
                             .valueAccessor(function (d) {
                                 return d.single_value
                             })
+                            .colors(['#3498db'])
                             .x(d3.time.scale().domain([minDate, maxDate]))
                             .xUnits(d3.time.months)
                     ]);
-
+                rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5));
 
                 var doiCentreChart = dc.rowChart('#institution-chart');
                 doiCentreChart.width(700)
@@ -423,16 +469,25 @@ var dashboard = (function () {
                     .dimension(institution)
                     .group(institution_group);
                 doiCentreChart.colors(['#2980BA']);
-
                 doiCentreChart.xAxis().ticks(5);
                 doiCentreChart.elasticX(true);
 
-                var objectTypeChart = dc.pieChart('#object-type');
-                objectTypeChart.width(300)
-                    .height(190)
+                var orcidChart = dc.rowChart('#orcid-chart');
+                orcidChart.width(320)
+                    .height(200)
+                    .dimension(restrictions)
+                    .group(restrictions_orcids);
+                orcidChart.colors(['#1abc9c', '#2980BA']);
+                orcidChart.elasticX(true);
+
+
+                var objectTypeChart = dc.rowChart('#object-type');
+                objectTypeChart.width(320)
+                    .height(290)
                     .dimension(object)
                     .group(object_group);
                 objectTypeChart.colors(colorScale);
+                objectTypeChart.elasticX(true);
 
                 var detailTable = dc.dataTable('.dc-data-table');
                 detailTable.dimension(date)
@@ -566,7 +621,12 @@ var dashboard = (function () {
                         {'group': ids_verified, 'label': 'Verified ORCIDs', 'type': 'line', 'colors': ['#2ecc71']},
                         {'group': ids_with_works, 'label': 'ORCIDs with Works', 'type': 'line', 'colors': ['#e67e22']},
                         {'group': funding, 'label': 'ORCIDs with Funding Info', 'type': 'line', 'colors': ['#bdc3c7']},
-                        {'group': employment, 'label': 'ORCIDs with Employment Info', 'type': 'line', 'colors': ['#e74c3c']}
+                        {
+                            'group': employment,
+                            'label': 'ORCIDs with Employment Info',
+                            'type': 'line',
+                            'colors': ['#e74c3c']
+                        }
                     ], {'width': 940, 'height': 200, 'legend': true}
                 );
 
@@ -678,7 +738,7 @@ var dashboard = (function () {
                 dc.renderlet(function () {
                     var divs = ["#monthly-chart", "#works-dois-chart", "#liveids-chart",
                         "#unique-dois-chart", "#verified-ids-chart", "#works-chart",
-                    "#ids-works-chart", "#funding-chart", "#employment-chart"];
+                        "#ids-works-chart", "#funding-chart", "#employment-chart"];
                     for (var div in divs) {
                         d3.select(divs[div] + " svg g").attr("transform", 'translate(20, 0)');
                     }
