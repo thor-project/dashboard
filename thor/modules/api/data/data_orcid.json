@@ -1,8 +1,13 @@
 [
   {
+    "funding_month": 0,
     "works_month": 1421044,
     "works": 1421044,
+    "funding": 0,
     "idsWithWorks_month": 51769,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 789257,
     "liveIds_month": 178497,
     "uniqueDois": 0,
@@ -12,12 +17,18 @@
     "idsWithVerifiedEmail_month": 115720,
     "date": "2013-06-01",
     "worksWithDois_month": 789257,
-    "liveIds": 178497
+    "liveIds": 178497,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 138174,
     "works": 1559218,
+    "funding": 0,
     "idsWithWorks_month": 6475,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 886555,
     "liveIds_month": 26376,
     "uniqueDois": 0,
@@ -27,12 +38,18 @@
     "idsWithVerifiedEmail_month": 15577,
     "date": "2013-07-01",
     "worksWithDois_month": 97298,
-    "liveIds": 204873
+    "liveIds": 204873,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 254158,
     "works": 1813376,
+    "funding": 0,
     "idsWithWorks_month": 8847,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 1047565,
     "liveIds_month": 48514,
     "uniqueDois": 0,
@@ -42,12 +59,18 @@
     "idsWithVerifiedEmail_month": 29071,
     "date": "2013-08-01",
     "worksWithDois_month": 161010,
-    "liveIds": 253387
+    "liveIds": 253387,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 279447,
     "works": 2092823,
+    "funding": 0,
     "idsWithWorks_month": 8828,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 1205096,
     "liveIds_month": 52983,
     "uniqueDois": 0,
@@ -57,12 +80,18 @@
     "idsWithVerifiedEmail_month": 31557,
     "date": "2013-09-01",
     "worksWithDois_month": 157531,
-    "liveIds": 306370
+    "liveIds": 306370,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 225508,
     "works": 2318331,
+    "funding": 0,
     "idsWithWorks_month": 7017,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 1330994,
     "liveIds_month": 45671,
     "uniqueDois": 0,
@@ -72,12 +101,18 @@
     "idsWithVerifiedEmail_month": 30557,
     "date": "2013-10-01",
     "worksWithDois_month": 125898,
-    "liveIds": 352041
+    "liveIds": 352041,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 453891,
     "works": 2772222,
+    "funding": 0,
     "idsWithWorks_month": 16325,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 1551330,
     "liveIds_month": 64451,
     "uniqueDois": 0,
@@ -87,12 +122,18 @@
     "idsWithVerifiedEmail_month": 44303,
     "date": "2013-11-01",
     "worksWithDois_month": 220336,
-    "liveIds": 416492
+    "liveIds": 416492,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 293140,
     "works": 3065362,
+    "funding": 0,
     "idsWithWorks_month": 10333,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 1658575,
     "liveIds_month": 48837,
     "uniqueDois": 0,
@@ -102,12 +143,18 @@
     "idsWithVerifiedEmail_month": 33742,
     "date": "2013-12-01",
     "worksWithDois_month": 107245,
-    "liveIds": 465329
+    "liveIds": 465329,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 219428,
     "works": 3284790,
+    "funding": 0,
     "idsWithWorks_month": 7257,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 1772403,
     "liveIds_month": 50355,
     "uniqueDois": 0,
@@ -117,12 +164,18 @@
     "idsWithVerifiedEmail_month": 34275,
     "date": "2014-01-01",
     "worksWithDois_month": 113828,
-    "liveIds": 515684
+    "liveIds": 515684,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 179438,
     "works": 3464228,
+    "funding": 0,
     "idsWithWorks_month": 6505,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 1870384,
     "liveIds_month": 49246,
     "uniqueDois": 0,
@@ -132,12 +185,18 @@
     "idsWithVerifiedEmail_month": 29065,
     "date": "2014-02-01",
     "worksWithDois_month": 97981,
-    "liveIds": 564930
+    "liveIds": 564930,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 250265,
     "works": 3714493,
+    "funding": 0,
     "idsWithWorks_month": 7533,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2000179,
     "liveIds_month": 65891,
     "uniqueDois": 0,
@@ -147,12 +206,18 @@
     "idsWithVerifiedEmail_month": 42960,
     "date": "2014-03-01",
     "worksWithDois_month": 129795,
-    "liveIds": 630821
+    "liveIds": 630821,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 177725,
     "works": 3892218,
+    "funding": 0,
     "idsWithWorks_month": 5737,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2056840,
     "liveIds_month": 43708,
     "uniqueDois": 0,
@@ -162,12 +227,18 @@
     "idsWithVerifiedEmail_month": 31586,
     "date": "2014-04-01",
     "worksWithDois_month": 56661,
-    "liveIds": 674529
+    "liveIds": 674529,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 327352,
     "works": 4219570,
+    "funding": 0,
     "idsWithWorks_month": 7977,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2159013,
     "liveIds_month": 52925,
     "uniqueDois": 0,
@@ -177,12 +248,18 @@
     "idsWithVerifiedEmail_month": 34883,
     "date": "2014-05-01",
     "worksWithDois_month": 102173,
-    "liveIds": 727454
+    "liveIds": 727454,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 182028,
     "works": 4401598,
+    "funding": 0,
     "idsWithWorks_month": 5496,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2227115,
     "liveIds_month": 40286,
     "uniqueDois": 0,
@@ -192,12 +269,18 @@
     "idsWithVerifiedEmail_month": 26087,
     "date": "2014-06-01",
     "worksWithDois_month": 68102,
-    "liveIds": 767740
+    "liveIds": 767740,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 174257,
     "works": 4575855,
+    "funding": 0,
     "idsWithWorks_month": 5603,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2227094,
     "liveIds_month": 44777,
     "uniqueDois": 0,
@@ -207,12 +290,18 @@
     "idsWithVerifiedEmail_month": 28256,
     "date": "2014-07-01",
     "worksWithDois_month": 0,
-    "liveIds": 812517
+    "liveIds": 812517,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 221493,
     "works": 4797348,
+    "funding": 0,
     "idsWithWorks_month": 7206,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2226932,
     "liveIds_month": 49983,
     "uniqueDois": 0,
@@ -222,12 +311,18 @@
     "idsWithVerifiedEmail_month": 33132,
     "date": "2014-08-01",
     "worksWithDois_month": 0,
-    "liveIds": 862500
+    "liveIds": 862500,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 345727,
     "works": 5143075,
+    "funding": 0,
     "idsWithWorks_month": 11388,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2226784,
     "liveIds_month": 53953,
     "uniqueDois": 0,
@@ -237,12 +332,18 @@
     "idsWithVerifiedEmail_month": 38126,
     "date": "2014-09-01",
     "worksWithDois_month": 0,
-    "liveIds": 916453
+    "liveIds": 916453,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 72246,
     "works": 5215321,
+    "funding": 0,
     "idsWithWorks_month": 9738,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2226709,
     "liveIds_month": 60326,
     "uniqueDois": 0,
@@ -252,12 +353,18 @@
     "idsWithVerifiedEmail_month": 38883,
     "date": "2014-10-01",
     "worksWithDois_month": 0,
-    "liveIds": 976779
+    "liveIds": 976779,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 186271,
     "works": 5401592,
+    "funding": 0,
     "idsWithWorks_month": 6976,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2222536,
     "liveIds_month": 45838,
     "uniqueDois": 0,
@@ -267,12 +374,18 @@
     "idsWithVerifiedEmail_month": 30118,
     "date": "2014-11-01",
     "worksWithDois_month": 0,
-    "liveIds": 1022617
+    "liveIds": 1022617,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 296229,
     "works": 5697821,
+    "funding": 0,
     "idsWithWorks_month": 7862,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2219595,
     "liveIds_month": 52605,
     "uniqueDois": 0,
@@ -282,12 +395,18 @@
     "idsWithVerifiedEmail_month": 32669,
     "date": "2014-12-01",
     "worksWithDois_month": 0,
-    "liveIds": 1075222
+    "liveIds": 1075222,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 309942,
     "works": 6007763,
+    "funding": 0,
     "idsWithWorks_month": 9110,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2214335,
     "liveIds_month": 63680,
     "uniqueDois": 0,
@@ -297,12 +416,18 @@
     "idsWithVerifiedEmail_month": 42849,
     "date": "2015-01-01",
     "worksWithDois_month": 0,
-    "liveIds": 1138902
+    "liveIds": 1138902,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 291597,
     "works": 6299360,
+    "funding": 0,
     "idsWithWorks_month": 8382,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2203546,
     "liveIds_month": 58220,
     "uniqueDois": 0,
@@ -312,12 +437,18 @@
     "idsWithVerifiedEmail_month": 37433,
     "date": "2015-02-01",
     "worksWithDois_month": 0,
-    "liveIds": 1197122
+    "liveIds": 1197122,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 290257,
     "works": 6589617,
+    "funding": 0,
     "idsWithWorks_month": 8596,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2195266,
     "liveIds_month": 54261,
     "uniqueDois": 0,
@@ -327,12 +458,18 @@
     "idsWithVerifiedEmail_month": 37566,
     "date": "2015-03-01",
     "worksWithDois_month": 0,
-    "liveIds": 1251383
+    "liveIds": 1251383,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 265084,
     "works": 6854701,
+    "funding": 0,
     "idsWithWorks_month": 8269,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2187633,
     "liveIds_month": 51733,
     "uniqueDois": 0,
@@ -342,12 +479,18 @@
     "idsWithVerifiedEmail_month": 33689,
     "date": "2015-04-01",
     "worksWithDois_month": 0,
-    "liveIds": 1303116
+    "liveIds": 1303116,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 379431,
     "works": 7234132,
+    "funding": 0,
     "idsWithWorks_month": 10571,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2181776,
     "liveIds_month": 67079,
     "uniqueDois": 0,
@@ -357,12 +500,18 @@
     "idsWithVerifiedEmail_month": 42971,
     "date": "2015-05-01",
     "worksWithDois_month": 0,
-    "liveIds": 1370195
+    "liveIds": 1370195,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 312435,
     "works": 7546567,
+    "funding": 0,
     "idsWithWorks_month": 8092,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2172058,
     "liveIds_month": 53691,
     "uniqueDois": 0,
@@ -372,12 +521,18 @@
     "idsWithVerifiedEmail_month": 34705,
     "date": "2015-06-01",
     "worksWithDois_month": 0,
-    "liveIds": 1423886
+    "liveIds": 1423886,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 447418,
     "works": 7993985,
+    "funding": 0,
     "idsWithWorks_month": 11107,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 2166065,
     "liveIds_month": 58642,
     "uniqueDois": 3957115,
@@ -387,12 +542,18 @@
     "idsWithVerifiedEmail_month": 39519,
     "date": "2015-07-01",
     "worksWithDois_month": 0,
-    "liveIds": 1482528
+    "liveIds": 1482528,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 389839,
     "works": 8383824,
+    "funding": 0,
     "idsWithWorks_month": 10542,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 0,
     "liveIds_month": 75812,
     "uniqueDois": 4119619,
@@ -402,12 +563,18 @@
     "idsWithVerifiedEmail_month": 46872,
     "date": "2015-08-01",
     "worksWithDois_month": 0,
-    "liveIds": 1558340
+    "liveIds": 1558340,
+    "employment": 0
   },
   {
+    "funding_month": 0,
     "works_month": 493034,
     "works": 8876858,
+    "funding": 0,
     "idsWithWorks_month": 11704,
+    "employment_month": 0,
+    "education_month": 0,
+    "education": 0,
     "worksWithDois": 0,
     "liveIds_month": 74341,
     "uniqueDois": 4311770,
@@ -417,12 +584,18 @@
     "idsWithVerifiedEmail_month": 49767,
     "date": "2015-09-01",
     "worksWithDois_month": 0,
-    "liveIds": 1632681
+    "liveIds": 1632681,
+    "employment": 0
   },
   {
+    "funding_month": 116934,
     "works_month": 915374,
     "works": 9792232,
+    "funding": 116934,
     "idsWithWorks_month": 21698,
+    "employment_month": 567721,
+    "education_month": 656846,
+    "education": 656846,
     "worksWithDois": 0,
     "liveIds_month": 92738,
     "uniqueDois": 4632129,
@@ -432,21 +605,28 @@
     "idsWithVerifiedEmail_month": 69315,
     "date": "2015-10-01",
     "worksWithDois_month": 0,
-    "liveIds": 1725419
+    "liveIds": 1725419,
+    "employment": 567721
   },
   {
-    "works_month": 319708,
-    "works": 10111940,
-    "idsWithWorks_month": 9013,
+    "funding_month": 6751,
+    "works_month": 591323,
+    "works": 10383555,
+    "funding": 123685,
+    "idsWithWorks_month": 15807,
+    "employment_month": 28796,
+    "education_month": 34900,
+    "education": 691746,
     "worksWithDois": 0,
-    "liveIds_month": 32161,
-    "uniqueDois": 4740643,
-    "idsWithVerifiedEmail": 1158296,
-    "idsWithWorks": 315956,
-    "uniqueDois_month": 108514,
-    "idsWithVerifiedEmail_month": 23043,
+    "liveIds_month": 64402,
+    "uniqueDois": 4836647,
+    "idsWithVerifiedEmail": 1180393,
+    "idsWithWorks": 322750,
+    "uniqueDois_month": 204518,
+    "idsWithVerifiedEmail_month": 45140,
     "date": "2015-11-01",
     "worksWithDois_month": 0,
-    "liveIds": 1757580
+    "liveIds": 1789821,
+    "employment": 596517
   }
 ]

@@ -85,7 +85,7 @@ var dashboard = (function () {
             .html(function (d) {
                 return '<p style="font-weight:bolder">' + d.name + ' </p>' +
                     '<p>' + d.date + '</p>' +
-                    '<p style="color:' + event_type_color_scale(d.type) +'">'
+                    '<p style="color:' + event_type_color_scale(d.type) + '">'
                     + d.type + '</p><p>' + d.participant_count + ' participants.</p>';
             });
 
@@ -102,14 +102,14 @@ var dashboard = (function () {
         }).style('fill', 'white');
 
         var participant_scale = d3.scale.linear().domain(d3.extent(events, function (d) {
-                    return d.participant_count;
-                })).range([4, 7]);
+            return d.participant_count;
+        })).range([4, 7]);
 
         var event = svg.selectAll("g.event").data(events)
             .enter().append("g").attr('class', 'event');
 
         event.append('circle').attr('cx', function (d) {
-            return 60+options.xScale(new Date(d.date));
+            return 60 + options.xScale(new Date(d.date));
         }).attr('cy', options.height - 7).attr('r', function (d) {
             return participant_scale(d.participant_count);
         }).style('fill', function (d) {
@@ -470,11 +470,19 @@ var dashboard = (function () {
                         return d.date;
                     }),
 
+                    date_funding = records.dimension(function (d) {
+                        return d.date;
+                    }),
+
+                    date_employment = records.dimension(function (d) {
+                        return d.date;
+                    }),
+
                     date_ids_live = records.dimension(function (d) {
                         return d.date;
                     }),
 
-                    date_worksdois = records.dimension(function (d) {
+                    date_ids_works = records.dimension(function (d) {
                         return d.date;
                     }),
 
@@ -498,17 +506,32 @@ var dashboard = (function () {
                         return d.liveIds;
                     }),
 
-
                     liveIds_month = date_ids_live.group().reduceSum(function (d) {
                         return d.liveIds_month;
                     }),
 
-                    works_with_dois = date_worksdois.group().reduceSum(function (d) {
-                        return d.worksWithDois;
+                    ids_with_works = date_ids_works.group().reduceSum(function (d) {
+                        return d.idsWithWorks;
                     }),
 
-                    works_with_dois_month = date_worksdois.group().reduceSum(function (d) {
-                        return d.worksWithDois_month;
+                    ids_with_works_month = date_ids_works.group().reduceSum(function (d) {
+                        return d.idsWithWorks_month;
+                    }),
+
+                    funding = date_funding.group().reduceSum(function (d) {
+                        return d.funding;
+                    }),
+
+                    funding_month = date_ids_works.group().reduceSum(function (d) {
+                        return d.funding_month;
+                    }),
+
+                    employment = date_employment.group().reduceSum(function (d) {
+                        return d.employment;
+                    }),
+
+                    employment_month = date_employment.group().reduceSum(function (d) {
+                        return d.employment_month;
                     }),
 
                     unique_dois = date_unique_dois.group().reduceSum(function (d) {
@@ -540,11 +563,16 @@ var dashboard = (function () {
                     [{'group': works, 'label': 'Works', 'type': 'line', 'colors': ['#9b59b6']},
                         {'group': unique_dois, 'label': 'Unique DOIs', 'type': 'line', 'colors': ['#4aa3df']},
                         {'group': liveIds, 'label': 'Live ORCIDs IDs', 'type': 'line', 'colors': ['#16a085']},
-                        {'group': ids_verified, 'label': 'Verified ORCIDs', 'type': 'line', 'colors': ['#2ecc71']}
+                        {'group': ids_verified, 'label': 'Verified ORCIDs', 'type': 'line', 'colors': ['#2ecc71']},
+                        {'group': ids_with_works, 'label': 'ORCIDs with Works', 'type': 'line', 'colors': ['#e67e22']},
+                        {'group': funding, 'label': 'ORCIDs with Funding Info', 'type': 'line', 'colors': ['#bdc3c7']},
+                        {'group': employment, 'label': 'ORCIDs with Employment Info', 'type': 'line', 'colors': ['#e74c3c']}
                     ], {'width': 940, 'height': 200, 'legend': true}
                 );
 
                 var options = {'width': 380, 'height': 200};
+                var options_sml = {'width': 280, 'height': 200};
+
                 create_composite_chart('works-chart', date_works, domain,
                     [{'group': works_month, 'type': 'bar', 'colors': ['#9b59b6']}, {
                         'group': works,
@@ -580,6 +608,31 @@ var dashboard = (function () {
                     options);
 
 
+                create_composite_chart('ids-works-chart', date_ids_works, domain,
+                    [{'group': ids_with_works_month, 'type': 'bar', 'colors': ['#e67e22']}, {
+                        'group': ids_with_works,
+                        'type': 'line',
+                        'colors': ['#e67e22']
+                    }],
+                    options_sml);
+
+                create_composite_chart('funding-chart', date_funding, domain,
+                    [{'group': funding_month, 'type': 'bar', 'colors': ['#bdc3c7']}, {
+                        'group': funding,
+                        'type': 'line',
+                        'colors': ['#bdc3c7']
+                    }],
+                    options_sml);
+
+                create_composite_chart('employment-chart', date_funding, domain,
+                    [{'group': employment_month, 'type': 'bar', 'colors': ['#e74c3c']}, {
+                        'group': employment,
+                        'type': 'line',
+                        'colors': ['#e74c3c']
+                    }],
+                    options_sml);
+
+
                 var detailTable = dc.dataTable('.dc-data-table');
                 detailTable.dimension(date_works)
                     .group(function (d) {
@@ -606,12 +659,26 @@ var dashboard = (function () {
                         },
                         function (d) {
                             return d.worksWithDois_month
+                        },
+
+                        function (d) {
+                            return d.ids_with_works_month
+                        },
+
+                        function (d) {
+                            return d.funding_month
+                        },
+
+                        function (d) {
+                            return d.employment_month
                         }
                     ])
                 ;
 
                 dc.renderlet(function () {
-                    var divs = ["#monthly-chart", "#works-dois-chart", "#liveids-chart", "#unique-dois-chart", "#verified-ids-chart", "#works-chart"];
+                    var divs = ["#monthly-chart", "#works-dois-chart", "#liveids-chart",
+                        "#unique-dois-chart", "#verified-ids-chart", "#works-chart",
+                    "#ids-works-chart", "#funding-chart", "#employment-chart"];
                     for (var div in divs) {
                         d3.select(divs[div] + " svg g").attr("transform", 'translate(20, 0)');
                     }
@@ -720,8 +787,8 @@ var dashboard = (function () {
                     tr.append("td").selectAll("span")
                         .data(event.participant_type).enter().append("span")
                         .attr("class", "chip").text(function (d) {
-                        return d;
-                    });
+                            return d;
+                        });
 
                     if (!(event.type in event_types)) {
                         event_types[event.type] = {"name": event.type, "value": 0}
