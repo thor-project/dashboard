@@ -40,7 +40,7 @@ def get_data(request):
             aggregated[doi_item['date']]['dois'] += doi_item['data_value']
 
 
-        events = Event.objects.all().order_by("-start_date")
+        events = Event.objects.all()
         event_json = []
         for event in events:
             event_json.append(event.to_dict())
