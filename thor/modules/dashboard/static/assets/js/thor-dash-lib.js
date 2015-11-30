@@ -97,7 +97,7 @@ var dashboard = (function () {
         svg.append('rect').attr({
             x: 60,
             y: options.height - 7,
-            width: options.width - 30,
+            width: options.width - 40,
             height: 1
         }).style('fill', 'white');
 
@@ -146,7 +146,7 @@ var dashboard = (function () {
     };
 
     var calculate_vis_width = function (window_width, normal_width_ratio) {
-        if (window_width < 900) {
+        if (window_width <= 900) {
             return window_width * .63;
         } else {
             return window_width * normal_width_ratio;
@@ -218,10 +218,10 @@ var dashboard = (function () {
                 var max_value = Math.max(orcids.top(1)[0].orcids, top_value);
                 var gap = 15, translate = 10;
                 cumulative_total_group.all();
-
+                var window_width = calculate_window_width();
                 var xScale = d3.time.scale().domain([minDate, maxDate]);
                 rptLine
-                    .width(980)
+                    .width(calculate_vis_width(window_width, 0.9))
                     .height(400)
                     .margins({top: 10, right: 40, bottom: 30, left: 60})
                     .dimension(date)
@@ -262,7 +262,7 @@ var dashboard = (function () {
 
                 rptLine.renderlet(function (chart) {
                     chart.selectAll("g._1").attr("transform", "translate(" + translate + ", 0)");
-                    draw_events("#overview-chart", result.events, {'xScale': xScale, 'height': 400, 'width': 920})
+                    draw_events("#overview-chart", result.events, {'xScale': xScale, 'height': 400, 'width': calculate_vis_width(window_width, 0.9)})
                 });
 
                 dc.renderAll();
@@ -784,8 +784,10 @@ var dashboard = (function () {
                     timeout = false;
                     if(type === "doi") {
                         dashboard.render_doi_metrics(url);
-                    } else {
+                    } else if (type == "orcid"){
                         dashboard.render_orcid_metrics(url);
+                    } else {
+                        dashboard.render_general_metrics(url);
                     }
                 }
             }
