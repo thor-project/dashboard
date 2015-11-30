@@ -141,6 +141,18 @@ var dashboard = (function () {
         })
     };
 
+    var calculate_window_width = function () {
+        return $(window).width();
+    };
+
+    var calculate_vis_width = function (window_width, normal_width_ratio) {
+        if (window_width < 900) {
+            return window_width * .63;
+        } else {
+            return window_width * normal_width_ratio;
+        }
+    };
+
     var colorScale = d3.scale.ordinal().range(['#14A085', "#26B99A", "#3B97D3", "#955BA5", "#F29C1F", "#D25627", "#C03A2B"]);
     var map_intensity_colours = ["#feedde", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#8c2d04"];
 
@@ -378,9 +390,10 @@ var dashboard = (function () {
                 maxDate.setDate(maxDate.getDate() + 15);
 
 
+                var window_width = calculate_window_width();
                 var country_details_chart = dc.rowChart("#country-details");
 
-                country_details_chart.width(300)
+                country_details_chart.width(calculate_vis_width(window_width, 0.24))
                     .height(290)
                     .dimension(country_2)
                     .group(country_dois2)
@@ -395,7 +408,7 @@ var dashboard = (function () {
                         .projection(d3.geo.mercator()
                             .scale(120)
                             .translate([350, 220]))
-                        .width(700)
+                        .width(calculate_vis_width(window_width, 0.48))
                         .height(390)
 
                         .colors(d3.scale.quantize().range(map_intensity_colours).domain([0, country_dois.top(1)[0].value]))
@@ -420,7 +433,7 @@ var dashboard = (function () {
                 var rptLine = dc.compositeChart(document.getElementById("monthly-chart"));
 
                 rptLine
-                    .width(700)
+                    .width(calculate_vis_width(window_width, 0.55))
                     .height(200)
                     .margins({top: 10, right: 50, bottom: 30, left: 60})
                     .dimension(date)
@@ -464,7 +477,7 @@ var dashboard = (function () {
                 rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5));
 
                 var doiCentreChart = dc.rowChart('#institution-chart');
-                doiCentreChart.width(700)
+                doiCentreChart.width(calculate_vis_width(window_width, 0.47))
                     .height(300)
                     .dimension(institution)
                     .group(institution_group);
@@ -473,7 +486,7 @@ var dashboard = (function () {
                 doiCentreChart.elasticX(true);
 
                 var orcidChart = dc.rowChart('#orcid-chart');
-                orcidChart.width(320)
+                orcidChart.width(calculate_vis_width(window_width, 0.25))
                     .height(200)
                     .dimension(restrictions)
                     .group(restrictions_orcids);
@@ -482,7 +495,7 @@ var dashboard = (function () {
 
 
                 var objectTypeChart = dc.rowChart('#object-type');
-                objectTypeChart.width(320)
+                objectTypeChart.width(calculate_vis_width(window_width, 0.25))
                     .height(290)
                     .dimension(object)
                     .group(object_group);
@@ -614,6 +627,9 @@ var dashboard = (function () {
 
                 var domain = [minDate, maxDate];
 
+                var window_width = calculate_window_width();
+
+
                 create_composite_chart('monthly-chart', date_ids_live, domain,
                     [{'group': works, 'label': 'Works', 'type': 'line', 'colors': ['#9b59b6']},
                         {'group': unique_dois, 'label': 'Unique DOIs', 'type': 'line', 'colors': ['#4aa3df']},
@@ -627,11 +643,11 @@ var dashboard = (function () {
                             'type': 'line',
                             'colors': ['#e74c3c']
                         }
-                    ], {'width': 940, 'height': 200, 'legend': true}
+                    ], {'width': calculate_vis_width(window_width, 0.9), 'height': 200, 'legend': true}
                 );
 
-                var options = {'width': 380, 'height': 200};
-                var options_sml = {'width': 280, 'height': 200};
+                var options = {'width': calculate_vis_width(window_width, 0.35), 'height': 200};
+                var options_sml = {'width': calculate_vis_width(window_width, 0.24), 'height': 200};
 
                 create_composite_chart('works-chart', date_works, domain,
                     [{'group': works_month, 'type': 'bar', 'colors': ['#9b59b6']}, {
@@ -748,6 +764,33 @@ var dashboard = (function () {
             });
         },
 
+        register_resize_listener: function (type, url) {
+
+            var rtime;
+            var timeout = false;
+            var delta = 200;
+            $(window).resize(function () {
+                rtime = new Date();
+                if (timeout === false) {
+                    timeout = true;
+                    setTimeout(resizeend, delta);
+                }
+            });
+
+            function resizeend() {
+                if (new Date() - rtime < delta) {
+                    setTimeout(resizeend, delta);
+                } else {
+                    timeout = false;
+                    if(type === "doi") {
+                        dashboard.render_doi_metrics(url);
+                    } else {
+                        dashboard.render_orcid_metrics(url);
+                    }
+                }
+            }
+        },
+
         render_event_calendar: function (placement, data_url, options) {
 
 
@@ -816,7 +859,7 @@ var dashboard = (function () {
                     var event = event_data[idx];
                     d3.select("#d" + format(new Date(event.date))).datum(event)
                         .style("fill", function (d) {
-                            return type_color_scale(d.type)
+                            return event_type_color_scale(d.type)
                         }).attr('class', function (d) {
                             return d.type + ' cal-event';
                         })
@@ -838,7 +881,7 @@ var dashboard = (function () {
                     tr.append("td").text(event.date);
                     tr.append("td").text(event.name);
                     tr.append("td").append("span").text(event.type).attr("class", "chip").style({
-                        'background-color': type_color_scale(event.type),
+                        'background-color': event_type_color_scale(event.type),
                         'color': 'white'
                     });
                     tr.append("td").text(event.country);
@@ -868,7 +911,7 @@ var dashboard = (function () {
                 type_div.append("span").text(function (d) {
                     return d.value + " " + d.name;
                 }).attr("class", "chip").style("background-color", function (d) {
-                    return type_color_scale(d.name);
+                    return event_type_color_scale(d.name);
                 }).style({'cursor': 'pointer', "color": "white"})
 
                     .on("mouseover", function (d) {

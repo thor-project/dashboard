@@ -29,9 +29,9 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row flex-container">
+    <div class="row ">
     {# sidebar #}
-    <div id="dashboard-menu" class="col-md-1" style="min-width: 150px; background-color: #2C3E50; padding:0"
+    <div id="dashboard-menu" class=" col-md-1 col-sm-2 col-xs-2" style="background-color: #2C3E50; padding:0"
          align="center">
         <img src="{{ STATIC_URL }}assets/img/logo-original.svg" width="80%" align="center"
              style="padding-left: 10px; padding-top: 10px">
@@ -50,14 +50,11 @@
             <li><span class="fa fa-life-bouy"></span></li>
         </ul>
 
-        <div class="sidebar-footer">
-            <img src="{{ STATIC_URL }}assets/img/cern-logo.svg" width="35%">
-        </div>
     </div>
 
     {# main content #}
-    <div id="dashboard-content" style="padding-left: 177px;">
-        <div class="row col-md-12" style="padding-top: 1em; padding-bottom: 1em">
+    <div id="dashboard-content">
+        <div class="row col-md-10 col-sm-10 col-xs-8" style="padding-top: 1em; padding-bottom: 1em">
 
             <div class="col-md-12">
                 <h2 class="color-white uppercase bold-text">Research Object Identifier Metrics (DataCite)</h2>
@@ -67,7 +64,7 @@
 
         <div class="row visualization-container">
 
-            <div class="col-md-8">
+            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-8">
                 <div class="visualization-panel col-md-12">
                     <h4>DOIs Minted by Month</h4>
 
@@ -76,7 +73,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-4 col-sm-10 col-xs-8 expansion-sm">
                 <div class="visualization-panel col-md-12">
                     <h4>DOIs With ORCIDs</h4>
 
@@ -91,7 +88,7 @@
 
         <div class="row visualization-container">
 
-            <div class="col-md-8">
+            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-8">
                 <div class="visualization-panel col-md-12" style="height: 370px;">
                     <h4>DOIs by Centre</h4>
 
@@ -101,7 +98,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-4 col-sm-10 col-xs-8">
                 <div class="visualization-panel col-md-12" style="height: 370px;">
                     <h4>DOI Object Type</h4>
 
@@ -114,8 +111,8 @@
         </div>
 
         <div class="row visualization-container">
-            <div class="col-md-8">
-                <div class="visualization-panel col-md-12" style="height: 420px; overflow: hidden">
+            <div class="col-md-8 col-sm-10 col-xs-8">
+                <div class="visualization-panel col-md-12" style="height: 420px; ">
                     <h4>DOIs minted by Country</h4>
 
                     <div id="map" class="col-md-12">
@@ -123,11 +120,11 @@
                 </div>
             </div>
 
-             <div class="col-md-4">
+            <div class="col-md-4 col-sm-10 col-xs-8">
                 <div class="visualization-panel col-md-12" style="height: 420px;">
                     <h4>DOIs Minted by Country</h4>
 
-                    <div id="country-details" style="overflow: auto">
+                    <div id="country-details">
                     </div>
                 </div>
 
@@ -139,7 +136,7 @@
         <div class="clearfix"></div>
 
         <div class="row visualization-container">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-10 col-xs-8">
                 <div class="visualization-panel col-md-12" style="height: 500px; overflow-y: scroll">
                     <h4>Detailed Research Object Metrics</h4>
 
@@ -165,6 +162,12 @@
 {% block end_additional %}
     <script src="{{ STATIC_URL }}assets/js/thor-dash-lib.js" type="text/javascript"></script>
     <script>
-        dashboard.render_doi_metrics("/api/data?type=doi")
+
+        $(document).ready(function () {
+            dashboard.render_doi_metrics("/api/data?type=doi");
+        });
+
+        dashboard.register_resize_listener("doi", "/api/data?type=doi");
+
     </script>
 {% endblock %}

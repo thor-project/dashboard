@@ -179,6 +179,8 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     order: 2;
     flex: 0 1 auto;
     align-self: stretch;
+    position: absolute;
+    left: 100px;
 }
 
 .visualization-container {
@@ -264,7 +266,7 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     display: inline-block;
     margin-bottom: 20px;
     width:100%;
-
+    overflow-x: auto;
 }
 
 .reset {
@@ -427,11 +429,43 @@ tr.hover {
 }
 
 
-
-
 /* Style northward tooltips differently */
 .d3-tip.n:after {
     margin: -1px 0 0 0;
     top: 100%;
     left: 0;
 }
+
+
+@media (max-width: 1000px) {
+    .expansion-sm {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    #dashboard-content {
+        left: 50px;
+    }
+}
+
+@media (min-width: 600px) {
+    #dashboard-content {
+        left: 110px;
+    }
+}
+
+@media (min-width: 800px) {
+    #dashboard-content {
+        left: 140px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #dashboard-content {
+        left: 100px;
+    }
+}
+
+
+
