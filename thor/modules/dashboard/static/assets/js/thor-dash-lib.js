@@ -611,7 +611,7 @@ var dashboard = (function () {
                 ;
 
                 dc.renderlet(function () {
-                    var divs = ["#works-dois-chart", "#liveids-chart", "#unique-dois-chart", "#verified-ids-chart", "#works-chart"];
+                    var divs = ["#monthly-chart", "#works-dois-chart", "#liveids-chart", "#unique-dois-chart", "#verified-ids-chart", "#works-chart"];
                     for (var div in divs) {
                         d3.select(divs[div] + " svg g").attr("transform", 'translate(20, 0)');
                     }
