@@ -445,25 +445,25 @@ tr.hover {
 
 @media (max-width: 500px) {
     #dashboard-content {
-        left: 50px;
+        left: 11%;
     }
 }
 
-@media (min-width: 600px) {
+@media (max-width: 700px) {
     #dashboard-content {
-        left: 110px;
+        left: 15%;
     }
 }
 
 @media (min-width: 800px) {
     #dashboard-content {
-        left: 140px;
+        left: 15%;
     }
 }
 
 @media (min-width: 1000px) {
     #dashboard-content {
-        left: 100px;
+        left: 9%;
     }
 }
 
