@@ -2,9 +2,9 @@
  * Created by eamonnmaguire on 26/08/15.
  */
 var dashboard = (function () {
-    // Various formatters.
+    var date_format = "%d %b %Y";
     var formatNumber = d3.format(",d"),
-        formatDate = d3.time.format("%d %b %Y"),
+        formatDate = d3.time.format(date_format),
         formatTime = d3.time.format("%I:%M %p");
 
     var event_type_color_scale = d3.scale.ordinal().range(['#d25627', '#3b97d3', '#26b99a', '#7f8c8d']);
@@ -28,6 +28,18 @@ var dashboard = (function () {
         });
     };
 
+    var sortByDateAscending = function (a, b) {
+
+        if (typeof a === 'string') {
+            var a = d3.time.format(date_format).parse(a);
+            var b = d3.time.format(date_format).parse(b);
+            return b - a;
+        } else {
+            return b.date - a.date;
+        }
+
+    };
+
     /**
      * Creates a composition chart given
      * @param placement - id of the div to insert the plot
@@ -43,19 +55,19 @@ var dashboard = (function () {
         for (var group in groups) {
             if (groups[group]['type'] === 'line') {
                 composition.push(dc.lineChart(rptLine)
-                        .dimension(dimension)
-                        .group(groups[group]['group'], groups[group]['label'])
-                        .colors(groups[group]['colors'])
-                        .x(d3.time.scale().domain(domain))
-                        .xUnits(d3.time.months)
+                    .dimension(dimension)
+                    .group(groups[group]['group'], groups[group]['label'])
+                    .colors(groups[group]['colors'])
+                    .x(d3.time.scale().domain(domain))
+                    .xUnits(d3.time.months)
                 );
             } else if (groups[group]['type'] === 'bar') {
                 composition.push(dc.barChart(rptLine)
-                        .dimension(dimension)
-                        .group(groups[group]['group'], groups[group]['label'])
-                        .colors(groups[group]['colors'])
-                        .x(d3.time.scale().domain(domain))
-                        .xUnits(d3.time.months)
+                    .dimension(dimension)
+                    .group(groups[group]['group'], groups[group]['label'])
+                    .colors(groups[group]['colors'])
+                    .x(d3.time.scale().domain(domain))
+                    .xUnits(d3.time.months)
                 );
             }
         }
@@ -262,7 +274,11 @@ var dashboard = (function () {
 
                 rptLine.renderlet(function (chart) {
                     chart.selectAll("g._1").attr("transform", "translate(" + translate + ", 0)");
-                    draw_events("#overview-chart", result.events, {'xScale': xScale, 'height': 400, 'width': calculate_vis_width(window_width, 0.9)})
+                    draw_events("#overview-chart", result.events, {
+                        'xScale': xScale,
+                        'height': 400,
+                        'width': calculate_vis_width(window_width, 0.9)
+                    })
                 });
 
                 dc.renderAll();
@@ -504,6 +520,7 @@ var dashboard = (function () {
 
                 var detailTable = dc.dataTable('.dc-data-table');
                 detailTable.dimension(date)
+
                     .group(function (d) {
                         return formatDate(d.date);
                     })
@@ -520,7 +537,11 @@ var dashboard = (function () {
                         function (d) {
                             return d.data_value
                         }
-                    ]);
+                    ])
+                    .sortBy(function (d) {
+                        return d.date;
+                    })
+                    .order(sortByDateAscending);
 
                 dc.renderAll();
 
@@ -713,8 +734,6 @@ var dashboard = (function () {
                 detailTable.dimension(date_works)
                     .group(function (d) {
                         return formatDate(d.date);
-                    }).ordering(function (d) {
-                        return d.date
                     })
                     .columns([
                         function () {
@@ -748,8 +767,10 @@ var dashboard = (function () {
                         function (d) {
                             return d.employment_month
                         }
-                    ])
-                ;
+                    ]).sortBy(function (d) {
+                        return d.date;
+                    })
+                    .order(sortByDateAscending);
 
                 dc.renderlet(function () {
                     var divs = ["#monthly-chart", "#works-dois-chart", "#liveids-chart",
@@ -782,9 +803,9 @@ var dashboard = (function () {
                     setTimeout(resizeend, delta);
                 } else {
                     timeout = false;
-                    if(type === "doi") {
+                    if (type === "doi") {
                         dashboard.render_doi_metrics(url);
-                    } else if (type == "orcid"){
+                    } else if (type == "orcid") {
                         dashboard.render_orcid_metrics(url);
                     } else {
                         dashboard.render_general_metrics(url);
@@ -872,10 +893,10 @@ var dashboard = (function () {
                         .on("click", function (d) {
                             load_event_details(d.id);
                         }).on("mouseover", function (d) {
-                            d3.select("#l" + format(new Date(d.date))).classed("hover", true)
-                        }).on("mouseout", function (d) {
-                            d3.select("#l" + format(new Date(d.date))).classed("hover", false)
-                        });
+                        d3.select("#l" + format(new Date(d.date))).classed("hover", true)
+                    }).on("mouseout", function (d) {
+                        d3.select("#l" + format(new Date(d.date))).classed("hover", false)
+                    });
 
                     var tr = d3.select("#event_list").append("tr").attr('id', "l" + format(new Date(event.date))).attr("class", function (d) {
                         return event.type + " cal-event";
@@ -892,8 +913,8 @@ var dashboard = (function () {
                     tr.append("td").selectAll("span")
                         .data(event.participant_type).enter().append("span")
                         .attr("class", "chip").text(function (d) {
-                            return d;
-                        });
+                        return d;
+                    });
 
                     if (!(event.type in event_types)) {
                         event_types[event.type] = {"name": event.type, "value": 0}
