@@ -40,6 +40,10 @@ var dashboard = (function () {
 
     };
 
+    var htmlEncode = function (value) {
+        return $('<div/>').text(value).html();
+    };
+
     /**
      * Creates a composition chart given
      * @param placement - id of the div to insert the plot
@@ -535,7 +539,7 @@ var dashboard = (function () {
                             return d.data_key
                         },
                         function (d) {
-                            return d.data_value
+                            return d.data_value;
                         }
                     ])
                     .sortBy(function (d) {
