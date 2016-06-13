@@ -47,7 +47,7 @@
     </div>
 
     {# main content #}
-    <div id="dashboard-content" class="col-md-12">
+    <div id="dashboard-content" class="col-md-11">
 
         <div class="row col-md-12" style="padding-top: 1em; padding-bottom: 1em">
 
@@ -108,7 +108,7 @@
 
 {% block end_additional %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js" type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}assets/js/thor-dash-lib.js" type="text/javascript"></script>
+    <script src="/static/assets/js/thor-dash-lib.js" type="text/javascript"></script>
     <script>
         $(document).ready(function () {
             dashboard.render_general_metrics("/api/data?type=aggregate");
