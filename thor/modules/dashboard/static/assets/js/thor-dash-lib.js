@@ -249,7 +249,6 @@ var dashboard = (function () {
                 minDate.setDate(minDate.getDate() - 15);
                 maxDate.setDate(maxDate.getDate() + 15);
 
-
                 var top_value = 0;
                 var cumulative_total_group = {
                     all: function () {
@@ -268,13 +267,15 @@ var dashboard = (function () {
                     }
                 };
 
-                var max_value = Math.max(orcids.top(1)[0].orcids, top_value);
-                var gap = 15, translate = 10;
                 cumulative_total_group.all();
+
+                var max_value = Math.max(orcids.top(1)[0].orcids, top_value);
+                var gap = 15, translate = 2;
+
                 var window_width = calculate_window_width();
                 var xScale = d3.time.scale().domain([minDate, maxDate]);
                 rptLine
-                    .width(calculate_vis_width(window_width, 0.9))
+                    .width(calculate_vis_width(window_width, 0.85))
                     .height(400)
                     .margins({top: 10, right: 40, bottom: 30, left: 60})
                     .dimension(date)
@@ -282,7 +283,7 @@ var dashboard = (function () {
                     .y(d3.scale.sqrt().domain([minValue, max_value]))
 
                     .xUnits(function () {
-                        return 35;
+                        return 55;
                     })
                     .renderHorizontalGridLines(true)
                     .renderVerticalGridLines(true)
@@ -295,7 +296,8 @@ var dashboard = (function () {
                                 return d.value
                             }).dotRadius(5),
 
-                        dc.barChart(rptLine).gap(gap).group(cumulative_total_group, 'DOIs per month').colors(['#2980b9'])
+                        dc.barChart(rptLine).gap(gap)
+                            .group(cumulative_total_group, 'DOIs per month').colors(['#2980b9'])
                             .valueAccessor(function (d) {
                                 return d.single_value;
                             }),
@@ -542,7 +544,7 @@ var dashboard = (function () {
 
                 var doiCentreChart = dc.rowChart('#institution-chart');
                 doiCentreChart.width(calculate_vis_width(window_width, 0.47))
-                    .height(300)
+                    .height(340)
                     .dimension(institution)
                     .group(institution_group);
                 doiCentreChart.colors(['#2980BA']);

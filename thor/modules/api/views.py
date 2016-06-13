@@ -26,8 +26,6 @@ def get_data(request):
             aggregated[orcid_item['date']]['orcids'] = orcid_item['liveIds']
             aggregated[orcid_item['date']]['month_orcids'] = orcid_item['liveIds_month']
 
-        json_contents = aggregated.values()
-
         for doi_item in doi:
             if doi_item['date'] not in aggregated:
                 aggregated[doi_item['date']] = {'date': doi_item['date']}
@@ -39,6 +37,9 @@ def get_data(request):
 
             aggregated[doi_item['date']]['dois'] += doi_item['data_value']
 
+        print(aggregated)
+
+        json_contents = aggregated.values()
 
         events = Event.objects.all()
         event_json = []
