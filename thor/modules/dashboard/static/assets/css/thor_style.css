@@ -201,7 +201,7 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     text-transform: uppercase;
     font-size: 1.4em;
     font-weight: normal;
-            text-transform: lowercase;
+    text-transform: lowercase;
 }
 
 .color-white {
@@ -265,7 +265,7 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
 .chart {
     display: inline-block;
     margin-bottom: 20px;
-    width:100%;
+    width: 100%;
     overflow-x: auto;
 }
 
@@ -305,8 +305,6 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     stroke: #666;
 }
 
-
-
 #record-list {
     height: 80%;
     overflow-y: scroll;
@@ -329,9 +327,9 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
 }
 
 #record-list .record {
-    padding:5px;
+    padding: 5px;
     padding-left: 20px;
-background-color: #35495E;
+    background-color: #35495E;
     margin: 3px;
 }
 
@@ -371,7 +369,7 @@ background-color: #35495E;
     fill-opacity: 1;
 }
 
-.grid-line line{
+.grid-line line {
     fill: none;
     stroke: #35495E !important;
     stroke-width: 2;
@@ -384,22 +382,20 @@ background-color: #35495E;
 }
 
 .dc-table-row {
-    background-color: #35495E;
-    border: 8px solid #2C3E50;
-    border-radius: 4px;
+    background-color: transparent;
+    border: 1px solid #ecf0f1;
 }
 
 .day {
-  fill: white;
-  stroke: #bdc3c7;
+    fill: white;
+    stroke: #bdc3c7;
 }
 
 .month {
-  fill: none;
-  stroke: #2c3e50;
-  stroke-width: 2px;
+    fill: none;
+    stroke: #2c3e50;
+    stroke-width: 2px;
 }
-
 
 .chip {
     display: inline-block;
@@ -417,7 +413,6 @@ tr.hover {
     background-color: #ecf0f1;
 }
 
-
 .d3-tip {
     line-height: 1;
     font-weight: normal;
@@ -428,14 +423,12 @@ tr.hover {
     border-radius: 2px;
 }
 
-
 /* Style northward tooltips differently */
 .d3-tip.n:after {
     margin: -1px 0 0 0;
     top: 100%;
     left: 0;
 }
-
 
 @media (max-width: 1000px) {
     .expansion-sm {
@@ -465,6 +458,41 @@ tr.hover {
     #dashboard-content {
         left: 9%;
     }
+}
+
+#table-button {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    bottom: 8px;
+}
+
+#table-button .button-container {
+    border-top:3px solid #2c3e50;
+    border-left:3px solid #2c3e50;
+    border-right:3px solid #2c3e50;
+    background-color: #14A085;
+    border-radius: 3px 3px 0 0;
+    padding:10px;
+    cursor: pointer;
+}
+
+#table-button .button-container:hover {
+    color: #2c3e50;
+    background-color: #26B99A;
+}
+
+#table-view {
+    z-index: 9999;
+    position: fixed;
+    bottom: -330px;
+    width: 100%;
+    left: 0;
+}
+
+#table-view .visualization-panel {
+    background-color: white;
+    color: #2c3e50;
 }
 
 

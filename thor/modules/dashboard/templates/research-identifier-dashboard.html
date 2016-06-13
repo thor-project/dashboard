@@ -24,17 +24,23 @@
 {% block content %}
     <div class="row flex-container">
     {# sidebar #}
-    <div id="dashboard-menu" class="col-md-1 col-sm-2 col-xs-2" style="background-color: #2C3E50; padding:0"
+    <div id="dashboard-menu" class="col-md-1 col-sm-2 col-xs-2"
+         style="background-color: #2C3E50; padding:0"
          align="center">
-        <img src="{{ STATIC_URL }}assets/img/logo-original.svg" width="80%" align="center"
+        <img src="/static/assets/img/logo-original.svg" width="80%"
+             align="center"
              style="padding-left: 10px; padding-top: 10px">
 
         <ul class="menu">
 
-            <li><a href="/dashboard/"><span class="fa fa-bar-chart"></span></a></li>
-            <li><a href="/dashboard/data/"><span class="fa fa-database"></span></a></li>
-            <li class="active"><a href="/dashboard/researcher/"><span class="fa fa-user"></span></a></li>
-            <li><a href="/dashboard/event/"><span class="fa fa-calendar"></span></a></li>
+            <li><a href="/dashboard/"><span class="fa fa-bar-chart"></span></a>
+            </li>
+            <li><a href="/dashboard/data/"><span class="fa fa-database"></span></a>
+            </li>
+            <li class="active"><a href="/dashboard/researcher/"><span
+                    class="fa fa-user"></span></a></li>
+            <li><a href="/dashboard/event/"><span
+                    class="fa fa-calendar"></span></a></li>
 
         </ul>
 
@@ -42,10 +48,12 @@
 
     {# main content #}
     <div id="dashboard-content">
-        <div class="row col-md-12 col-sm-10 col-xs-9" style="padding-top: 1em; padding-bottom: 1em">
+        <div class="row col-md-12 col-sm-10 col-xs-9"
+             style="padding-top: 1em; padding-bottom: 1em">
 
             <div class="col-md-12">
-                <h2 class="color-white uppercase bold-text">Researcher Metrics (ORCID)</h2>
+                <h2 class="color-white uppercase bold-text">Researcher Metrics
+                    (ORCID)</h2>
             </div>
         </div>
 
@@ -134,11 +142,20 @@
             </div>
         </div>
 
-        <div class="clearfix"></div>
+    </div>
 
-        <div class="row visualization-container">
+    <div id="table-button" class="toggle-hidden">
+        <span class="button-container"
+              onclick="dashboard.toggle_detail_view()">
+            <i class="glyphicon glyphicon-list"></i> <span id="button-txt">View Detailed List</span>
+        </span>
+    </div>
+
+    <div id="table-view" class="toggle-hidden">
+        <div class="row-fluid visualization-container">
             <div class="col-md-12 col-sm-10 col-xs-9">
-                <div class="visualization-panel col-md-12" style="height: 500px; overflow-y: scroll">
+                <div class="visualization-panel col-md-12"
+                     style="height: 300px; overflow-y: scroll">
                     <h4>Detailed Researcher Metrics</h4>
 
                     <table class="table dc-data-table">
@@ -161,10 +178,12 @@
             </div>
         </div>
     </div>
+
 {% endblock %}
 
 {% block end_additional %}
-    <script src="{{ STATIC_URL }}assets/js/thor-dash-lib.js" type="text/javascript"></script>
+    <script src="/static/assets/js/thor-dash-lib.js"
+            type="text/javascript"></script>
 
     <script>
 
