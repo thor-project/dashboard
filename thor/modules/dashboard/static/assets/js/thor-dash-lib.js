@@ -460,7 +460,7 @@ var dashboard = (function () {
                 var country_details_chart = dc.rowChart("#country-details");
 
                 country_details_chart.width(calculate_vis_width(window_width, 0.24))
-                    .height(290)
+                    .height(320)
                     .dimension(country_2)
                     .group(country_dois2)
                     .elasticX(true);
