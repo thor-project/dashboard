@@ -67,8 +67,9 @@
 
         <div class="row visualization-container">
 
-            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-8">
-                <div class="visualization-panel col-md-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="visualization-panel col-md-12"
+                     style="height: 350px;">
                     <h4>DOIs Minted by Month</h4>
 
                     <div id="monthly-chart" class="chart">
@@ -76,25 +77,14 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-10 col-xs-8 expansion-sm">
-                <div class="visualization-panel col-md-12">
-                    <h4>DOIs With ORCIDs</h4>
-
-                    <div id="orcid-chart" class="chart">
-                    </div>
-
-                </div>
-            </div>
-
-
         </div>
 
         <div class="row visualization-container">
 
-            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-8">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="visualization-panel col-md-12"
-                     style="height: 400px;">
-                    <h4>DOIs by Centre</h4>
+                     style="height: 470px;">
+                    <h4>DOIs by Allocator</h4>
 
                     <div id="institution-chart" class="chart">
                     </div>
@@ -102,13 +92,24 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-10 col-xs-8">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="visualization-panel col-md-12"
-                     style="height: 400px;">
+                     style="height: 470px;">
                     <h4>DOI Object Type</h4>
 
                     <div id="object-type" class="chart">
                     </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="visualization-panel col-md-12" style="height: 470px;">
+                    <h4>DOIs With ORCIDs</h4>
+
+                    <div id="orcid-chart" class="chart">
+                    </div>
+
                 </div>
 
             </div>
@@ -146,7 +147,8 @@
     </div>
 
     <div id="table-button" class="toggle-hidden">
-        <span class="button-container" onclick="dashboard.toggle_detail_view()">
+        <span class="button-container"
+              onclick="dashboard.toggle_detail_view()">
             <i class="glyphicon glyphicon-list"></i> <span id="button-txt">View Detailed List</span>
         </span>
     </div>

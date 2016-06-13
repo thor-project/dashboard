@@ -460,7 +460,7 @@ var dashboard = (function () {
                 var country_details_chart = dc.rowChart("#country-details");
 
                 country_details_chart.width(calculate_vis_width(window_width, 0.24))
-                    .height(320)
+                    .height(350)
                     .dimension(country_2)
                     .group(country_dois2)
                     .elasticX(true);
@@ -499,8 +499,8 @@ var dashboard = (function () {
                 var rptLine = dc.compositeChart(document.getElementById("monthly-chart"));
 
                 rptLine
-                    .width(calculate_vis_width(window_width, 0.55))
-                    .height(200)
+                    .width(calculate_vis_width(window_width, 0.85))
+                    .height(300)
                     .margins({top: 10, right: 50, bottom: 30, left: 60})
                     .dimension(date)
                     .x(d3.time.scale().domain([minDate, maxDate]))
@@ -543,8 +543,8 @@ var dashboard = (function () {
                 rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5));
 
                 var doiCentreChart = dc.rowChart('#institution-chart');
-                doiCentreChart.width(calculate_vis_width(window_width, 0.47))
-                    .height(340)
+                doiCentreChart.width(calculate_vis_width(window_width, 0.31))
+                    .height(400)
                     .dimension(institution)
                     .group(institution_group);
                 doiCentreChart.colors(['#2980BA']);
@@ -553,7 +553,7 @@ var dashboard = (function () {
 
                 var orcidChart = dc.rowChart('#orcid-chart');
                 orcidChart.width(calculate_vis_width(window_width, 0.25))
-                    .height(200)
+                    .height(230)
                     .dimension(restrictions)
                     .group(restrictions_orcids);
                 orcidChart.colors(['#1abc9c', '#2980BA']);
