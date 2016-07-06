@@ -175,6 +175,10 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     background-color: #2C3E50;
 }
 
+#dashboard-menu a {
+    color: white;
+}
+
 #dashboard-content {
     order: 2;
     flex: 0 1 auto;
@@ -236,21 +240,19 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     transition: background-color 0.5s;
 }
 
-.menu li a {
+.menu a {
     color: white;
 }
 
 .menu li.active {
     background-color: #14A085;
+    color: white;
 }
 
 .menu li:hover {
     background-color: #35495E;
 }
 
-.menu li.active:hover {
-    color: #14A085;
-}
 
 .sidebar-footer {
     text-align: center;

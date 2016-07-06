@@ -11,10 +11,11 @@
 
         .menu li.active {
             background-color: white;
+            color: #2C3E50;
         }
 
         .menu li.active a {
-            color: #7f8c8d;
+            color: #7f8c8d !important;
         }
 
         .visualization-panel h4 {
@@ -55,11 +56,10 @@
              style="padding-left: 10px; padding-top: 10px">
 
         <ul class="menu">
-
-            <li><a href="/dashboard/"><span class="fa fa-bar-chart"></span></a></li>
-            <li><a href="/dashboard/data/"><span class="fa fa-database"></span></a></li>
-            <li><a href="/dashboard/researcher/"><span class="fa fa-user"></span></a></li>
-            <li class="active"><a href="/dashboard/event/"><span class="fa fa-calendar"></span></a></li>
+            <a href="/dashboard/"><li><span class="fa fa-bar-chart"></span></li></a>
+            <a href="/dashboard/data/"><li><span class="fa fa-database"></span></li></a>
+            <a href="/dashboard/researcher/"><li><span class="fa fa-user"></span></li></a>
+            <li class="active"><span class="fa fa-calendar"></span></li>
         </ul>
 
     </div>
