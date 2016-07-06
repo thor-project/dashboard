@@ -89,6 +89,8 @@ var dashboard = (function () {
             .renderVerticalGridLines(true)
             .compose(composition);
 
+        rptLine.yAxis().tickFormat(normalised_number_format);
+
         if (options.legend) {
             rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5))
                 .brushOn(true);
@@ -213,7 +215,6 @@ var dashboard = (function () {
 
         render_general_metrics: function (data_url) {
             d3.json(data_url, function (error, result) {
-
 
                 var doi_data = result.data;
 
@@ -473,7 +474,7 @@ var dashboard = (function () {
                     .group(country_dois2)
                     .elasticX(true);
                 country_details_chart.colors(d3.scale.ordinal().range(map_intensity_colours));
-                country_details_chart.xAxis().ticks(5)
+                country_details_chart.xAxis().ticks(5);
                 country_details_chart.xAxis().tickFormat(normalised_number_format);
 
                 d3.json("/static/assets/geo/world-countries.json", function (worldcountries) {
@@ -571,6 +572,7 @@ var dashboard = (function () {
                     .dimension(restrictions)
                     .group(restrictions_orcids);
                 orcidChart.xAxis().tickFormat(normalised_number_format);
+                orcidChart.xAxis().ticks(5);
                 orcidChart.colors(typeColorScale);
                 orcidChart.elasticX(true);
 
@@ -581,6 +583,7 @@ var dashboard = (function () {
                     .dimension(object)
                     .group(object_group);
                 objectTypeChart.colors(colorScale);
+                objectTypeChart.xAxis().ticks(5);
                 objectTypeChart.xAxis().tickFormat(normalised_number_format);
                 objectTypeChart.elasticX(true);
 

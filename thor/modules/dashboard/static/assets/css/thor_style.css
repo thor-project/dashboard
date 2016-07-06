@@ -253,7 +253,6 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
     background-color: #35495E;
 }
 
-
 .sidebar-footer {
     text-align: center;
     position: fixed;
@@ -470,12 +469,12 @@ tr.hover {
 }
 
 #table-button .button-container {
-    border-top:3px solid #2c3e50;
-    border-left:3px solid #2c3e50;
-    border-right:3px solid #2c3e50;
+    border-top: 3px solid #2c3e50;
+    border-left: 3px solid #2c3e50;
+    border-right: 3px solid #2c3e50;
     background-color: #14A085;
     border-radius: 3px 3px 0 0;
-    padding:10px;
+    padding: 10px;
     cursor: pointer;
 }
 
@@ -497,5 +496,12 @@ tr.hover {
     color: #2c3e50;
 }
 
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    border: none;
+}
+
+.table > tbody + tbody {
+    border: none;
+}
 
 
