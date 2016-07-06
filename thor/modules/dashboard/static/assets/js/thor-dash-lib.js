@@ -6,7 +6,8 @@ var dashboard = (function () {
 
     var formatNumber = d3.format(",d"),
         formatDate = d3.time.format(date_format),
-        formatTime = d3.time.format("%I:%M %p");
+        formatTime = d3.time.format("%I:%M %p"),
+        normalised_number_format = d3.format("s");
 
     var event_type_color_scale = d3.scale.ordinal().range(['#d25627', '#3b97d3', '#26b99a', '#7f8c8d']);
 
@@ -90,7 +91,7 @@ var dashboard = (function () {
 
         if (options.legend) {
             rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5))
-                .brushOn(false);
+                .brushOn(true);
         }
     };
 
@@ -152,6 +153,8 @@ var dashboard = (function () {
                 'width': '500px',
                 'height': '500px',
                 'margin': '100px auto',
+                'z-index': 1000,
+                'position': 'absolute',
                 'background-color': 'white'
             });
             div.append("h4").text(data.name);
@@ -174,6 +177,7 @@ var dashboard = (function () {
     };
 
     var colorScale = d3.scale.ordinal().range(['#14A085', "#26B99A", "#3B97D3", "#955BA5", "#F29C1F", "#D25627", "#C03A2B"]);
+    var typeColorScale = d3.scale.ordinal().range(['#1abc9c', '#3498db']);
     var map_intensity_colours = ["#feedde", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#8c2d04"];
 
     return {
@@ -288,27 +292,31 @@ var dashboard = (function () {
                     .renderHorizontalGridLines(true)
                     .renderVerticalGridLines(true)
                     .compose([
-                        dc.lineChart(rptLine)
-                            .dimension(date)
-                            .group(cumulative_total_group, 'Cumulative DOIs')
-                            .colors(['#3b97d3'])
-                            .valueAccessor(function (d) {
-                                return d.value
-                            }).dotRadius(5),
+
 
                         dc.barChart(rptLine).gap(gap)
-                            .group(cumulative_total_group, 'DOIs per month').colors(['#2980b9'])
+                            .group(cumulative_total_group, 'DOIs per month').colors('#2980b9')
                             .valueAccessor(function (d) {
                                 return d.single_value;
                             }),
-                        dc.barChart(rptLine).gap(gap).colors(['#16a085'])
+                        dc.barChart(rptLine).gap(gap).colors('#16a085')
                             .group(orcid_month, 'ORCIDs per month'),
 
                         dc.lineChart(rptLine)
                             .dimension(date)
                             .group(orcid, 'Cumulative ORCIDs')
-                            .colors(['#16a085'])
+                            .colors('#16a085')
                             .xUnits(d3.time.months)
+                            .dashStyle([5, 5]),
+
+                        dc.lineChart(rptLine)
+                            .dimension(date)
+                            .group(cumulative_total_group, 'Cumulative DOIs')
+                            .colors('#3b97d3')
+                            .valueAccessor(function (d) {
+                                return d.value
+                            }).dotRadius(5)
+                            .dashStyle([5, 5])
                     ]);
 
                 rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5))
@@ -465,7 +473,8 @@ var dashboard = (function () {
                     .group(country_dois2)
                     .elasticX(true);
                 country_details_chart.colors(d3.scale.ordinal().range(map_intensity_colours));
-                country_details_chart.xAxis().ticks(5);
+                country_details_chart.xAxis().ticks(5)
+                country_details_chart.xAxis().tickFormat(normalised_number_format);
 
                 d3.json("/static/assets/geo/world-countries.json", function (worldcountries) {
                     var chart = dc.geoChoroplethChart("#map");
@@ -507,6 +516,7 @@ var dashboard = (function () {
                     .xUnits(d3.time.months)
                     .y(d3.scale.sqrt().domain([minValue, top_value]))
                     .renderHorizontalGridLines(true)
+
                     .renderVerticalGridLines(true)
                     .compose([
                         dc.lineChart(rptLine)
@@ -522,7 +532,7 @@ var dashboard = (function () {
                         dc.lineChart(rptLine)
                             .dimension(date)
                             .group(cumulative_orcid_group, 'DOIs with ORCIDs')
-                            .colors(['#9b59b6'])
+                            .colors('#9b59b6')
                             .valueAccessor(function (d) {
 
                                 return d.value
@@ -536,19 +546,23 @@ var dashboard = (function () {
                             .valueAccessor(function (d) {
                                 return d.single_value
                             })
-                            .colors(['#3498db'])
+                            .colors('#3498db')
                             .x(d3.time.scale().domain([minDate, maxDate]))
                             .xUnits(d3.time.months)
                     ]);
                 rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5));
+
+
+                rptLine.yAxis().tickFormat(normalised_number_format);
 
                 var doiCentreChart = dc.rowChart('#institution-chart');
                 doiCentreChart.width(calculate_vis_width(window_width, 0.31))
                     .height(400)
                     .dimension(institution)
                     .group(institution_group);
-                doiCentreChart.colors(['#2980BA']);
+                doiCentreChart.colors('#2980BA');
                 doiCentreChart.xAxis().ticks(5);
+                doiCentreChart.xAxis().tickFormat(normalised_number_format);
                 doiCentreChart.elasticX(true);
 
                 var orcidChart = dc.rowChart('#orcid-chart');
@@ -556,7 +570,8 @@ var dashboard = (function () {
                     .height(230)
                     .dimension(restrictions)
                     .group(restrictions_orcids);
-                orcidChart.colors(['#1abc9c', '#2980BA']);
+                orcidChart.xAxis().tickFormat(normalised_number_format);
+                orcidChart.colors(typeColorScale);
                 orcidChart.elasticX(true);
 
 
@@ -566,6 +581,7 @@ var dashboard = (function () {
                     .dimension(object)
                     .group(object_group);
                 objectTypeChart.colors(colorScale);
+                objectTypeChart.xAxis().tickFormat(normalised_number_format);
                 objectTypeChart.elasticX(true);
 
                 var detailTable = dc.dataTable('.dc-data-table');
@@ -574,6 +590,7 @@ var dashboard = (function () {
                     .group(function (d) {
                         return formatDate(d.date);
                     })
+                    .size(100)
                     .columns([
                         function () {
                             return ""
@@ -706,43 +723,43 @@ var dashboard = (function () {
                         'group': works,
                         'label': 'Works',
                         'type': 'line',
-                        'colors': ['#9b59b6']
+                        'colors': '#9b59b6'
                     },
                         {
                             'group': unique_dois,
                             'label': 'Unique DOIs',
                             'type': 'line',
-                            'colors': ['#4aa3df']
+                            'colors': '#4aa3df'
                         },
                         {
                             'group': liveIds,
                             'label': 'Live ORCIDs IDs',
                             'type': 'line',
-                            'colors': ['#16a085']
+                            'colors': '#16a085'
                         },
                         {
                             'group': ids_verified,
                             'label': 'Verified ORCIDs',
                             'type': 'line',
-                            'colors': ['#2ecc71']
+                            'colors': '#2ecc71'
                         },
                         {
                             'group': ids_with_works,
                             'label': 'ORCIDs with Works',
                             'type': 'line',
-                            'colors': ['#e67e22']
+                            'colors': '#e67e22'
                         },
                         {
                             'group': funding,
                             'label': 'ORCIDs with Funding Info',
                             'type': 'line',
-                            'colors': ['#bdc3c7']
+                            'colors': '#bdc3c7'
                         },
                         {
                             'group': employment,
                             'label': 'ORCIDs with Employment Info',
                             'type': 'line',
-                            'colors': ['#e74c3c']
+                            'colors': '#e74c3c'
                         }
                     ], {
                         'width': calculate_vis_width(window_width, 0.9),
@@ -815,11 +832,11 @@ var dashboard = (function () {
                     [{
                         'group': ids_with_works_month,
                         'type': 'bar',
-                        'colors': ['#e67e22']
+                        'colors': '#e67e22'
                     }, {
                         'group': ids_with_works,
                         'type': 'line',
-                        'colors': ['#e67e22']
+                        'colors': '#e67e22'
                     }],
                     options_sml);
 
@@ -831,7 +848,7 @@ var dashboard = (function () {
                     }, {
                         'group': funding,
                         'type': 'line',
-                        'colors': ['#bdc3c7']
+                        'colors': '#bdc3c7'
                     }],
                     options_sml);
 
@@ -839,11 +856,11 @@ var dashboard = (function () {
                     [{
                         'group': employment_month,
                         'type': 'bar',
-                        'colors': ['#e74c3c']
+                        'colors': '#e74c3c'
                     }, {
                         'group': employment,
                         'type': 'line',
-                        'colors': ['#e74c3c']
+                        'colors': '#e74c3c'
                     }],
                     options_sml);
 
@@ -853,6 +870,7 @@ var dashboard = (function () {
                     .group(function (d) {
                         return formatDate(d.date);
                     })
+                    .size(100)
                     .columns([
                         function () {
                             return ""
@@ -941,13 +959,19 @@ var dashboard = (function () {
                 format_month = d3.time.format("%b");
 
             var svg = d3.select(placement).selectAll("svg")
-                .data([2015])
+                .data([2015, 2016])
                 .enter().append("svg")
                 .attr("width", options.width)
                 .attr("height", options.height)
                 .attr("class", "RdYlGn")
                 .append("g")
-                .attr("transform", "translate(20,20)");
+                .attr("transform", "translate(50,20)");
+
+            svg.append('text').text(function (d, i) {
+                return d;
+            }).attr('y', function (d, i) {
+                return (options.height / 2);
+            }).attr('transform', 'translate(-50, -10)');
 
             var rect = svg.selectAll(".day")
                 .data(function (d) {

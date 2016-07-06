@@ -24,7 +24,8 @@ def get_data(request):
         for orcid_item in orcid:
             aggregated[orcid_item['date']] = {'date': orcid_item['date']}
             aggregated[orcid_item['date']]['orcids'] = orcid_item['liveIds']
-            aggregated[orcid_item['date']]['month_orcids'] = orcid_item['liveIds_month']
+            aggregated[orcid_item['date']]['month_orcids'] = orcid_item[
+                'liveIds_month']
 
         for doi_item in doi:
             if doi_item['date'] not in aggregated:
@@ -48,7 +49,8 @@ def get_data(request):
 
         contents = {"type": type, "data": json_contents, "events": event_json}
     else:
-        json_contents = json.load(open(base_dir + '/data/data_' + type + '.json', 'r'))
+        json_contents = json.load(
+            open(base_dir + '/data/data_' + type + '.json', 'r'))
 
         contents = {"type": type, "data": json_contents}
 
@@ -57,16 +59,22 @@ def get_data(request):
 
 def get_events(request):
     """
-
+    Returns all the events in a particular year
     :param request:
     :return:
     """
 
     type = request.GET.get('type', 'event_calendar')
+    year = request.GET.get('year', None)
 
     if type == 'event_calendar':
 
-        events = Event.objects.all().order_by("-start_date")
+        if year:
+            year = int(year)
+            events = Event.objects.filter(start_date__year=year).order_by(
+                "-start_date")
+        else:
+            events = Event.objects.all().order_by("-start_date")
         json_contents = []
         for event in events:
             json_contents.append(event.to_dict())
