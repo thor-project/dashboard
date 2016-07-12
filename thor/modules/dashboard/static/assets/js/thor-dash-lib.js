@@ -1011,11 +1011,13 @@ var dashboard = (function () {
 
                 for (var idx in event_data) {
                     var event = event_data[idx];
+                    event.class_name = event.type.replace(/\s+/, "");
+
                     d3.select("#d" + format(new Date(event.date))).datum(event)
                         .style("fill", function (d) {
                             return event_type_color_scale(d.type)
                         }).attr('class', function (d) {
-                            return d.type + ' cal-event';
+                            return d.class_name + ' cal-event';
                         })
                         .style("opacity", function (d) {
                             return opacity_color_scale(+d.participants)
@@ -1030,7 +1032,7 @@ var dashboard = (function () {
                     });
 
                     var tr = d3.select("#event_list").append("tr").attr('id', "l" + format(new Date(event.date))).attr("class", function (d) {
-                        return event.type + " cal-event";
+                        return event.class_name + " cal-event";
                     });
                     tr.append("td").text(event.date);
                     tr.append("td").text(event.name);
@@ -1043,7 +1045,8 @@ var dashboard = (function () {
 
                     tr.append("td").selectAll("span")
                         .data(event.participant_type).enter().append("span")
-                        .attr("class", "chip").text(function (d) {
+                        .attr("class", "chip")
+                        .text(function (d) {
                         return d;
                     });
 
@@ -1072,8 +1075,9 @@ var dashboard = (function () {
                 }).style({'cursor': 'pointer', "color": "white"})
 
                     .on("mouseover", function (d) {
+
                         d3.selectAll(".cal-event").classed("hidden", true);
-                        d3.selectAll("." + d.name).classed("hidden", false);
+                        d3.selectAll("." + d.name.replace(/\s+/, "")).classed("hidden", false);
                     })
                     .on("mouseout", function (d) {
                         d3.selectAll(".cal-event").classed("hidden", false);
