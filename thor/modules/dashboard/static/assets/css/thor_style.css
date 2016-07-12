@@ -200,6 +200,12 @@ input:-webkit-autofill, .thor-login-text, .change_password input {
 
 }
 
+.raw-link {
+    color: white;
+    font-size: .6em;
+    text-decoration: underline;
+}
+
 .visualization-panel h4 {
     color: #14A085;
     font-size: 1.4em;

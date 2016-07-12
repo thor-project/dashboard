@@ -27,7 +27,9 @@ var dashboard = (function () {
         data.forEach(function (d, i) {
             d.index = i;
             d.date = parseDate(d.date);
-            d.institution = d.institution.replace(/\+/g, " ");
+            if (d.institution) {
+                d.institution = d.institution.replace(/\+/g, " ");
+            }
         });
     };
 
@@ -301,11 +303,11 @@ var dashboard = (function () {
                             }),
 
                         dc.barChart(rptLine).gap(gap).colors('#16a085')
-                            .group(orcid_month, 'ORCIDs per month'),
+                            .group(orcid_month, 'ORCID iDs per month'),
 
                         dc.lineChart(rptLine)
                             .dimension(date)
-                            .group(orcid, 'Cumulative ORCIDs')
+                            .group(orcid, 'Cumulative ORCID iDs')
                             .colors('#16a085')
                             .xUnits(d3.time.months)
                             .dashStyle([5, 5]),
@@ -525,7 +527,7 @@ var dashboard = (function () {
 
                         dc.lineChart(rptLine)
                             .dimension(date)
-                            .group(cumulative_orcid_group, 'DOIs with ORCIDs')
+                            .group(cumulative_orcid_group, 'DOIs with ORCID iDs')
                             .colors('#9b59b6')
                             .valueAccessor(function (d) {
 
@@ -729,31 +731,31 @@ var dashboard = (function () {
                         },
                         {
                             'group': liveIds,
-                            'label': 'Live ORCIDs IDs',
+                            'label': 'Live ORCID iDs',
                             'type': 'line',
                             'colors': '#16a085'
                         },
                         {
                             'group': ids_verified,
-                            'label': 'Verified ORCIDs',
+                            'label': 'Verified ORCID iDs',
                             'type': 'line',
                             'colors': '#2ecc71'
                         },
                         {
                             'group': ids_with_works,
-                            'label': 'ORCIDs with Works',
+                            'label': 'ORCID iDs with Works',
                             'type': 'line',
                             'colors': '#e67e22'
                         },
                         {
                             'group': funding,
-                            'label': 'ORCIDs with Funding Info',
+                            'label': 'ORCID iDs with Funding Info',
                             'type': 'line',
                             'colors': '#bdc3c7'
                         },
                         {
                             'group': employment,
-                            'label': 'ORCIDs with Employment Info',
+                            'label': 'ORCID iDs with Employment Info',
                             'type': 'line',
                             'colors': '#e74c3c'
                         }
