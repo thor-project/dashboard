@@ -27,6 +27,7 @@ var dashboard = (function () {
         data.forEach(function (d, i) {
             d.index = i;
             d.date = parseDate(d.date);
+            d.institution = d.institution.replace(/\+/g, " ");
         });
     };
 
@@ -293,13 +294,12 @@ var dashboard = (function () {
                     .renderHorizontalGridLines(true)
                     .renderVerticalGridLines(true)
                     .compose([
-
-
                         dc.barChart(rptLine).gap(gap)
                             .group(cumulative_total_group, 'DOIs per month').colors('#2980b9')
                             .valueAccessor(function (d) {
                                 return d.single_value;
                             }),
+
                         dc.barChart(rptLine).gap(gap).colors('#16a085')
                             .group(orcid_month, 'ORCIDs per month'),
 
