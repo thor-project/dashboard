@@ -281,7 +281,7 @@ var dashboard = (function () {
                 var xScale = d3.time.scale().domain([minDate, maxDate]);
                 rptLine
                     .width(calculate_vis_width(window_width, 0.85))
-                    .height(400)
+                    .height(300)
                     .margins({top: 10, right: 40, bottom: 30, left: 60})
                     .dimension(date)
                     .x(xScale)
@@ -320,17 +320,10 @@ var dashboard = (function () {
                             .dashStyle([5, 5])
                     ]);
 
+                rptLine.yAxis().tickFormat(normalised_number_format);
+
                 rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5))
                     .brushOn(false);
-
-                rptLine.renderlet(function (chart) {
-                    chart.selectAll("g._1").attr("transform", "translate(" + translate + ", 0)");
-                    draw_events("#overview-chart", result.events, {
-                        'xScale': xScale,
-                        'height': 400,
-                        'width': calculate_vis_width(window_width, 0.9)
-                    })
-                });
 
                 dc.renderAll();
             });
@@ -911,15 +904,6 @@ var dashboard = (function () {
                     })
                     .order(sortByDateAscending);
 
-                dc.renderlet(function () {
-                    var divs = ["#monthly-chart", "#works-dois-chart", "#liveids-chart",
-                        "#unique-dois-chart", "#verified-ids-chart", "#works-chart",
-                        "#ids-works-chart", "#funding-chart", "#employment-chart"];
-                    for (var div in divs) {
-                        d3.select(divs[div] + " svg g").attr("transform", 'translate(20, 0)');
-                    }
-
-                });
                 dc.renderAll();
             });
         },
