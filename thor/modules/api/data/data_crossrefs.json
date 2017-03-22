@@ -1,0 +1,1254 @@
+{
+  "crossrefs_by_month": [
+    {
+      "total_items": 0,
+      "date": "2007-01-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-01-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-02-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 2252939,
+      "date": "2007-02-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-03-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 264774,
+      "date": "2007-03-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-04-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 16297,
+      "date": "2007-04-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-05-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 21220,
+      "date": "2007-05-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-06-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 45615,
+      "date": "2007-06-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-07-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 50178,
+      "date": "2007-07-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-08-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 41365,
+      "date": "2007-08-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-09-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 20889,
+      "date": "2007-09-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-10-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 51383,
+      "date": "2007-10-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-11-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 68350,
+      "date": "2007-11-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2007-12-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 58961,
+      "date": "2007-12-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-01-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 155076,
+      "date": "2008-01-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-02-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 59209,
+      "date": "2008-02-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-03-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 63314,
+      "date": "2008-03-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-04-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 24618,
+      "date": "2008-04-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-05-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 24011,
+      "date": "2008-05-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-06-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 30995,
+      "date": "2008-06-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-07-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 41384,
+      "date": "2008-07-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-08-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 52692,
+      "date": "2008-08-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-09-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 53315,
+      "date": "2008-09-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-10-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 84644,
+      "date": "2008-10-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-11-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 94241,
+      "date": "2008-11-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2008-12-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 47682,
+      "date": "2008-12-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-01-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 93849,
+      "date": "2009-01-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-02-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 54952,
+      "date": "2009-02-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-03-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 47629,
+      "date": "2009-03-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-04-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 36943,
+      "date": "2009-04-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-05-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 44409,
+      "date": "2009-05-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-06-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 38510,
+      "date": "2009-06-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-07-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 31187,
+      "date": "2009-07-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-08-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 40380,
+      "date": "2009-08-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-09-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 54649,
+      "date": "2009-09-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-10-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 71347,
+      "date": "2009-10-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-11-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 162943,
+      "date": "2009-11-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2009-12-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 51331,
+      "date": "2009-12-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-01-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 48184,
+      "date": "2010-01-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-02-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 41119,
+      "date": "2010-02-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-03-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 40428,
+      "date": "2010-03-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-04-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 47279,
+      "date": "2010-04-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-05-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 252161,
+      "date": "2010-05-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-06-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 119925,
+      "date": "2010-06-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-07-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 63893,
+      "date": "2010-07-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-08-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 55534,
+      "date": "2010-08-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-09-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 67235,
+      "date": "2010-09-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-10-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 49563,
+      "date": "2010-10-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-11-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 222041,
+      "date": "2010-11-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2010-12-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 90767,
+      "date": "2010-12-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-01-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 98958,
+      "date": "2011-01-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-02-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 162189,
+      "date": "2011-02-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-03-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 260203,
+      "date": "2011-03-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-04-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 426432,
+      "date": "2011-04-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-05-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 171753,
+      "date": "2011-05-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-06-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 512278,
+      "date": "2011-06-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-07-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 628688,
+      "date": "2011-07-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-08-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 802335,
+      "date": "2011-08-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-09-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 204226,
+      "date": "2011-09-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-10-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 171898,
+      "date": "2011-10-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-11-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 334639,
+      "date": "2011-11-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2011-12-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 192025,
+      "date": "2011-12-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2012-01-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 215988,
+      "date": "2012-01-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2012-02-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 196732,
+      "date": "2012-02-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2012-03-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 151124,
+      "date": "2012-03-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2012-04-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 125274,
+      "date": "2012-04-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2012-05-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 100083,
+      "date": "2012-05-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2012-06-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 82550,
+      "date": "2012-06-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2012-07-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 318009,
+      "date": "2012-07-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2012-08-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 115868,
+      "date": "2012-08-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2012-09-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 228745,
+      "date": "2012-09-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2012-10-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 76241,
+      "date": "2012-10-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 0,
+      "date": "2012-11-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 288716,
+      "date": "2012-11-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 39,
+      "date": "2012-12-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 450689,
+      "date": "2012-12-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 54,
+      "date": "2013-01-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 1378146,
+      "date": "2013-01-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 75,
+      "date": "2013-02-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 1413169,
+      "date": "2013-02-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 88,
+      "date": "2013-03-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 1350979,
+      "date": "2013-03-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 71,
+      "date": "2013-04-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 812785,
+      "date": "2013-04-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 74,
+      "date": "2013-05-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 260546,
+      "date": "2013-05-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 71,
+      "date": "2013-06-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 295063,
+      "date": "2013-06-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 103,
+      "date": "2013-07-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 258087,
+      "date": "2013-07-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 100,
+      "date": "2013-08-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 288505,
+      "date": "2013-08-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 109,
+      "date": "2013-09-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 397877,
+      "date": "2013-09-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 126,
+      "date": "2013-10-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 254347,
+      "date": "2013-10-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 171,
+      "date": "2013-11-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 306581,
+      "date": "2013-11-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 157,
+      "date": "2013-12-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 742012,
+      "date": "2013-12-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 199,
+      "date": "2014-01-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 1598026,
+      "date": "2014-01-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 186,
+      "date": "2014-02-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 280331,
+      "date": "2014-02-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 197,
+      "date": "2014-03-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 299278,
+      "date": "2014-03-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 201,
+      "date": "2014-04-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 229464,
+      "date": "2014-04-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 211,
+      "date": "2014-05-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 501524,
+      "date": "2014-05-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 243,
+      "date": "2014-06-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 225993,
+      "date": "2014-06-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 297,
+      "date": "2014-07-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 414177,
+      "date": "2014-07-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 2354,
+      "date": "2014-08-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 434824,
+      "date": "2014-08-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 2358,
+      "date": "2014-09-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 341268,
+      "date": "2014-09-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 1891,
+      "date": "2014-10-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 354459,
+      "date": "2014-10-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 2824,
+      "date": "2014-11-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 450848,
+      "date": "2014-11-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 2479,
+      "date": "2014-12-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 377620,
+      "date": "2014-12-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 538,
+      "date": "2015-01-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 233518,
+      "date": "2015-01-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 17346,
+      "date": "2015-02-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 2109949,
+      "date": "2015-02-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 12253,
+      "date": "2015-03-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 796797,
+      "date": "2015-03-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 9921,
+      "date": "2015-04-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 919777,
+      "date": "2015-04-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 4811,
+      "date": "2015-05-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 559323,
+      "date": "2015-05-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 2614,
+      "date": "2015-06-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 1179684,
+      "date": "2015-06-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 2767,
+      "date": "2015-07-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 612445,
+      "date": "2015-07-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 15214,
+      "date": "2015-08-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 859142,
+      "date": "2015-08-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 3742,
+      "date": "2015-09-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 3585802,
+      "date": "2015-09-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 4446,
+      "date": "2015-10-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 2523401,
+      "date": "2015-10-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 4378,
+      "date": "2015-11-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 1898670,
+      "date": "2015-11-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 4096,
+      "date": "2015-12-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 2040717,
+      "date": "2015-12-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 5976,
+      "date": "2016-01-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 1568988,
+      "date": "2016-01-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 7200,
+      "date": "2016-02-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 948114,
+      "date": "2016-02-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 6254,
+      "date": "2016-03-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 572118,
+      "date": "2016-03-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 8243,
+      "date": "2016-04-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 428116,
+      "date": "2016-04-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 11285,
+      "date": "2016-05-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 881170,
+      "date": "2016-05-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 10254,
+      "date": "2016-06-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 783703,
+      "date": "2016-06-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 33582,
+      "date": "2016-07-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 722799,
+      "date": "2016-07-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 43087,
+      "date": "2016-08-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 1662932,
+      "date": "2016-08-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 68468,
+      "date": "2016-09-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 2256979,
+      "date": "2016-09-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 44487,
+      "date": "2016-10-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 1865989,
+      "date": "2016-10-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 20966,
+      "date": "2016-11-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 1202095,
+      "date": "2016-11-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 61873,
+      "date": "2016-12-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 9438388,
+      "date": "2016-12-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 52684,
+      "date": "2017-01-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 4050757,
+      "date": "2017-01-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 55198,
+      "date": "2017-02-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 1732224,
+      "date": "2017-02-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 99055,
+      "date": "2017-03-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 9897271,
+      "date": "2017-03-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 74094,
+      "date": "2017-04-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 8395380,
+      "date": "2017-04-01",
+      "restriction": "without_orcids"
+    },
+    {
+      "total_items": 28393,
+      "date": "2017-05-01",
+      "restriction": "with_orcids"
+    },
+    {
+      "total_items": 914021,
+      "date": "2017-05-01",
+      "restriction": "without_orcids"
+    }
+  ]
+}

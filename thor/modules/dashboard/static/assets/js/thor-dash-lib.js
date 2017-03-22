@@ -222,7 +222,7 @@ var dashboard = (function () {
                 var doi_data = result.data;
 
                 process_data(doi_data);
-
+                
                 var records = crossfilter(doi_data),
                     date = records.dimension(function (d) {
                         return d.date;
@@ -245,6 +245,9 @@ var dashboard = (function () {
                     }),
                     orcid = date.group().reduceSum(function (d) {
                         return d.orcids;
+                    }),
+                    crossrefs = date.group().reduceSum(function (d) {
+                        return d.crossrefs;
                     });
 
                 // we don't use the create_composite_chart method since we need to access custom values for the
@@ -277,6 +280,25 @@ var dashboard = (function () {
 
                 cumulative_total_group.all();
 
+                var cumulative_crossrefs_total_group = {
+                    all: function () {
+                        var cumulate = 0;
+                        var g = [];
+                        crossrefs.all().forEach(function (d, i) {
+                            cumulate += d.value;
+                            top_value = cumulate;
+                            g.push({
+                                key: d.key,
+                                value: cumulate,
+                                single_value: d.value
+                            })
+                        });
+                        return g;
+                    }
+                };
+
+                cumulative_crossrefs_total_group.all();
+
                 var max_value = Math.max(orcids.top(1)[0].orcids, top_value);
                 var gap = 15, translate = 2;
 
@@ -297,10 +319,31 @@ var dashboard = (function () {
                     .renderVerticalGridLines(true)
                     .compose([
                         dc.barChart(rptLine).gap(gap)
+                            .group(crossrefs, 'Crossrefs per month').colors('#e67e22'),
+
+                        dc.lineChart(rptLine)
+                            .dimension(date)
+                            .group(cumulative_crossrefs_total_group, 'Cumulative Crossrefs')
+                            .colors('#e67e22')
+                            .valueAccessor(function (d) {
+                                return d.value
+                            }).dotRadius(5)
+                            .dashStyle([5, 5]),
+                            
+                        dc.barChart(rptLine).gap(gap)
                             .group(cumulative_total_group, 'DOIs per month').colors('#2980b9')
                             .valueAccessor(function (d) {
                                 return d.single_value;
                             }),
+
+                        dc.lineChart(rptLine)
+                            .dimension(date)
+                            .group(cumulative_total_group, 'Cumulative DOIs')
+                            .colors('#3b97d3')
+                            .valueAccessor(function (d) {
+                                return d.value
+                            }).dotRadius(5)
+                            .dashStyle([5, 5]),
 
                         dc.barChart(rptLine).gap(gap).colors('#16a085')
                             .group(orcid_month, 'ORCID iDs per month'),
@@ -311,15 +354,6 @@ var dashboard = (function () {
                             .colors('#16a085')
                             .xUnits(d3.time.months)
                             .dashStyle([5, 5]),
-
-                        dc.lineChart(rptLine)
-                            .dimension(date)
-                            .group(cumulative_total_group, 'Cumulative DOIs')
-                            .colors('#3b97d3')
-                            .valueAccessor(function (d) {
-                                return d.value
-                            }).dotRadius(5)
-                            .dashStyle([5, 5])
                     ]);
 
                 rptLine.yAxis().tickFormat(normalised_number_format);
@@ -910,6 +944,118 @@ var dashboard = (function () {
             });
         },
 
+        render_crossrefs_metrics: function (data_url) {
+            d3.json(data_url, function (error, result) {
+
+                var crossref_data = result.data.crossrefs_by_month;
+                //var crossref_orcids = result.data.test;
+
+                process_data(crossref_data);
+                
+                var records = crossfilter(crossref_data),
+                    date = records.dimension(function (d) {
+                        return d.date;
+                    }),
+
+                    value = records.dimension(function (d) {
+                        return d.total_items;
+                    }),
+
+                    crossrefs = date.group().reduceSum(function (d) {
+                        return d.total_items;
+                    }),
+
+                    restriction = records.dimension(function (d) {
+                        return d.restriction;
+                    }),
+
+                    restriction_crossrefs = restriction.group().reduceSum(function (d) {
+                        return d.total_items;
+                    });
+
+                    
+
+                // we don't use the create_composite_chart method since we need to access custom values for the
+                // cumulative total group.
+                var rptLine = dc.compositeChart(document.getElementById("crossref-chart"));
+                var minValue = value.bottom(1)[0].total_items;
+
+                var minDate = new Date(date.bottom(1)[0].date);
+                var maxDate = new Date(date.top(1)[0].date);
+                minDate.setDate(minDate.getDate() - 15);
+                maxDate.setDate(maxDate.getDate() + 15);
+
+                var top_value = 0;
+
+                var cumulative_crossrefs_total_group = {
+                    all: function () {
+                        var cumulate = 0;
+                        var g = [];
+                        crossrefs.all().forEach(function (d, i) {
+                            cumulate += d.value;
+                            top_value = cumulate;
+                            g.push({
+                                key: d.key,
+                                value: cumulate,
+                                single_value: d.value
+                            })
+                        });
+                        return g;
+                    }
+                };
+
+                cumulative_crossrefs_total_group.all();
+                var max_value = Math.max(crossrefs.top(1)[0].value, top_value);
+                var gap = 15, translate = 2;
+
+                var window_width = calculate_window_width();
+                var xScale = d3.time.scale().domain([minDate, maxDate]);
+                rptLine
+                    .width(calculate_vis_width(window_width, 0.85))
+                    .height(300)
+                    .margins({top: 10, right: 40, bottom: 30, left: 60})
+                    .dimension(date)
+                    .x(xScale)
+                    .y(d3.scale.sqrt().domain([minValue, max_value]))
+
+                    .xUnits(function () {
+                        return 55;
+                    })
+                    .renderHorizontalGridLines(true)
+                    .renderVerticalGridLines(true)
+                    .compose([
+                        dc.lineChart(rptLine)
+                            .dimension(date)
+                            .group(cumulative_crossrefs_total_group, 'Cumulative Crossrefs')
+                            .colors('#e67e22')
+                            .valueAccessor(function (d) {
+                                return d.value
+                            }).dotRadius(5)
+                            .dashStyle([5, 5]),
+
+                        dc.barChart(rptLine).gap(gap)
+                            .group(crossrefs, 'Crossrefs per month').colors('#e67e22'),
+                    ]);
+
+                rptLine.yAxis().tickFormat(normalised_number_format);
+
+                rptLine.legend(dc.legend().x(60).y(20).itemHeight(13).gap(5))
+                    .brushOn(true);
+
+                var orcidChart = dc.rowChart('#orcid-chart');
+                orcidChart.width(calculate_vis_width(window_width, 0.85))
+                    .height(230)
+                    .dimension(restriction)
+                    .group(restriction_crossrefs);
+                orcidChart.xAxis().tickFormat(normalised_number_format);
+                orcidChart.xAxis().ticks(5);
+                orcidChart.colors(typeColorScale);
+                orcidChart.elasticX(true);
+
+                dc.renderAll();
+            });
+        },
+
         register_resize_listener: function (type, url) {
 
             var rtime;
@@ -932,6 +1078,8 @@ var dashboard = (function () {
                         dashboard.render_doi_metrics(url);
                     } else if (type == "orcid") {
                         dashboard.render_orcid_metrics(url);
+                    } else if (type == "crossrefs") {
+                        dashboard.render_crossrefs_metrics(url);
                     } else {
                         dashboard.render_general_metrics(url);
                     }

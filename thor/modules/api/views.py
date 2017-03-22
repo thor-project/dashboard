@@ -41,6 +41,7 @@ def get_data(request):
     if type == 'aggregate':
         orcid = json.load(open(base_dir + '/data/data_orcid.json', 'r'))
         doi = json.load(open(base_dir + '/data/data_doi.json', 'r'))
+        crossref = json.load(open(base_dir + '/data/data_crossrefs.json', 'r'))
 
         aggregated = {}
 
@@ -49,6 +50,7 @@ def get_data(request):
             aggregated[orcid_item['date']]['orcids'] = orcid_item['liveIds']
             aggregated[orcid_item['date']]['month_orcids'] = orcid_item[
                 'liveIds_month']
+            aggregated[orcid_item['date']]['crossrefs'] = 0
 
         for doi_item in doi:
             if doi_item['date'] not in aggregated:
@@ -60,6 +62,16 @@ def get_data(request):
                 aggregated[doi_item['date']]['dois'] = 0
 
             aggregated[doi_item['date']]['dois'] += doi_item['data_value']
+            aggregated[doi_item['date']]['crossrefs'] = 0
+
+        for cr_item in crossref['crossrefs_by_month']:
+            if cr_item['date'] not in aggregated:
+                aggregated[cr_item['date']] = {'date': cr_item['date']}
+                aggregated[cr_item['date']]['dois'] = 0
+                aggregated[cr_item['date']]['orcids'] = 0
+                aggregated[cr_item['date']]['month_orcids'] = 0
+
+            aggregated[cr_item['date']]['crossrefs'] = cr_item['total_items']
 
         print(aggregated)
 

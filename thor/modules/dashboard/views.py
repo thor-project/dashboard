@@ -47,3 +47,6 @@ def researcher_dashboard(request):
 def event_dashboard(request):
     events = Event.objects.all()
     return render_to_response("event-dashboard.html", {'events': events}, context_instance=RequestContext(request))
+
+def crossrefs_dashboard(request):
+    return render_to_response("crossrefs-dashboard.html", context_instance=RequestContext(request))
