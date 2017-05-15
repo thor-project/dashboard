@@ -319,12 +319,12 @@ var dashboard = (function () {
                     .renderVerticalGridLines(true)
                     .compose([
                         dc.barChart(rptLine).gap(gap)
-                            .group(crossrefs, 'Crossrefs per month').colors('#e67e22'),
+                            .group(crossrefs, 'Crossrefs per month').colors('#8a4fa2'),
 
                         dc.lineChart(rptLine)
                             .dimension(date)
                             .group(cumulative_crossrefs_total_group, 'Cumulative Crossrefs')
-                            .colors('#e67e22')
+                            .colors('#8a4fa2')
                             .valueAccessor(function (d) {
                                 return d.value
                             }).dotRadius(5)
@@ -562,7 +562,7 @@ var dashboard = (function () {
                         dc.lineChart(rptLine)
                             .dimension(date)
                             .group(cumulative_orcid_group, 'DOIs with ORCID iDs')
-                            .colors('#9b59b6')
+                            .colors('#8a4fa2')
                             .valueAccessor(function (d) {
 
                                 return d.value
@@ -755,7 +755,7 @@ var dashboard = (function () {
                         'group': works,
                         'label': 'Works',
                         'type': 'line',
-                        'colors': '#9b59b6'
+                        'colors': '#8a4fa2'
                     },
                         {
                             'group': unique_dois,
@@ -779,7 +779,7 @@ var dashboard = (function () {
                             'group': ids_with_works,
                             'label': 'ORCID iDs with Works',
                             'type': 'line',
-                            'colors': '#e67e22'
+                            'colors': '#8a4fa2'
                         },
                         {
                             'group': funding,
@@ -813,11 +813,11 @@ var dashboard = (function () {
                     [{
                         'group': works_month,
                         'type': 'bar',
-                        'colors': ['#9b59b6']
+                        'colors': ['#8a4fa2']
                     }, {
                         'group': works,
                         'type': 'line',
-                        'colors': ['#9b59b6']
+                        'colors': ['#8a4fa2']
                     }],
                     options);
 
@@ -864,11 +864,11 @@ var dashboard = (function () {
                     [{
                         'group': ids_with_works_month,
                         'type': 'bar',
-                        'colors': '#e67e22'
+                        'colors': '#8a4fa2'
                     }, {
                         'group': ids_with_works,
                         'type': 'line',
-                        'colors': '#e67e22'
+                        'colors': '#8a4fa2'
                     }],
                     options_sml);
 
@@ -1027,14 +1027,14 @@ var dashboard = (function () {
                         dc.lineChart(rptLine)
                             .dimension(date)
                             .group(cumulative_crossrefs_total_group, 'Cumulative Crossrefs')
-                            .colors('#e67e22')
+                            .colors('#8a4fa2')
                             .valueAccessor(function (d) {
                                 return d.value
                             }).dotRadius(5)
                             .dashStyle([5, 5]),
 
                         dc.barChart(rptLine).gap(gap)
-                            .group(crossrefs, 'Crossrefs per month').colors('#e67e22'),
+                            .group(crossrefs, 'Crossrefs per month').colors('#8a4fa2'),
                     ]);
 
                 rptLine.yAxis().tickFormat(normalised_number_format);
