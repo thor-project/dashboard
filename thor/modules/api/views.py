@@ -41,7 +41,7 @@ def get_data(request):
     if type == 'aggregate':
         orcid = json.load(open(base_dir + '/data/data_orcid.json', 'r'))
         doi = json.load(open(base_dir + '/data/data_doi.json', 'r'))
-        crossref = json.load(open(base_dir + '/data/data_crossrefs.json', 'r'))
+        crossref = json.load(open(base_dir + '/data/data_crossref.json', 'r'))
 
         aggregated = {}
 
@@ -72,8 +72,6 @@ def get_data(request):
                 aggregated[cr_item['date']]['month_orcids'] = 0
 
             aggregated[cr_item['date']]['crossrefs'] = cr_item['total_items']
-
-        print(aggregated)
 
         json_contents = aggregated.values()
 

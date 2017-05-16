@@ -102,10 +102,10 @@
     <script>
 
         $(document).ready(function () {
-            dashboard.render_crossrefs_metrics("/api/data?type=crossrefs");
+            dashboard.render_crossrefs_metrics("/api/data?type=crossref");
         });
 
-        dashboard.register_resize_listener("crossrefs", "/api/data?type=crossrefs");
+        dashboard.register_resize_listener("crossrefs", "/api/data?type=crossref");
 
     </script>
 {% endblock %}
