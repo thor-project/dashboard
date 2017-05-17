@@ -319,11 +319,11 @@ var dashboard = (function () {
                     .renderVerticalGridLines(true)
                     .compose([
                         dc.barChart(rptLine).gap(gap)
-                            .group(crossrefs, 'Crossrefs per month').colors('#8a4fa2'),
+                            .group(crossrefs, 'Crossref DOIs per month').colors('#8a4fa2'),
 
                         dc.lineChart(rptLine)
                             .dimension(date)
-                            .group(cumulative_crossrefs_total_group, 'Cumulative Crossrefs')
+                            .group(cumulative_crossrefs_total_group, 'Cumulative Crossref DOIs')
                             .colors('#8a4fa2')
                             .valueAccessor(function (d) {
                                 return d.value
@@ -331,14 +331,14 @@ var dashboard = (function () {
                             .dashStyle([5, 5]),
                             
                         dc.barChart(rptLine).gap(gap)
-                            .group(cumulative_total_group, 'DOIs per month').colors('#2980b9')
+                            .group(cumulative_total_group, 'DataCite DOIs per month').colors('#2980b9')
                             .valueAccessor(function (d) {
                                 return d.single_value;
                             }),
 
                         dc.lineChart(rptLine)
                             .dimension(date)
-                            .group(cumulative_total_group, 'Cumulative DOIs')
+                            .group(cumulative_total_group, 'Cumulative DataCite DOIs')
                             .colors('#3b97d3')
                             .valueAccessor(function (d) {
                                 return d.value
@@ -1026,7 +1026,7 @@ var dashboard = (function () {
                     .compose([
                         dc.lineChart(rptLine)
                             .dimension(date)
-                            .group(cumulative_crossrefs_total_group, 'Cumulative Crossrefs')
+                            .group(cumulative_crossrefs_total_group, 'Cumulative DOIs')
                             .colors('#8a4fa2')
                             .valueAccessor(function (d) {
                                 return d.value
@@ -1034,7 +1034,7 @@ var dashboard = (function () {
                             .dashStyle([5, 5]),
 
                         dc.barChart(rptLine).gap(gap)
-                            .group(crossrefs, 'Crossrefs per month').colors('#8a4fa2'),
+                            .group(crossrefs, 'DOIs per month').colors('#8a4fa2'),
                     ]);
 
                 rptLine.yAxis().tickFormat(normalised_number_format);
