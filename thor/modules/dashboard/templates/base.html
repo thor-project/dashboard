@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>{% block title %}THOR Dashboard{% endblock %}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>{% block title %}THOR Dashboard{% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
 
-    {% block head_additional %}
-    {% endblock %}
-</head>
-<body>
-{% block content %}
-{% endblock %}
+        {% block head_additional %}
+        {% endblock %}
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+        ga('create', 'UA-101400576-1', 'auto');
+        ga('send', 'pageview');
 
-{% block end_additional %}
-{% endblock %}
-</body>
+        </script>
+    </head>
+    <body>
+        {% block content %}
+        {% endblock %}
 
-
+        {% block end_additional %}
+        {% endblock %}
+    </body>
 </html>
