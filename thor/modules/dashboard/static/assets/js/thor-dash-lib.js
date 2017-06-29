@@ -1093,62 +1093,70 @@ var dashboard = (function () {
             var cellSize = options.cellSize;
 
             var format = d3.time.format("%Y-%m-%d"),
-                format_month = d3.time.format("%b");
-
-            var svg = d3.select(placement).selectAll("svg")
-                .data([2015, 2016, 2017])
-                .enter().append("svg")
-                .attr("width", options.width)
-                .attr("height", options.height)
-                .attr("class", "RdYlGn")
-                .append("g")
-                .attr("transform", "translate(50,20)");
-
-            svg.append('text').text(function (d, i) {
-                return d;
-            }).attr('y', function (d, i) {
-                return (options.height / 2);
-            }).attr('transform', 'translate(-50, -10)');
-
-            var rect = svg.selectAll(".day")
-                .data(function (d) {
-                    return d3.time.days(new Date(d, 0, 1), new Date(d + 1, 0, 1));
-                })
-                .enter().append("rect")
-                .attr("id", function (d) {
-                    return "d" + format(d)
-                })
-                .attr("class", "day")
-                .attr("width", cellSize)
-                .attr("height", cellSize)
-                .attr("x", function (d) {
-                    return d3.time.weekOfYear(d) * cellSize;
-                })
-                .attr("y", function (d) {
-                    return d.getDay() * cellSize;
-                })
-                .datum(format);
-
-            svg.selectAll(".month")
-                .data(function (d) {
-                    return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1));
-                })
-                .enter().append("path")
-                .attr("class", "month")
-                .attr("d", monthPath);
-
-            svg.selectAll("text.month-text").data(function (d) {
-                return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1));
-            }).enter().append("text").attr("class", "month-text").text(function (d) {
-                return format_month(d)
-            }).attr('x', function (d) {
-                var w0 = d3.time.weekOfYear(d);
-                return w0 * (cellSize);
-            }).attr('y', -5);
-
+                format_month = d3.time.format("%b"); 
+        
             var opacity_color_scale = d3.scale.quantile().range([0.2, 0.4, 0.8, 1]);
 
             d3.json(data_url, function (error, data) {
+                var events = [];
+                
+                data.data.forEach(function(d) {
+                    events.push(parseInt(d.date.split('-')[0]));
+                });
+
+                events.sort(function(a, b){return a-b});
+                
+                var svg = d3.select(placement).selectAll("svg")
+                    .data(events.slice(Math.max(events.length - 3)))
+                    .enter().append("svg")
+                    .attr("width", options.width)
+                    .attr("height", options.height)
+                    .attr("class", "RdYlGn")
+                    .append("g")
+                    .attr("transform", "translate(50,20)");
+
+                svg.append('text').text(function (d, i) {
+                    return d;
+                }).attr('y', function (d, i) {
+                    return (options.height / 2);
+                }).attr('transform', 'translate(-50, -10)');
+
+                var rect = svg.selectAll(".day")
+                    .data(function (d) {
+                        return d3.time.days(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+                    })
+                    .enter().append("rect")
+                    .attr("id", function (d) {
+                        return "d" + format(d)
+                    })
+                    .attr("class", "day")
+                    .attr("width", cellSize)
+                    .attr("height", cellSize)
+                    .attr("x", function (d) {
+                        return d3.time.weekOfYear(d) * cellSize;
+                    })
+                    .attr("y", function (d) {
+                        return d.getDay() * cellSize;
+                    })
+                    .datum(format);
+
+                svg.selectAll(".month")
+                    .data(function (d) {
+                        return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+                    })
+                    .enter().append("path")
+                    .attr("class", "month")
+                    .attr("d", monthPath);
+
+                svg.selectAll("text.month-text").data(function (d) {
+                    return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+                }).enter().append("text").attr("class", "month-text").text(function (d) {
+                    return format_month(d)
+                }).attr('x', function (d) {
+                    var w0 = d3.time.weekOfYear(d);
+                    return w0 * (cellSize);
+                }).attr('y', -5);
+
                 var event_data = data.data;
 
                 opacity_color_scale.domain(d3.extent(event_data, function (d) {
