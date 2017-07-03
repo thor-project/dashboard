@@ -1095,8 +1095,11 @@ var dashboard = (function () {
             var format = d3.time.format("%Y-%m-%d"),
                 format_month = d3.time.format("%b");
 
-            var svg = d3.select(placement).selectAll("svg")
-                .data([2015, 2016, 2017])
+            var d = new Date();
+            var n = d.getFullYear();
+            
+            var svg = d3.select(placement).selectAll("svg") 
+                .data([n-2, n-1, n])
                 .enter().append("svg")
                 .attr("width", options.width)
                 .attr("height", options.height)
