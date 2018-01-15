@@ -389,24 +389,8 @@ var dashboard = (function () {
                         return d.data_value;
                     }),
 
-                    country = records.dimension(function (d) {
-                        return d.country;
-                    }),
-
-                    country_2 = records.dimension(function (d) {
-                        return d.country;
-                    }),
-
                     restrictions = records.dimension(function (d) {
                         return d.restriction;
-                    }),
-
-                    country_dois2 = country_2.group().reduceSum(function (d) {
-                        return d.data_value;
-                    }),
-
-                    country_dois = country.group().reduceSum(function (d) {
-                        return d.data_value;
                     }),
 
                     restrictions_orcids = restrictions.group().reduceSum(function (d) {
@@ -495,43 +479,6 @@ var dashboard = (function () {
 
 
                 var window_width = calculate_window_width();
-                var country_details_chart = dc.rowChart("#country-details");
-
-                country_details_chart.width(calculate_vis_width(window_width, 0.24))
-                    .height(350)
-                    .dimension(country_2)
-                    .group(country_dois2)
-                    .elasticX(true);
-                country_details_chart.colors(d3.scale.ordinal().range(map_intensity_colours));
-                country_details_chart.xAxis().ticks(5);
-                country_details_chart.xAxis().tickFormat(normalised_number_format);
-
-                d3.json("/static/assets/geo/world-countries.json", function (worldcountries) {
-                    var chart = dc.geoChoroplethChart("#map");
-                    chart.dimension(country)
-                        .group(country_dois)
-                        .projection(d3.geo.mercator()
-                            .scale(120)
-                            .translate([350, 220]))
-                        .width(calculate_vis_width(window_width, 0.48))
-                        .height(390)
-
-                        .colors(d3.scale.quantize().range(map_intensity_colours).domain([0, country_dois.top(1)[0].value]))
-
-                        .colorCalculator(function (d) {
-                            return d ? chart.colors()(d) : '#26B99A';
-                        })
-
-                        .overlayGeoJson(worldcountries.features, "country", function (d) {
-                            return d.properties.name;
-                        })
-                        .title(function (d) {
-                            return d.key + " : " + d.value;
-                        });
-
-
-                    dc.renderAll();
-                });
 
                 // we don't use the create_composite_chart method since we need to access custom values for the
                 // cumulative total group.
@@ -587,7 +534,7 @@ var dashboard = (function () {
 
                 var doiCentreChart = dc.rowChart('#institution-chart');
                 doiCentreChart.width(calculate_vis_width(window_width, 0.31))
-                    .height(400)
+                    .height(800)
                     .dimension(institution)
                     .group(institution_group);
                 doiCentreChart.colors('#2980BA');
@@ -1191,7 +1138,6 @@ var dashboard = (function () {
                         'background-color': event_type_color_scale(event.type),
                         'color': 'white'
                     });
-                    tr.append("td").text(event.country);
                     tr.append("td").text(event.participant_count);
 
                     tr.append("td").selectAll("span")
